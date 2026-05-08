@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Digital Profile Card</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f6;
+      color: #111;
+    }
+
+    .page {
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 0 30px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .cover {
+      height: 190px;
+      background-image: url("images/cover.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .logo-box {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(255,255,255,0.95);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .profile-wrap {
+      text-align: center;
+      margin-top: -76px;
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+      background: #ffffff;
+    }
+
+    h1 {
+      margin: 18px 0 6px;
+      font-size: 34px;
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .company {
+      margin: 0;
+      color: #d90000;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .role {
+      margin: 18px 0 28px;
+      font-size: 17px;
+      font-weight: 800;
+      color: #222;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px 12px;
+      padding: 0 22px 28px;
+    }
+
+    .icon-link {
+      text-decoration: none;
+      color: #222;
+      text-align: center;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #1f1f1f;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .circle.red {
+      background: #ef0000;
+    }
+
+    .circle img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .main-actions {
+      padding: 0 18px 22px;
+    }
+
+    .split-row {
+      display: grid;
+      grid-template-columns: 1fr 0.32fr;
+      gap: 0;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .split-row a {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .add-contact {
+      background: #ef0000;
+    }
+
+    .share {
+      background: #1f1f1f;
+    }
+
+    .big-btn {
+      width: 100%;
+      min-height: 62px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 19px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .black {
+      background: #1f1f1f;
+    }
+
+    .red-btn {
+      background: #ef0000;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #777;
+      padding: 0 18px 20px;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 29px;
+      }
+
+      .company {
+        font-size: 19px;
+      }
+
+      .icon-grid {
+        gap: 22px 8px;
+      }
+
+      .circle {
+        width: 54px;
+        height: 54px;
+      }
+
+      .icon-link {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- Top cover image -->
+    <section class="cover">
+      <div class="logo-box">
+        YOUR<br>LOGO
+      </div>
+    </section>
+
+    <!-- Profile section -->
+    <section class="profile-wrap">
+      <img src="images/profile.jpg" alt="Profile Photo" class="profile-img">
+
+      <h1>Όνομα Προφίλ</h1>
+      <p class="company">Όνομα Επιχείρησης</p>
+      <p class="role">Ιδιότητα | Ειδικότητα</p>
+    </section>
+
+    <!-- Icon buttons -->
+    <section class="icon-grid">
+
+      <a class="icon-link" href="mailto:example@email.com" target="_self">
+        <div class="circle">✉</div>
+        Email
+      </a>
+
+      <a class="icon-link" href="tel:+306981234567" target="_self">
+        <div class="circle">☎</div>
+        Call
+      </a>
+
+      <a class="icon-link" href="sms:+306981234567" target="_self">
+        <div class="circle">☏</div>
+        Text
+      </a>
+
+      <a class="icon-link" href="viber://chat?number=%2B306981234567" target="_self">
+        <div class="circle red">🤝</div>
+        Connect
+      </a>
+
+      <a class="icon-link" href="https://www.facebook.com/YOUR_PAGE" target="_self">
+        <div class="circle">
+          <img src="icons/facebook.png" alt="Facebook">
+        </div>
+        Facebook
+      </a>
+
+      <a class="icon-link" href="https://www.instagram.com/YOUR_PROFILE" target="_self">
+        <div class="circle">
+          <img src="icons/instagram.png" alt="Instagram">
+        </div>
+        Instagram
+      </a>
+
+      <a class="icon-link" href="https://www.your-financing-link.gr" target="_self">
+        <div class="circle">💰</div>
+        Financing
+      </a>
+
+      <a class="icon-link" href="https://www.google.com/maps/search/?api=1&query=Patra" target="_self">
+        <div class="circle">⌖</div>
+        Google Map
+      </a>
+
+    </section>
+
+    <!-- Main action buttons -->
+    <section class="main-actions">
+
+      <div class="split-row">
+        <a class="add-contact" href="contact.vcf" target="_self">ADD TO CONTACTS</a>
+        <a class="share" href="#" onclick="navigator.share ? navigator.share({title: document.title, url: window.location.href}) : alert('Copy this page link'); return false;">SHARE</a>
+      </div>
+
+      <a class="big-btn black" href="https://www.yourwebsite.gr" target="_self">
+        Website
+      </a>
+
+      <a class="big-btn red-btn" href="https://www.payment-link.gr" target="_self">
+        Pay Online
+      </a>
+
+      <a class="big-btn black" href="https://www.your-form-link.gr" target="_self">
+        Free Estimate
+      </a>
+
+    </section>
+
+    <footer class="footer">
+      Powered by NFC Brelot • Jewel Art<br>
+      Instagram:
+      <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
+        @lazaros_jewelart
+      </a>
+    </footer>
+
+  </main>
+</body>
+</html>
