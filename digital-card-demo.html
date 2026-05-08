@@ -12,49 +12,94 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: #f3f4f6;
-      color: #111;
+      color: #111111;
+    }
+
+    body {
+      min-height: 100vh;
     }
 
     .page {
+      width: 100%;
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
       background: #ffffff;
-      box-shadow: 0 0 30px rgba(0,0,0,0.12);
       overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
     }
 
     .cover {
-      height: 190px;
-      background-image: url("images/cover.jpg");
-      background-size: cover;
-      background-position: center;
+      height: 185px;
+      background:
+        linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.1)),
+        linear-gradient(135deg, #e5e7eb 0%, #ffffff 45%, #d1d5db 100%);
       position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 0;
+      width: 55%;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #111 0px,
+          #111 6px,
+          transparent 6px,
+          transparent 20px
+        );
+      opacity: 0.9;
+      transform: skewX(-8deg);
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      top: 0;
+      width: 58%;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #e5e7eb 0px,
+          #e5e7eb 34px,
+          #cbd5e1 34px,
+          #cbd5e1 38px
+        );
+      opacity: 0.95;
     }
 
     .logo-box {
       position: absolute;
       top: 18px;
       left: 18px;
-      background: rgba(255,255,255,0.95);
-      padding: 8px 12px;
-      border-radius: 4px;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.96);
+      color: #000;
+      padding: 8px 13px;
+      border: 2px solid #222;
       font-weight: 900;
       font-size: 18px;
-      line-height: 1;
+      line-height: 0.95;
       letter-spacing: 0.5px;
     }
 
-    .profile-wrap {
+    .profile-section {
       text-align: center;
-      margin-top: -76px;
+      padding: 0 20px 10px;
       position: relative;
-      z-index: 2;
-      padding: 0 20px;
+      z-index: 5;
     }
 
     .profile-img {
@@ -63,44 +108,47 @@
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid #ffffff;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+      margin-top: -76px;
       background: #ffffff;
     }
 
     h1 {
-      margin: 18px 0 6px;
-      font-size: 34px;
-      line-height: 1.05;
+      margin: 18px 0 8px;
+      font-size: 33px;
+      line-height: 1.08;
       font-weight: 900;
+      color: #000000;
     }
 
     .company {
       margin: 0;
-      color: #d90000;
+      color: #e00000;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 900;
+      line-height: 1.2;
     }
 
     .role {
-      margin: 18px 0 28px;
+      margin: 16px 0 26px;
+      color: #222222;
       font-size: 17px;
       font-weight: 800;
-      color: #222;
     }
 
     .icon-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 26px 12px;
-      padding: 0 22px 28px;
+      gap: 26px 10px;
+      padding: 0 20px 28px;
+      text-align: center;
     }
 
     .icon-link {
+      color: #222222;
       text-decoration: none;
-      color: #222;
-      text-align: center;
-      font-weight: 600;
       font-size: 15px;
+      font-weight: 600;
     }
 
     .circle {
@@ -113,32 +161,26 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 10px;
-      font-size: 25px;
-      font-weight: 800;
+      font-size: 27px;
+      font-weight: 900;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
     }
 
     .circle.red {
       background: #ef0000;
     }
 
-    .circle img {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-    }
-
     .main-actions {
-      padding: 0 18px 22px;
+      padding: 0 18px 20px;
     }
 
     .split-row {
       display: grid;
-      grid-template-columns: 1fr 0.32fr;
-      gap: 0;
-      margin-bottom: 18px;
+      grid-template-columns: 1fr 0.34fr;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      margin-bottom: 18px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
     }
 
     .split-row a {
@@ -146,14 +188,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
       text-decoration: none;
       color: #ffffff;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
     }
 
     .add-contact {
       background: #ef0000;
+      border-right: 2px solid #ffffff;
     }
 
     .share {
@@ -164,15 +208,16 @@
       width: 100%;
       min-height: 62px;
       border-radius: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 12px;
       text-decoration: none;
       color: #ffffff;
       font-size: 19px;
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
     }
 
     .black {
@@ -186,17 +231,22 @@
     .footer {
       text-align: center;
       font-size: 11px;
-      color: #777;
-      padding: 0 18px 20px;
+      color: #777777;
+      padding: 0 18px 22px;
       line-height: 1.5;
     }
 
     .footer a {
-      color: #777;
+      color: #777777;
       text-decoration: none;
     }
 
     @media (max-width: 360px) {
+      .profile-img {
+        width: 135px;
+        height: 135px;
+      }
+
       h1 {
         font-size: 29px;
       }
@@ -205,17 +255,26 @@
         font-size: 19px;
       }
 
-      .icon-grid {
-        gap: 22px 8px;
+      .role {
+        font-size: 15px;
       }
 
       .circle {
-        width: 54px;
-        height: 54px;
+        width: 53px;
+        height: 53px;
+        font-size: 24px;
       }
 
       .icon-link {
         font-size: 14px;
+      }
+
+      .split-row a {
+        font-size: 15px;
+      }
+
+      .big-btn {
+        font-size: 17px;
       }
     }
   </style>
@@ -224,23 +283,20 @@
 <body>
   <main class="page">
 
-    <!-- Top cover image -->
     <section class="cover">
       <div class="logo-box">
         YOUR<br>LOGO
       </div>
     </section>
 
-    <!-- Profile section -->
-    <section class="profile-wrap">
-      <img src="images/profile.jpg" alt="Profile Photo" class="profile-img">
+    <section class="profile-section">
+      <img src="profile.jpg.png" alt="Profile Photo" class="profile-img">
 
       <h1>Όνομα Προφίλ</h1>
       <p class="company">Όνομα Επιχείρησης</p>
       <p class="role">Ιδιότητα | Ειδικότητα</p>
     </section>
 
-    <!-- Icon buttons -->
     <section class="icon-grid">
 
       <a class="icon-link" href="mailto:example@email.com" target="_self">
@@ -254,7 +310,7 @@
       </a>
 
       <a class="icon-link" href="sms:+306981234567" target="_self">
-        <div class="circle">☏</div>
+        <div class="circle">💬</div>
         Text
       </a>
 
@@ -264,21 +320,17 @@
       </a>
 
       <a class="icon-link" href="https://www.facebook.com/YOUR_PAGE" target="_self">
-        <div class="circle">
-          <img src="icons/facebook.png" alt="Facebook">
-        </div>
+        <div class="circle">f</div>
         Facebook
       </a>
 
       <a class="icon-link" href="https://www.instagram.com/YOUR_PROFILE" target="_self">
-        <div class="circle">
-          <img src="icons/instagram.png" alt="Instagram">
-        </div>
+        <div class="circle">◎</div>
         Instagram
       </a>
 
       <a class="icon-link" href="https://www.your-financing-link.gr" target="_self">
-        <div class="circle">💰</div>
+        <div class="circle">€</div>
         Financing
       </a>
 
@@ -289,24 +341,23 @@
 
     </section>
 
-    <!-- Main action buttons -->
     <section class="main-actions">
 
       <div class="split-row">
-        <a class="add-contact" href="contact.vcf" target="_self">ADD TO CONTACTS</a>
-        <a class="share" href="#" onclick="navigator.share ? navigator.share({title: document.title, url: window.location.href}) : alert('Copy this page link'); return false;">SHARE</a>
+        <a class="add-contact" href="#" target="_self">▣ ADD TO CONTACTS</a>
+        <a class="share" href="#" onclick="sharePage(); return false;">↗ SHARE</a>
       </div>
 
       <a class="big-btn black" href="https://www.yourwebsite.gr" target="_self">
-        Website
+        ◎ Website
       </a>
 
       <a class="big-btn red-btn" href="https://www.payment-link.gr" target="_self">
-        Pay Online
+        ▬ Pay Online
       </a>
 
       <a class="big-btn black" href="https://www.your-form-link.gr" target="_self">
-        Free Estimate
+        ▣ Free Estimate
       </a>
 
     </section>
@@ -320,5 +371,18 @@
     </footer>
 
   </main>
+
+  <script>
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        });
+      } else {
+        alert("Αντιγράψτε το link της σελίδας από τον browser.");
+      }
+    }
+  </script>
 </body>
 </html>
