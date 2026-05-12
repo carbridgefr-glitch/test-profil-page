@@ -6,6 +6,9 @@
 
   <title>Ανδρέας Λάζαρος | Digital Business Card</title>
 
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="andreas-profile.jpg.jpeg">
+
   <meta name="theme-color" content="#111111">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Ανδρέας Λάζαρος">
@@ -50,22 +53,6 @@
       background-repeat: no-repeat;
       border-bottom: 6px solid #111111;
       overflow: hidden;
-    }
-
-    .brand-box {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      background: rgba(255,255,255,0.95);
-      color: #111;
-      padding: 9px 13px;
-      border: 2px solid #111;
-      font-weight: 900;
-      font-size: 15px;
-      line-height: 1.05;
-      letter-spacing: 0.4px;
-      z-index: 2;
-      text-align: center;
     }
 
     .cover-title {
@@ -299,10 +286,6 @@
       margin-top: 12px;
     }
 
-    .business-socials.carbridge {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
     .small-btn {
       min-height: 42px;
       border-radius: 11px;
@@ -445,9 +428,6 @@
   <main class="page">
 
     <section class="cover">
-      <div class="brand-box">
-        NFC<br>CARD
-      </div>
       <div class="cover-title">Digital Business Profile</div>
     </section>
 
@@ -524,7 +504,7 @@
           </div>
         </div>
 
-        <div class="business-socials carbridge">
+        <div class="business-socials">
           <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">Facebook</a>
           <a class="small-btn" href="https://www.instagram.com/car_bridge.gr" target="_self">Instagram</a>
           <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">TikTok</a>
@@ -555,7 +535,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelok • Jewel Art<br>
+      Powered by NFC Breloκ • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
         @lazaros_jewelart
@@ -574,12 +554,13 @@
     <div class="modal-box">
       <h2>Αποθήκευση στο κινητό</h2>
       <p>
-        Για iPhone:<br><br>
+        Σε Android μπορεί να εμφανιστεί επιλογή εγκατάστασης ή “Add to Home screen”.<br><br>
+        Σε iPhone:<br><br>
         1. Άνοιξε τη σελίδα με Safari.<br>
         2. Πάτησε το κουμπί Share.<br>
         3. Πάτησε “Add to Home Screen”.<br>
         4. Πάτησε “Add”.<br><br>
-        Για Android, μπορεί να εμφανιστεί επιλογή εγκατάστασης ή “Add to Home screen”.
+        Έτσι η κάρτα θα εμφανίζεται σαν εικονίδιο στην αρχική οθόνη.
       </p>
       <button class="close-btn" onclick="closeModal()">OK</button>
     </div>
@@ -587,6 +568,12 @@
 
   <script>
     let deferredPrompt;
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("service-worker.js");
+      });
+    }
 
     window.addEventListener("beforeinstallprompt", function (event) {
       event.preventDefault();
