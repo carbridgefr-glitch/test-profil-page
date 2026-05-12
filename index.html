@@ -94,7 +94,7 @@
 
     .main-subtitle {
       margin: 0;
-      color: #d90000;
+      color: #2563eb;
       font-size: 20px;
       font-weight: 900;
       line-height: 1.25;
@@ -138,8 +138,8 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.18);
     }
 
-    .circle.red {
-      background: #ef0000;
+    .circle.viber {
+      background: #7360f2;
     }
 
     .circle.green {
@@ -177,7 +177,7 @@
     }
 
     .add-contact {
-      background: #ef0000;
+      background: #3b82f6;
       border-right: 2px solid #ffffff;
     }
 
@@ -199,14 +199,39 @@
       font-size: 17px;
       font-weight: 900;
       box-shadow: 0 8px 18px rgba(0,0,0,0.14);
+      text-align: center;
     }
 
     .black {
       background: #1f1f1f;
     }
 
-    .red-btn {
-      background: #ef0000;
+    .blue-btn {
+      background: #3b82f6;
+    }
+
+    .review-btn {
+      background: #3b82f6;
+      flex-direction: column;
+      gap: 3px;
+      min-height: 68px;
+      line-height: 1.15;
+    }
+
+    .review-stars {
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    .review-text {
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .review-subtext {
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0.95;
     }
 
     .section-title-wrap {
@@ -301,8 +326,8 @@
       padding: 6px;
     }
 
-    .small-btn.red {
-      background: #ef0000;
+    .small-btn.blue {
+      background: #3b82f6;
     }
 
     .small-btn.gold {
@@ -318,7 +343,7 @@
     }
 
     .footer a {
-      color: #d90000;
+      color: #2563eb;
       text-decoration: none;
       font-weight: 800;
     }
@@ -420,6 +445,14 @@
       .main-subtitle {
         font-size: 18px;
       }
+
+      .review-text {
+        font-size: 16px;
+      }
+
+      .review-subtext {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -459,7 +492,7 @@
       </a>
 
       <a class="quick-link" href="viber://chat?number=%2B306988128099" target="_self">
-        <div class="circle red">V</div>
+        <div class="circle viber">V</div>
         Viber
       </a>
 
@@ -481,7 +514,13 @@
         ◎ Website
       </a>
 
-      <a class="big-btn red-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
+      <a class="big-btn review-btn" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">
+        <span class="review-stars">★★★★★</span>
+        <span class="review-text">Google Review</span>
+        <span class="review-subtext">Αφήστε το σχόλιό σας</span>
+      </a>
+
+      <a class="big-btn blue-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
         ⌖ Google Map
       </a>
 
@@ -506,11 +545,11 @@
 
         <div class="business-socials">
           <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">Facebook</a>
-          <a class="small-btn" href="https://www.instagram.com/car_bridge.gr" target="_self">Instagram</a>
+          <a class="small-btn" href="https://www.instagram.com/lazaros_jewelart/" target="_self">Instagram</a>
           <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">TikTok</a>
-          <a class="small-btn red" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">Map</a>
-          <a class="small-btn red" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">Review</a>
-          <a class="small-btn red" href="https://share.google/v9wt5RR6BYyDriT43" target="_self">Website</a>
+          <a class="small-btn blue" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">Map</a>
+          <a class="small-btn blue" href="https://share.google/v9wt5RR6BYyDriT43" target="_self">Website</a>
+          <a class="small-btn blue" href="tel:+306988128099" target="_self">Call</a>
         </div>
       </article>
 
@@ -528,7 +567,6 @@
         <div class="business-socials">
           <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart" target="_self">Instagram</a>
           <a class="small-btn gold" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">TikTok</a>
-          <a class="small-btn gold" href="https://wa.me/306988128099" target="_self">Message</a>
         </div>
       </article>
 
