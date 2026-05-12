@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Digital Profile Card</title>
+  <title>Ανδρέας Λάζαρος | Digital Business Card</title>
+
+  <meta name="theme-color" content="#111111">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ανδρέας Λάζαρος">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
     * {
@@ -21,7 +26,7 @@
     }
 
     body {
-      min-height: 100vh;
+      padding-bottom: 95px;
     }
 
     .page {
@@ -31,68 +36,46 @@
       margin: 0 auto;
       background: #ffffff;
       overflow: hidden;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 0 30px rgba(0,0,0,0.12);
     }
 
     .cover {
-      height: 185px;
-      background:
-        linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.1)),
-        linear-gradient(135deg, #e5e7eb 0%, #ffffff 45%, #d1d5db 100%);
+      height: 190px;
       position: relative;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.22)),
+        url("cover.jpg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-bottom: 6px solid #111111;
       overflow: hidden;
     }
 
-    .cover::before {
-      content: "";
-      position: absolute;
-      left: -20px;
-      top: 0;
-      width: 55%;
-      height: 100%;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #111 0px,
-          #111 6px,
-          transparent 6px,
-          transparent 20px
-        );
-      opacity: 0.9;
-      transform: skewX(-8deg);
-    }
-
-    .cover::after {
-      content: "";
-      position: absolute;
-      right: -20px;
-      top: 0;
-      width: 58%;
-      height: 100%;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #e5e7eb 0px,
-          #e5e7eb 34px,
-          #cbd5e1 34px,
-          #cbd5e1 38px
-        );
-      opacity: 0.95;
-    }
-
-    .logo-box {
+    .brand-box {
       position: absolute;
       top: 18px;
       left: 18px;
-      z-index: 3;
-      background: rgba(255, 255, 255, 0.96);
-      color: #000;
-      padding: 8px 13px;
-      border: 2px solid #222;
+      background: rgba(255,255,255,0.95);
+      color: #111;
+      padding: 9px 13px;
+      border: 2px solid #111;
       font-weight: 900;
+      font-size: 15px;
+      line-height: 1.05;
+      letter-spacing: 0.4px;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cover-title {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      color: rgba(255,255,255,0.92);
       font-size: 18px;
-      line-height: 0.95;
-      letter-spacing: 0.5px;
+      font-weight: 800;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.45);
     }
 
     .profile-section {
@@ -103,71 +86,78 @@
     }
 
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 148px;
+      height: 148px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center;
       border: 5px solid #ffffff;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
-      margin-top: -76px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.26);
+      margin-top: -74px;
       background: #ffffff;
     }
 
     h1 {
       margin: 18px 0 8px;
-      font-size: 33px;
+      font-size: 31px;
       line-height: 1.08;
       font-weight: 900;
       color: #000000;
     }
 
-    .company {
+    .main-subtitle {
       margin: 0;
-      color: #e00000;
-      font-size: 22px;
+      color: #d90000;
+      font-size: 20px;
       font-weight: 900;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .role {
-      margin: 16px 0 26px;
+      margin: 14px 0 23px;
       color: #222222;
-      font-size: 17px;
+      font-size: 15.5px;
       font-weight: 800;
+      line-height: 1.45;
     }
 
-    .icon-grid {
+    .quick-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 26px 10px;
-      padding: 0 20px 28px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px 6px;
+      padding: 0 16px 26px;
       text-align: center;
     }
 
-    .icon-link {
+    .quick-link {
       color: #222222;
       text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 12.5px;
+      font-weight: 800;
     }
 
     .circle {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: #1f1f1f;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 10px;
-      font-size: 27px;
+      margin: 0 auto 8px;
+      font-size: 22px;
       font-weight: 900;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.18);
     }
 
     .circle.red {
       background: #ef0000;
+    }
+
+    .circle.green {
+      background: #25d366;
+      color: #ffffff;
     }
 
     .main-actions {
@@ -179,20 +169,24 @@
       grid-template-columns: 1fr 0.34fr;
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 18px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+      margin-bottom: 15px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.14);
     }
 
+    .split-row button,
     .split-row a {
-      min-height: 64px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 9px;
       text-decoration: none;
       color: #ffffff;
-      font-size: 17px;
+      font-size: 14px;
       font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .add-contact {
@@ -206,18 +200,18 @@
 
     .big-btn {
       width: 100%;
-      min-height: 62px;
+      min-height: 58px;
       border-radius: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 11px;
       text-decoration: none;
       color: #ffffff;
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.14);
     }
 
     .black {
@@ -228,53 +222,220 @@
       background: #ef0000;
     }
 
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 18px;
+      margin: 6px 0 16px;
+    }
+
+    .section-title-wrap::before,
+    .section-title-wrap::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #dddddd;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 900;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .business-list {
+      padding: 0 18px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .business-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 15px;
+      background: #ffffff;
+      text-align: left;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+    .business-top {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .business-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #eeeeee;
+      background: #ffffff;
+    }
+
+    .business-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #111111;
+    }
+
+    .business-card span {
+      display: block;
+      font-size: 13.5px;
+      color: #555555;
+      line-height: 1.45;
+    }
+
+    .business-socials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .business-socials.carbridge {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .small-btn {
+      min-height: 42px;
+      border-radius: 11px;
+      background: #1f1f1f;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12.5px;
+      font-weight: 900;
+      text-align: center;
+      padding: 6px;
+    }
+
+    .small-btn.red {
+      background: #ef0000;
+    }
+
+    .small-btn.gold {
+      background: #b68a13;
+    }
+
     .footer {
       text-align: center;
       font-size: 11px;
       color: #777777;
-      padding: 0 18px 22px;
+      padding: 0 18px 30px;
       line-height: 1.5;
     }
 
     .footer a {
-      color: #777777;
+      color: #d90000;
       text-decoration: none;
+      font-weight: 800;
     }
 
-    @media (max-width: 360px) {
-      .profile-img {
-        width: 135px;
-        height: 135px;
-      }
+    .install-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 410px;
+      z-index: 9999;
+    }
 
-      h1 {
-        font-size: 29px;
-      }
+    .install-btn {
+      width: 100%;
+      min-height: 62px;
+      border: 0;
+      border-radius: 16px;
+      background: #39a935;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-      .company {
-        font-size: 19px;
-      }
+    .install-btn:active {
+      transform: scale(0.98);
+    }
 
-      .role {
-        font-size: 15px;
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 10000;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 380px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .modal-box h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+    .modal-box p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333333;
+    }
+
+    .close-btn {
+      margin-top: 16px;
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 12px;
+      background: #111111;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 380px) {
+      .quick-grid {
+        gap: 16px 4px;
+        padding-left: 10px;
+        padding-right: 10px;
       }
 
       .circle {
-        width: 53px;
-        height: 53px;
-        font-size: 24px;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
       }
 
-      .icon-link {
-        font-size: 14px;
+      .quick-link {
+        font-size: 11.5px;
       }
 
-      .split-row a {
-        font-size: 15px;
+      h1 {
+        font-size: 28px;
       }
 
-      .big-btn {
-        font-size: 17px;
+      .main-subtitle {
+        font-size: 18px;
       }
     }
   </style>
@@ -284,59 +445,47 @@
   <main class="page">
 
     <section class="cover">
-      <div class="logo-box">
-        YOUR<br>LOGO
+      <div class="brand-box">
+        NFC<br>CARD
       </div>
+      <div class="cover-title">Digital Business Profile</div>
     </section>
 
     <section class="profile-section">
-      <img src="profile.jpg.png" alt="Profile Photo" class="profile-img">
+      <img src="andreas-profile.jpg.jpeg" alt="Ανδρέας Λάζαρος" class="profile-img">
 
-      <h1>Όνομα Προφίλ</h1>
-      <p class="company">Όνομα Επιχείρησης</p>
-      <p class="role">Ιδιότητα | Ειδικότητα</p>
+      <h1>Ανδρέας Λάζαρος</h1>
+      <p class="main-subtitle">CarBridge Europe • Jewel Art</p>
+      <p class="role">
+        Automotive Imports | Personalized Gifts | NFC Business Solutions
+      </p>
     </section>
 
-    <section class="icon-grid">
+    <section class="quick-grid">
 
-      <a class="icon-link" href="mailto:example@email.com" target="_self">
+      <a class="quick-link" href="mailto:carbridgefr@gmail.com" target="_self">
         <div class="circle">✉</div>
         Email
       </a>
 
-      <a class="icon-link" href="tel:+306981234567" target="_self">
+      <a class="quick-link" href="tel:+306988128099" target="_self">
         <div class="circle">☎</div>
         Call
       </a>
 
-      <a class="icon-link" href="sms:+306981234567" target="_self">
-        <div class="circle">💬</div>
-        Text
+      <a class="quick-link" href="sms:+306988128099" target="_self">
+        <div class="circle">●</div>
+        SMS
       </a>
 
-      <a class="icon-link" href="viber://chat?number=%2B306981234567" target="_self">
-        <div class="circle red">🤝</div>
-        Connect
+      <a class="quick-link" href="viber://chat?number=%2B306988128099" target="_self">
+        <div class="circle red">V</div>
+        Viber
       </a>
 
-      <a class="icon-link" href="https://www.facebook.com/YOUR_PAGE" target="_self">
-        <div class="circle">f</div>
-        Facebook
-      </a>
-
-      <a class="icon-link" href="https://www.instagram.com/YOUR_PROFILE" target="_self">
-        <div class="circle">◎</div>
-        Instagram
-      </a>
-
-      <a class="icon-link" href="https://www.your-financing-link.gr" target="_self">
-        <div class="circle">€</div>
-        Financing
-      </a>
-
-      <a class="icon-link" href="https://www.google.com/maps/search/?api=1&query=Patra" target="_self">
-        <div class="circle">⌖</div>
-        Google Map
+      <a class="quick-link" href="https://wa.me/306988128099" target="_self">
+        <div class="circle green">W</div>
+        WhatsApp
       </a>
 
     </section>
@@ -344,21 +493,64 @@
     <section class="main-actions">
 
       <div class="split-row">
-        <a class="add-contact" href="#" target="_self">▣ ADD TO CONTACTS</a>
+        <button class="add-contact" onclick="downloadVCard()">▣ ADD TO CONTACTS</button>
         <a class="share" href="#" onclick="sharePage(); return false;">↗ SHARE</a>
       </div>
 
-      <a class="big-btn black" href="https://www.yourwebsite.gr" target="_self">
+      <a class="big-btn black" href="https://share.google/v9wt5RR6BYyDriT43" target="_self">
         ◎ Website
       </a>
 
-      <a class="big-btn red-btn" href="https://www.payment-link.gr" target="_self">
-        ▬ Pay Online
+      <a class="big-btn red-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
+        ⌖ Google Map
       </a>
 
-      <a class="big-btn black" href="https://www.your-form-link.gr" target="_self">
-        ▣ Free Estimate
-      </a>
+    </section>
+
+    <div class="section-title-wrap">
+      <h2 class="section-title">Οι δραστηριότητές μου</h2>
+    </div>
+
+    <section class="business-list">
+
+      <article class="business-card">
+        <div class="business-top">
+          <img src="carbridge-logo.png.png" alt="CarBridge Europe" class="business-logo">
+          <div>
+            <strong>CarBridge Europe</strong>
+            <span>
+              Εισαγωγή επιλεγμένων μεταχειρισμένων αυτοκινήτων από τη Γαλλία στην Ελλάδα, με έλεγχο, καθοδήγηση και διαφάνεια.
+            </span>
+          </div>
+        </div>
+
+        <div class="business-socials carbridge">
+          <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">Facebook</a>
+          <a class="small-btn" href="https://www.instagram.com/car_bridge.gr" target="_self">Instagram</a>
+          <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">TikTok</a>
+          <a class="small-btn red" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">Map</a>
+          <a class="small-btn red" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">Review</a>
+          <a class="small-btn red" href="https://share.google/v9wt5RR6BYyDriT43" target="_self">Website</a>
+        </div>
+      </article>
+
+      <article class="business-card">
+        <div class="business-top">
+          <img src="jewelart-logo.png.jpeg" alt="Jewel Art" class="business-logo">
+          <div>
+            <strong>Jewel Art</strong>
+            <span>
+              Προσωποποιημένα κοσμήματα, χάραξη, δώρα και NFC business solutions για επαγγελματίες.
+            </span>
+          </div>
+        </div>
+
+        <div class="business-socials">
+          <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart" target="_self">Instagram</a>
+          <a class="small-btn gold" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">TikTok</a>
+          <a class="small-btn gold" href="https://wa.me/306988128099" target="_self">Message</a>
+        </div>
+      </article>
 
     </section>
 
@@ -372,16 +564,84 @@
 
   </main>
 
+  <div class="install-bar">
+    <button class="install-btn" id="installButton">
+      Save business card
+    </button>
+  </div>
+
+  <div class="modal" id="installModal">
+    <div class="modal-box">
+      <h2>Αποθήκευση στο κινητό</h2>
+      <p>
+        Για iPhone:<br><br>
+        1. Άνοιξε τη σελίδα με Safari.<br>
+        2. Πάτησε το κουμπί Share.<br>
+        3. Πάτησε “Add to Home Screen”.<br>
+        4. Πάτησε “Add”.<br><br>
+        Για Android, μπορεί να εμφανιστεί επιλογή εγκατάστασης ή “Add to Home screen”.
+      </p>
+      <button class="close-btn" onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
   <script>
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", function (event) {
+      event.preventDefault();
+      deferredPrompt = event;
+    });
+
+    document.getElementById("installButton").addEventListener("click", async function () {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      } else {
+        document.getElementById("installModal").style.display = "flex";
+      }
+    });
+
+    function closeModal() {
+      document.getElementById("installModal").style.display = "none";
+    }
+
     function sharePage() {
       if (navigator.share) {
         navigator.share({
-          title: document.title,
+          title: "Ανδρέας Λάζαρος | Digital Business Card",
+          text: "Δες την ψηφιακή επαγγελματική κάρτα του Ανδρέα Λάζαρου.",
           url: window.location.href
         });
       } else {
         alert("Αντιγράψτε το link της σελίδας από τον browser.");
       }
+    }
+
+    function downloadVCard() {
+      const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Ανδρέας Λάζαρος
+ORG:CarBridge Europe;Jewel Art
+TITLE:Founder
+TEL;TYPE=CELL:+306988128099
+EMAIL:carbridgefr@gmail.com
+URL:https://carbridgefr-glitch.github.io/test-profil-page/
+NOTE:CarBridge Europe - εισαγωγή αυτοκινήτων από Γαλλία. Jewel Art - προσωποποιημένα κοσμήματα, χάραξη και NFC business solutions.
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "andreas-lazaros.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
     }
   </script>
 </body>
