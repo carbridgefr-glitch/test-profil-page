@@ -1,0 +1,24 @@
+{
+  "name": "Ανδρέας Λάζαρος | Business Card",
+  "short_name": "Ανδρέας",
+  "description": "Digital business card for Andreas Lazaros, CarBridge Europe and Jewel Art.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "andreas-profile.jpg.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "andreas-profile.jpg.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
