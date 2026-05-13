@@ -14,6 +14,11 @@
   <meta name="apple-mobile-web-app-title" content="Ανδρέας Λάζαρος">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+  <!-- Helps browsers avoid holding the old page too aggressively -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <style>
     * {
       box-sizing: border-box;
@@ -600,7 +605,7 @@
             <img src="googlemap.jpg" alt="Map"> Map
           </a>
 
-          <a class="small-btn blue" href="https://share.google/v9wt5RR6BYyDriT43" target="_self">
+          <a class="small-btn blue" href="https://www.eop.gr/dir-az/agorapolisies-autokiniton/patra/car-bridge" target="_self">
             Website
           </a>
 
@@ -635,7 +640,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Breloκ • Jewel Art<br>
+      Powered by NFC Brelok • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
         @lazaros_jewelart
@@ -668,7 +673,9 @@
 
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("service-worker.js");
+        navigator.serviceWorker.register("service-worker.js").then(function(registration) {
+          registration.update();
+        });
       });
     }
 
