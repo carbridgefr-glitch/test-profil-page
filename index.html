@@ -166,11 +166,13 @@
       gap: 9px;
       text-decoration: none;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 900;
       border: 0;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      padding: 8px;
     }
 
     .add-contact {
@@ -548,7 +550,7 @@
     <section class="main-actions">
 
       <div class="split-row">
-        <button class="add-contact" onclick="downloadVCard()">▣ ADD TO CONTACTS</button>
+        <button class="add-contact" onclick="downloadVCard()">▣ Αποθήκευση στις επαφές</button>
         <a class="share" href="#" onclick="sharePage(); return false;">↗ SHARE</a>
       </div>
 
@@ -641,7 +643,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelot • Jewel Art<br>
+      Powered by NFC Breloκ • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
         @lazaros_jewelart
@@ -652,17 +654,17 @@
 
   <div class="install-bar">
     <button class="install-btn" id="installButton">
-      Αποθήκευση κάρτας στο κινητό
+      Εγκατάσταση κάρτας στο κινητό
     </button>
   </div>
 
   <div class="modal" id="installModal">
     <div class="modal-box">
-      <h2>Κράτησε την κάρτα στο κινητό σου</h2>
+      <h2>Εγκατάσταση κάρτας στο κινητό</h2>
       <p>
         Αποθήκευσε αυτή την ψηφιακή κάρτα στην αρχική οθόνη του κινητού σου, για να βρίσκεις εύκολα τα στοιχεία επικοινωνίας, τα social και τις υπηρεσίες μου όποτε τα χρειαστείς.<br><br>
-        Δεν ζητούνται προσωπικά δεδομένα.<br><br>
-        Σε Android: πάτησε “Install” ή “Add to Home screen”.<br><br>
+        Δεν ζητούνται προσωπικά δεδομένα και δεν εγκαθίσταται καμία βαριά εφαρμογή.<br><br>
+        Σε Android: αν εμφανιστεί μήνυμα εγκατάστασης, πάτησε “Install” ή “Add to Home screen”.<br><br>
         Σε iPhone: άνοιξε τη σελίδα με Safari, πάτησε Share και μετά “Add to Home Screen”.
       </p>
       <button class="close-btn" onclick="closeModal()">OK</button>
