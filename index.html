@@ -128,7 +128,6 @@
       height: 52px;
       border-radius: 50%;
       background: #ffffff;
-      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -395,7 +394,7 @@
       border-radius: 16px;
       background: #39a935;
       color: #ffffff;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 900;
       box-shadow: 0 12px 30px rgba(0,0,0,0.28);
       cursor: pointer;
@@ -481,6 +480,10 @@
 
       .review-subtext {
         font-size: 12px;
+      }
+
+      .install-btn {
+        font-size: 16px;
       }
     }
   </style>
@@ -638,7 +641,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelok • Jewel Art<br>
+      Powered by NFC Brelot • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
         @lazaros_jewelart
@@ -649,21 +652,18 @@
 
   <div class="install-bar">
     <button class="install-btn" id="installButton">
-      Save business card
+      Αποθήκευση κάρτας στο κινητό
     </button>
   </div>
 
   <div class="modal" id="installModal">
     <div class="modal-box">
-      <h2>Αποθήκευση στο κινητό</h2>
+      <h2>Κράτησε την κάρτα στο κινητό σου</h2>
       <p>
-        Σε Android μπορεί να εμφανιστεί επιλογή εγκατάστασης ή “Add to Home screen”.<br><br>
-        Σε iPhone:<br><br>
-        1. Άνοιξε τη σελίδα με Safari.<br>
-        2. Πάτησε το κουμπί Share.<br>
-        3. Πάτησε “Add to Home Screen”.<br>
-        4. Πάτησε “Add”.<br><br>
-        Έτσι η κάρτα θα εμφανίζεται σαν εικονίδιο στην αρχική οθόνη.
+        Αποθήκευσε αυτή την ψηφιακή κάρτα στην αρχική οθόνη του κινητού σου, για να βρίσκεις εύκολα τα στοιχεία επικοινωνίας, τα social και τις υπηρεσίες μου όποτε τα χρειαστείς.<br><br>
+        Δεν ζητούνται προσωπικά δεδομένα.<br><br>
+        Σε Android: πάτησε “Install” ή “Add to Home screen”.<br><br>
+        Σε iPhone: άνοιξε τη σελίδα με Safari, πάτησε Share και μετά “Add to Home Screen”.
       </p>
       <button class="close-btn" onclick="closeModal()">OK</button>
     </div>
