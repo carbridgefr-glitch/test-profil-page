@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Φτιάξε τη δική σου ψηφιακή NFC κάρτα</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #111827;
+    }
+
+    body {
+      padding-bottom: 90px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: #ffffff;
+      min-height: 100vh;
+      box-shadow: 0 0 35px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 34px 22px 28px;
+      background:
+        linear-gradient(rgba(5, 17, 40, 0.78), rgba(5, 17, 40, 0.82)),
+        url("premium.png");
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .hero p {
+      margin: 14px auto 0;
+      max-width: 430px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-btn {
+      margin-top: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      background: #22a63a;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.26);
+    }
+
+    section {
+      padding: 26px 18px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 0 9px;
+      font-size: 23px;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      margin: 0 auto 20px;
+      color: #667085;
+      font-size: 14.5px;
+      line-height: 1.5;
+      max-width: 420px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0b1f3a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 15.5px;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+
+    .step span {
+      display: block;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #667085;
+    }
+
+    .package-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .package-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+    }
+
+    .package-card img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: #f1f5f9;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.10);
+    }
+
+    .package-card h3 {
+      margin: 15px 0 6px;
+      font-size: 23px;
+      color: #0b1f3a;
+      font-weight: 900;
+    }
+
+    .package-card p {
+      margin: 0 0 14px;
+      color: #667085;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+
+    .features {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 14px;
+      color: #1f2937;
+      line-height: 1.4;
+    }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border-radius: 50%;
+      background: #c69b35;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .package-btn {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 14px;
+      background: #0b1f3a;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .package-btn.green {
+      background: #22a63a;
+    }
+
+    .package-btn.gold {
+      background: #b8891d;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .product {
+      padding: 16px 12px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      text-align: center;
+    }
+
+    .product-icon {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .product strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 5px;
+      color: #0f172a;
+    }
+
+    .product span {
+      display: block;
+      font-size: 12.8px;
+      color: #667085;
+      line-height: 1.4;
+    }
+
+    .info-box {
+      background: #0b1f3a;
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .info-box h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+      font-size: 14.5px;
+    }
+
+    .contact-box {
+      background: #f8fafc;
+      border-top: 1px solid #e5e7eb;
+      padding: 26px 18px 34px;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-card label {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      margin: 14px 0 7px;
+      color: #111827;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 13px;
+      min-height: 46px;
+      padding: 10px 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .form-card textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .send-btn {
+      margin-top: 18px;
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 15px;
+      background: #22a63a;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .secondary-btn {
+      margin-top: 10px;
+      width: 100%;
+      min-height: 48px;
+      border-radius: 15px;
+      border: 1px solid #0b1f3a;
+      background: #ffffff;
+      color: #0b1f3a;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .small-note {
+      margin-top: 13px;
+      font-size: 12.5px;
+      color: #667085;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 18px 28px;
+      font-size: 11.5px;
+      color: #667085;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 480px;
+      z-index: 999;
+    }
+
+    .sticky-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      border-radius: 16px;
+      background: #22a63a;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.24);
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 27px;
+      }
+
+      .section-title {
+        font-size: 21px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="badge">NFC Bracelet • NFC Keychain • Digital Profile</div>
+      <h1>Η νέα γενιά επαγγελματικής κάρτας είναι ψηφιακή</h1>
+      <p>
+        Με ένα απλό άγγιγμα NFC, ο πελάτης βλέπει την ψηφιακή σου κάρτα στο κινητό του,
+        βρίσκει τα στοιχεία σου, τα social, τις αξιολογήσεις, τον χάρτη και μπορεί να την αποθηκεύσει.
+      </p>
+      <a class="hero-btn" href="#contact">Θέλω να με καλέσετε</a>
+    </header>
+
+    <section>
+      <h2 class="section-title">Πώς λειτουργεί</h2>
+      <p class="section-subtitle">
+        Δεν χρειάζεται εφαρμογή. Δεν χρειάζεται χαρτί. Το NFC ανοίγει απευθείας το επαγγελματικό σου προφίλ.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <strong>Ο πελάτης ακουμπάει το NFC</strong>
+            <span>Βραχιόλι ή μπρελόκ πάνω στο κινητό.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <strong>Ανοίγει η ψηφιακή κάρτα</strong>
+            <span>Με κουμπιά, social, χάρτη, αξιολογήσεις, προϊόντα ή προσφορές.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <strong>Ο πελάτης σε κρατάει στο κινητό του</strong>
+            <span>Αποθηκεύει το προφίλ ή τα στοιχεία σου και σε βρίσκει ξανά όποτε θέλει.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Διάλεξε πακέτο</h2>
+      <p class="section-subtitle">
+        Ξεκίνα απλά ή φτιάξε ολοκληρωμένη premium παρουσίαση για την επιχείρησή σου.
+      </p>
+
+      <div class="package-grid">
+
+        <article class="package-card">
+          <img src="basic.png" alt="Basic NFC Digital Card Package">
+          <h3>Basic</h3>
+          <p>Ιδανικό για γρήγορη και καθαρή προβολή με τα βασικά κουμπιά.</p>
+
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Ξεκάθαρη δομή</div>
+            <div class="feature"><span class="check">✓</span> Site ή βασικό link</div>
+            <div class="feature"><span class="check">✓</span> Google Review και Google Map</div>
+          </div>
+
+          <button class="package-btn" onclick="selectPackage('Basic')">
+            Ενδιαφέρομαι για Basic
+          </button>
+        </article>
+
+        <article class="package-card">
+          <img src="professional.png" alt="Professional NFC Digital Card Package">
+          <h3>Professional</h3>
+          <p>Για πιο ολοκληρωμένη επαγγελματική εικόνα με social και επικοινωνία.</p>
+
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Logo ή φωτογραφία προφίλ</div>
+            <div class="feature"><span class="check">✓</span> Social media και επικοινωνία</div>
+            <div class="feature"><span class="check">✓</span> Δώρο NFC βραχιόλι</div>
+          </div>
+
+          <button class="package-btn gold" onclick="selectPackage('Professional')">
+            Ενδιαφέρομαι για Professional
+          </button>
+        </article>
+
+        <article class="package-card">
+          <img src="premium.png" alt="Premium NFC Digital Card Package">
+          <h3>Premium</h3>
+          <p>Πλήρης παρουσίαση με cover, social, προσφορές, βίντεο, προϊόντα και extra NFC υλικό.</p>
+
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Cover + προφίλ + logo</div>
+            <div class="feature"><span class="check">✓</span> Προσφορές, βίντεο, βιογραφία, gallery</div>
+            <div class="feature"><span class="check">✓</span> 1 NFC βραχιόλι + 10 προσωποποιημένα μπρελόκ</div>
+          </div>
+
+          <button class="package-btn green" onclick="selectPackage('Premium')">
+            Ενδιαφέρομαι για Premium
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Τι μπορεί να μπει στην κάρτα σου</h2>
+      <p class="section-subtitle">
+        Η ψηφιακή κάρτα μπορεί να λειτουργήσει σαν μικρό επαγγελματικό site στο κινητό.
+      </p>
+
+      <div class="products">
+        <div class="product">
+          <div class="product-icon">📞</div>
+          <strong>Επικοινωνία</strong>
+          <span>Τηλέφωνο, email, WhatsApp, Viber.</span>
+        </div>
+
+        <div class="product">
+          <div class="product-icon">📲</div>
+          <strong>Social media</strong>
+          <span>Instagram, TikTok, Facebook, YouTube.</span>
+        </div>
+
+        <div class="product">
+          <div class="product-icon">⭐</div>
+          <strong>Google Review</strong>
+          <span>Ο πελάτης αφήνει εύκολα αξιολόγηση.</span>
+        </div>
+
+        <div class="product">
+          <div class="product-icon">📍</div>
+          <strong>Google Map</strong>
+          <span>Οδηγίες προς το κατάστημα ή την επιχείρηση.</span>
+        </div>
+
+        <div class="product">
+          <div class="product-icon">🎬</div>
+          <strong>Βίντεο / Προσφορές</strong>
+          <span>Παρουσίαση, προσφορές ή υλικό marketing.</span>
+        </div>
+
+        <div class="product">
+          <div class="product-icon">🛍️</div>
+          <strong>Προϊόντα / Υπηρεσίες</strong>
+          <span>Δείξε τι πουλάς ή τι προσφέρεις.</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="info-box">
+        <h2>Τι θα χρειαστούμε στην επικοινωνία μας</h2>
+        <p>
+          Για να φτιάξουμε την κάρτα σου, θα συζητήσουμε μαζί σου για φωτογραφία ή λογότυπο,
+          στοιχεία επικοινωνίας, social media, χρώματα, στυλ και αν θέλεις NFC βραχιόλι,
+          μπρελόκ ή και τα δύο.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-box">
+      <h2 class="section-title">Θέλω να με καλέσετε</h2>
+      <p class="section-subtitle">
+        Συμπλήρωσε τα βασικά στοιχεία σου και θα επικοινωνήσουμε μαζί σου για να σου προτείνουμε την καλύτερη λύση.
+      </p>
+
+      <div class="form-card">
+        <label for="name">Ονοματεπώνυμο</label>
+        <input id="name" type="text" placeholder="π.χ. Νίκος Παπαδόπουλος">
+
+        <label for="business">Όνομα επιχείρησης</label>
+        <input id="business" type="text" placeholder="π.χ. Nikos Barber Shop">
+
+        <label for="phone">Τηλέφωνο</label>
+        <input id="phone" type="tel" placeholder="π.χ. 69XXXXXXXX">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="π.χ. example@email.com">
+
+        <label for="package">Ποιο πακέτο σε ενδιαφέρει;</label>
+        <select id="package">
+          <option value="">Διάλεξε πακέτο</option>
+          <option value="Basic">Basic</option>
+          <option value="Professional">Professional</option>
+          <option value="Premium">Premium</option>
+          <option value="Δεν ξέρω ακόμα">Δεν ξέρω ακόμα</option>
+        </select>
+
+        <label for="product">Τι σε ενδιαφέρει περισσότερο;</label>
+        <select id="product">
+          <option value="">Διάλεξε επιλογή</option>
+          <option value="NFC βραχιόλι">NFC βραχιόλι</option>
+          <option value="NFC μπρελόκ">NFC μπρελόκ</option>
+          <option value="Βραχιόλι και μπρελόκ">Βραχιόλι και μπρελόκ</option>
+          <option value="Θέλω να το συζητήσουμε">Θέλω να το συζητήσουμε</option>
+        </select>
+
+        <label for="message">Τι θέλεις να φτιάξουμε;</label>
+        <textarea id="message" placeholder="Γράψε με λίγα λόγια τι θέλεις να περιλαμβάνει η ψηφιακή σου κάρτα."></textarea>
+
+        <button class="send-btn" onclick="sendWhatsApp()">
+          Αποστολή μέσω WhatsApp
+        </button>
+
+        <button class="secondary-btn" onclick="sendEmail()">
+          Αποστολή μέσω Email
+        </button>
+
+        <p class="small-note">
+          Η φόρμα αυτή στέλνει τα στοιχεία σε εμάς για πρώτη επικοινωνία. Δεν γίνεται άμεση χρέωση.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Powered by NFC Brelot • Jewel Art<br>
+      Instagram:
+      <a href="https://www.instagram.com/lazaros_jewelart" target="_self">@lazaros_jewelart</a>
+    </footer>
+
+  </main>
+
+  <div class="sticky-cta">
+    <a href="#contact">Θέλω τη δική μου ψηφιακή κάρτα</a>
+  </div>
+
+  <script>
+    const YOUR_PHONE = "306988128099";
+    const YOUR_EMAIL = "carbridgefr@gmail.com";
+
+    function selectPackage(packageName) {
+      document.getElementById("package").value = packageName;
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function getFormText() {
+      const name = document.getElementById("name").value.trim();
+      const business = document.getElementById("business").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const packageChoice = document.getElementById("package").value;
+      const product = document.getElementById("product").value;
+      const message = document.getElementById("message").value.trim();
+
+      return `Νέο ενδιαφέρον για ψηφιακή NFC κάρτα:
+      
+Ονοματεπώνυμο: ${name || "-"}
+Επιχείρηση: ${business || "-"}
+Τηλέφωνο: ${phone || "-"}
+Email: ${email || "-"}
+Πακέτο: ${packageChoice || "-"}
+Προϊόν: ${product || "-"}
+Μήνυμα: ${message || "-"}`;
+    }
+
+    function sendWhatsApp() {
+      const text = encodeURIComponent(getFormText());
+      window.location.href = `https://wa.me/${YOUR_PHONE}?text=${text}`;
+    }
+
+    function sendEmail() {
+      const subject = encodeURIComponent("Νέο ενδιαφέρον για ψηφιακή NFC κάρτα");
+      const body = encodeURIComponent(getFormText());
+      window.location.href = `mailto:${YOUR_EMAIL}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
