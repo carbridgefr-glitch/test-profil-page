@@ -9,7 +9,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="andreas-profile.jpg.jpeg">
 
-  <meta name="theme-color" content="#0b1f3a">
+  <meta name="theme-color" content="#0a2240">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Ανδρέας Λάζαρος">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,30 +25,34 @@
     }
 
     :root {
-      --navy: #0b1f3a;
-      --navy2: #102a4c;
-      --blue: #2563eb;
-      --blue-soft: #3b82f6;
-      --gold: #c79a32;
-      --gold-dark: #a87916;
-      --green: #35a936;
-      --text: #111827;
-      --muted: #667085;
-      --line: #e5e7eb;
-      --bg: #f3f4f6;
+      --navy: #0a2240;
+      --navy-2: #0d2b52;
+      --navy-3: #123764;
+      --navy-soft: #1d4f86;
+      --gold: #caa24f;
+      --gold-soft: #e6c57d;
+      --green: #2fad49;
+      --text: #122033;
+      --muted: #657187;
       --white: #ffffff;
+      --line: #e6ebf2;
+      --bg-soft: #f5f8fc;
     }
 
     html, body {
       margin: 0;
       padding: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(29,79,134,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(202,162,79,0.16), transparent 22%),
+        linear-gradient(180deg, #eaf0f7 0%, #f6f9fc 38%, #eef3f9 100%);
+      background-attachment: fixed;
     }
 
     body {
-      padding-bottom: 95px;
+      padding-bottom: 96px;
     }
 
     .page {
@@ -56,22 +60,25 @@
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
-      background: var(--white);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.97)),
+        radial-gradient(circle at top right, rgba(202,162,79,0.10), transparent 26%);
+      box-shadow: 0 0 40px rgba(10,34,64,0.20);
       overflow: hidden;
-      box-shadow: 0 0 34px rgba(11,31,58,0.18);
+      position: relative;
     }
 
     .cover {
-      height: 195px;
-      position: relative;
+      height: 210px;
       background-image:
-        linear-gradient(rgba(7, 20, 42, 0.28), rgba(7, 20, 42, 0.42)),
+        linear-gradient(rgba(10,34,64,0.15), rgba(10,34,64,0.45)),
         url("cover.jpg.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      border-bottom: 6px solid var(--navy);
+      position: relative;
       overflow: hidden;
+      border-bottom: 5px solid var(--navy);
     }
 
     .cover::after {
@@ -79,241 +86,232 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(199,154,50,0.25), transparent 35%),
-        linear-gradient(to bottom, transparent, rgba(11,31,58,0.35));
+        linear-gradient(to bottom, rgba(255,255,255,0) 45%, rgba(10,34,64,0.32)),
+        radial-gradient(circle at top right, rgba(230,197,125,0.30), transparent 32%);
       pointer-events: none;
     }
 
-    .cover-title {
+    .top-badge {
       position: absolute;
-      right: 18px;
-      bottom: 18px;
-      color: rgba(255,255,255,0.96);
-      font-size: 17px;
-      font-weight: 900;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+      top: 16px;
+      left: 16px;
       z-index: 2;
-    }
-
-    .premium-chip {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      z-index: 2;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.93);
       color: var(--navy);
-      border: 1px solid rgba(199,154,50,0.55);
+      border: 1px solid rgba(202,162,79,0.55);
+      padding: 8px 13px;
       border-radius: 999px;
-      padding: 7px 12px;
       font-size: 12px;
       font-weight: 900;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
     .profile-section {
       text-align: center;
-      padding: 0 20px 10px;
+      padding: 0 18px 10px;
       position: relative;
-      z-index: 5;
+      z-index: 3;
     }
 
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 148px;
+      height: 148px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
-      border: 5px solid #ffffff;
-      box-shadow: 0 12px 30px rgba(11,31,58,0.28);
-      margin-top: -75px;
-      background: #ffffff;
+      margin-top: -74px;
+      border: 5px solid #fff;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(10,34,64,0.24);
     }
 
     h1 {
-      margin: 18px 0 8px;
+      margin: 16px 0 6px;
       font-size: 31px;
       line-height: 1.08;
       font-weight: 900;
-      color: #000000;
+      color: #0e1726;
     }
 
     .main-subtitle {
       margin: 0;
-      color: var(--blue);
-      font-size: 19px;
-      font-weight: 900;
-      line-height: 1.25;
-    }
-
-    .role {
-      margin: 14px 0 22px;
-      color: #222222;
-      font-size: 15.5px;
+      font-size: 17px;
+      line-height: 1.4;
       font-weight: 800;
-      line-height: 1.45;
+      color: var(--navy);
     }
 
     .gold-line {
-      width: 72px;
+      width: 80px;
       height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 16px auto 0;
       border-radius: 999px;
+      margin: 14px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    .quick-grid {
+    .icon-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 18px 6px;
-      padding: 0 16px 24px;
+      gap: 16px 6px;
+      padding: 24px 14px 24px;
       text-align: center;
     }
 
-    .quick-link {
-      color: #222222;
+    .icon-link {
       text-decoration: none;
-      font-size: 12.5px;
+      color: var(--text);
+      font-size: 12px;
       font-weight: 800;
     }
 
-    .circle {
-      width: 52px;
-      height: 52px;
+    .navy-icon {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: #ffffff;
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 8px;
-      overflow: hidden;
-      box-shadow: 0 7px 16px rgba(11,31,58,0.18);
-      border: 1px solid #eeeeee;
+      margin: 0 auto 7px;
+      box-shadow: 0 10px 22px rgba(10,34,64,0.18);
+      border: 1px solid rgba(255,255,255,0.55);
     }
 
-    .circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .navy-icon svg {
+      width: 23px;
+      height: 23px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .main-actions {
-      padding: 0 18px 20px;
+      padding: 0 18px 22px;
     }
 
     .split-row {
       display: grid;
-      grid-template-columns: 1fr 0.34fr;
-      border-radius: 14px;
+      grid-template-columns: 1fr 0.36fr;
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 15px;
-      box-shadow: 0 10px 22px rgba(11,31,58,0.16);
+      box-shadow: 0 12px 26px rgba(10,34,64,0.14);
+      margin-bottom: 14px;
     }
 
     .split-row button,
     .split-row a {
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 900;
-      border: 0;
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      padding: 8px;
-    }
-
-    .add-contact {
-      background: var(--blue-soft);
-      border-right: 2px solid #ffffff;
-    }
-
-    .share {
-      background: var(--navy);
-    }
-
-    .big-btn {
-      width: 100%;
       min-height: 58px;
-      border-radius: 14px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 17px;
-      font-weight: 900;
-      box-shadow: 0 10px 22px rgba(11,31,58,0.16);
-      text-align: center;
-    }
-
-    .big-btn-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #ffffff;
-    }
-
-    .blue-btn {
-      background: var(--blue-soft);
-    }
-
-    .navy-btn {
-      background: var(--navy);
-    }
-
-    .gold-btn {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    }
-
-    .review-btn {
-      background: #ffffff;
-      color: var(--navy);
-      border: 1px solid rgba(199,154,50,0.45);
-      flex-direction: column;
-      gap: 4px;
-      min-height: 82px;
-      line-height: 1.15;
-    }
-
-    .review-icon-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 8px 10px;
     }
 
-    .review-icon {
-      width: 36px;
-      height: 28px;
-      border-radius: 6px;
-      object-fit: cover;
-      background: #ffffff;
+    .add-contact {
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      color: #fff;
+      border-right: 2px solid rgba(255,255,255,0.95);
     }
 
-    .review-stars {
-      font-size: 15px;
-      letter-spacing: 1px;
-      color: var(--gold);
+    .contact-icon {
+      width: 21px;
+      height: 21px;
+      display: block;
     }
 
-    .review-text {
+    .share-btn {
+      background: #122033;
+      color: #fff;
+    }
+
+    .review-btn {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      text-decoration: none;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 40px 1fr 20px;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      box-shadow: 0 12px 26px rgba(10,34,64,0.16);
+      margin-bottom: 14px;
+    }
+
+    .review-star {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.10);
       font-size: 18px;
       font-weight: 900;
     }
 
-    .review-subtext {
-      font-size: 13px;
-      font-weight: 800;
-      color: #475467;
+    .review-text {
+      text-align: left;
+      line-height: 1.1;
+    }
+
+    .review-text strong {
+      display: block;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .review-stars {
+      color: var(--gold-soft);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .review-arrow {
+      font-size: 24px;
+      color: #fff;
+      text-align: right;
+    }
+
+    .main-btn {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(10,34,64,0.16);
+      margin-bottom: 14px;
+      text-align: center;
+      padding: 0 14px;
+    }
+
+    .main-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .section-title-wrap {
@@ -321,7 +319,7 @@
       align-items: center;
       gap: 12px;
       padding: 0 18px;
-      margin: 8px 0 16px;
+      margin: 4px 0 14px;
     }
 
     .section-title-wrap::before,
@@ -329,43 +327,40 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #d7b76a, transparent);
+      background: linear-gradient(90deg, transparent, rgba(202,162,79,0.9), transparent);
     }
 
     .section-title {
       margin: 0;
+      white-space: nowrap;
+      text-align: center;
       font-size: 17px;
       font-weight: 900;
-      text-align: center;
-      white-space: nowrap;
       color: var(--navy);
     }
 
     .business-list {
-      padding: 0 18px 22px;
       display: grid;
       gap: 14px;
+      padding: 0 18px 24px;
     }
 
     .business-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
-      padding: 15px;
-      background: #ffffff;
-      text-align: left;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.09);
-      position: relative;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 26px rgba(10,34,64,0.08);
       overflow: hidden;
+      position: relative;
     }
 
     .business-card::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      inset: 0 0 auto 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--navy), var(--gold), var(--blue));
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy-soft));
     }
 
     .business-top {
@@ -375,7 +370,7 @@
       align-items: center;
       margin-bottom: 12px;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
     .business-logo {
@@ -383,25 +378,26 @@
       height: 72px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid #eeeeee;
-      background: #ffffff;
+      background: #fff;
+      border: 1px solid #edf1f5;
+      box-shadow: 0 8px 18px rgba(10,34,64,0.08);
     }
 
     .business-card strong {
       display: block;
       font-size: 18px;
-      margin-bottom: 5px;
       color: var(--navy);
+      margin-bottom: 4px;
     }
 
     .business-card span {
       display: block;
+      color: #5a6578;
       font-size: 13.5px;
-      color: #555555;
       line-height: 1.45;
     }
 
-    .business-socials {
+    .business-actions {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
@@ -411,79 +407,75 @@
     .small-btn {
       min-height: 42px;
       border-radius: 12px;
-      background: var(--navy);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      font-size: 12.5px;
+      gap: 6px;
+      font-size: 12px;
       font-weight: 900;
       text-align: center;
       padding: 6px;
     }
 
-    .small-btn img {
-      width: 20px;
-      height: 20px;
-      border-radius: 5px;
-      object-fit: cover;
-      background: #ffffff;
-    }
-
-    .small-btn.blue {
-      background: var(--blue-soft);
-    }
-
     .small-btn.gold {
-      background: var(--gold-dark);
+      background: linear-gradient(135deg, #caa24f, #ae8737);
     }
 
     .nfc-card {
       background:
-        radial-gradient(circle at top right, rgba(199,154,50,0.12), transparent 35%),
-        linear-gradient(135deg, #07152b, #0b1f3a 58%, #123a68);
-      color: #ffffff;
-      border: 1px solid rgba(199,154,50,0.45);
+        radial-gradient(circle at top right, rgba(202,162,79,0.10), transparent 24%),
+        linear-gradient(135deg, #0a2240, #123764);
+      border: 1px solid rgba(202,162,79,0.38);
+      color: #fff;
     }
 
     .nfc-card::before {
-      background: linear-gradient(90deg, var(--gold), #fff0b8, var(--gold));
+      background: linear-gradient(90deg, var(--gold), #fff3d1, var(--gold));
     }
 
     .nfc-card strong,
     .nfc-card span {
-      color: #ffffff;
+      color: #fff;
     }
 
     .nfc-card span {
-      color: rgba(255,255,255,0.86);
+      color: rgba(255,255,255,0.88);
     }
 
-    .nfc-icon {
+    .nfc-icon-box {
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      color: #ffffff;
     }
 
-    .premium-services {
+    .nfc-icon-box svg {
+      width: 34px;
+      height: 34px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nfc-features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       margin-top: 12px;
     }
 
-    .premium-service {
-      background: rgba(255,255,255,0.11);
-      border: 1px solid rgba(255,255,255,0.16);
+    .nfc-feature {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 12px;
       padding: 10px 8px;
       text-align: center;
@@ -492,35 +484,34 @@
       line-height: 1.25;
     }
 
-    .create-card-cta {
-      display: block;
-      margin-top: 14px;
+    .cta-card-btn {
       width: 100%;
       min-height: 52px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #ffffff;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #caa24f, #ae8737);
+      color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 14px;
       font-size: 15px;
       font-weight: 900;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.24);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
     }
 
     .footer {
+      padding: 0 18px 28px;
       text-align: center;
+      color: #7a8596;
       font-size: 11px;
-      color: #777777;
-      padding: 0 18px 30px;
       line-height: 1.5;
     }
 
     .footer a {
-      color: var(--blue);
-      text-decoration: none;
+      color: var(--navy-soft);
       font-weight: 800;
+      text-decoration: none;
     }
 
     .install-bar {
@@ -539,10 +530,10 @@
       border: 0;
       border-radius: 16px;
       background: var(--green);
-      color: #ffffff;
+      color: #fff;
       font-size: 18px;
       font-weight: 900;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
     }
@@ -555,8 +546,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.65);
       z-index: 10000;
+      background: rgba(0,0,0,0.64);
       padding: 20px;
       align-items: center;
       justify-content: center;
@@ -565,7 +556,7 @@
     .modal-box {
       width: 100%;
       max-width: 380px;
-      background: #ffffff;
+      background: #fff;
       border-radius: 22px;
       padding: 24px 20px;
       text-align: center;
@@ -574,14 +565,15 @@
 
     .modal-box h2 {
       margin: 0 0 12px;
-      font-size: 23px;
       color: var(--navy);
+      font-size: 23px;
     }
 
     .modal-box p {
-      font-size: 15.5px;
-      line-height: 1.5;
-      color: #333333;
+      margin: 0;
+      color: #3f4a5e;
+      font-size: 15px;
+      line-height: 1.55;
     }
 
     .modal-action {
@@ -589,47 +581,52 @@
       min-height: 48px;
       border: 0;
       border-radius: 12px;
-      margin-top: 10px;
-      background: var(--blue-soft);
-      color: #ffffff;
-      font-weight: 900;
+      margin-top: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      color: #fff;
       font-size: 15px;
+      font-weight: 900;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
     }
 
     .modal-action.gold {
-      background: var(--gold-dark);
+      background: linear-gradient(135deg, #caa24f, #ae8737);
     }
 
     .close-btn {
-      margin-top: 12px;
       width: 100%;
       min-height: 46px;
       border: 0;
       border-radius: 12px;
-      background: #111111;
-      color: #ffffff;
-      font-weight: 800;
+      margin-top: 10px;
+      background: #111827;
+      color: #fff;
       font-size: 15px;
+      font-weight: 800;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
     }
 
     @media (max-width: 380px) {
-      .quick-grid {
-        gap: 16px 4px;
+      .icon-grid {
+        gap: 15px 4px;
         padding-left: 10px;
         padding-right: 10px;
       }
 
-      .circle {
-        width: 48px;
-        height: 48px;
+      .navy-icon {
+        width: 47px;
+        height: 47px;
       }
 
-      .quick-link {
-        font-size: 11.5px;
+      .navy-icon svg {
+        width: 21px;
+        height: 21px;
+      }
+
+      .icon-link {
+        font-size: 11px;
       }
 
       h1 {
@@ -637,15 +634,7 @@
       }
 
       .main-subtitle {
-        font-size: 18px;
-      }
-
-      .review-text {
         font-size: 16px;
-      }
-
-      .review-subtext {
-        font-size: 12px;
       }
 
       .install-btn {
@@ -659,56 +648,115 @@
   <main class="page">
 
     <section class="cover">
-      <div class="premium-chip">Premium Digital Profile</div>
-      <div class="cover-title">Digital Business Profile</div>
+      <div class="top-badge">Premium Digital Profile</div>
     </section>
 
     <section class="profile-section">
       <img src="andreas-profile.jpg.jpeg" alt="Ανδρέας Λάζαρος" class="profile-img">
-
       <h1>Ανδρέας Λάζαρος</h1>
       <p class="main-subtitle">CarBridge Europe • Jewel Art • NFC Business Solutions</p>
-      <p class="role">
-        Automotive Imports | Personalized Gifts | NFC Digital Cards
-      </p>
       <div class="gold-line"></div>
     </section>
 
-    <section class="quick-grid">
+    <section class="icon-grid">
 
-      <a class="quick-link" href="mailto:carbridgefr@gmail.com" target="_self">
-        <div class="circle">
-          <img src="gmail.jpg" alt="Email">
+      <a class="icon-link" href="mailto:carbridgefr@gmail.com">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
         </div>
         Email
       </a>
 
-      <a class="quick-link" href="tel:+306988128099" target="_self">
-        <div class="circle">
-          <img src="call.jpg" alt="Call">
+      <a class="icon-link" href="tel:+306988128099">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.2 19.2 0 0 1-5.9-5.9A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path>
+          </svg>
         </div>
         Call
       </a>
 
-      <a class="quick-link" href="sms:+306988128099" target="_self">
-        <div class="circle">
-          <img src="sms.jpg" alt="SMS">
+      <a class="icon-link" href="sms:+306988128099">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
         </div>
         SMS
       </a>
 
-      <a class="quick-link" href="viber://chat?number=%2B306988128099" target="_self">
-        <div class="circle">
-          <img src="viber.jpg" alt="Viber">
+      <a class="icon-link" href="viber://chat?number=%2B306988128099">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 4h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4h-2l-4 4v-4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"></path>
+            <path d="M9.5 9.5c.4 2.2 2.2 4 4.4 4.4"></path>
+            <path d="M13 8.5c.7.1 1.4.8 1.5 1.5"></path>
+          </svg>
         </div>
         Viber
       </a>
 
-      <a class="quick-link" href="https://wa.me/306988128099" target="_self">
-        <div class="circle">
-          <img src="watsapp.jpg" alt="WhatsApp">
+      <a class="icon-link" href="https://wa.me/306988128099">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l.9-4.3A8 8 0 1 1 20 12z"></path>
+            <path d="M9.8 9.3c.3 1.8 1.7 3.2 3.5 3.5"></path>
+          </svg>
         </div>
         WhatsApp
+      </a>
+
+      <a class="icon-link" href="https://www.facebook.com/profile.php?id=61580015963969">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 8h2V4h-2c-2.2 0-4 1.8-4 4v2H8v4h2v6h4v-6h2.5l.5-4H14V8c0-.6.4-1 1-1z"></path>
+          </svg>
+        </div>
+        Facebook
+      </a>
+
+      <a class="icon-link" href="https://www.instagram.com/lazaros_jewelart/">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <circle cx="17.3" cy="6.7" r="1"></circle>
+          </svg>
+        </div>
+        Instagram
+      </a>
+
+      <a class="icon-link" href="https://www.tiktok.com/@car_bridge.gr">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 4v8.5a3.5 3.5 0 1 1-3.5-3.5"></path>
+            <path d="M14 4c1 1.8 2.7 3 5 3"></path>
+          </svg>
+        </div>
+        TikTok
+      </a>
+
+      <a class="icon-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </div>
+        Map
+      </a>
+
+      <a class="icon-link" href="create-card.html">
+        <div class="navy-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5v14"></path>
+            <path d="M5 12h14"></path>
+          </svg>
+        </div>
+        NFC Card
       </a>
 
     </section>
@@ -716,26 +764,33 @@
     <section class="main-actions">
 
       <div class="split-row">
-        <button class="add-contact" onclick="downloadVCard()">▣ Αποθήκευση στις επαφές</button>
-        <a class="share" href="#" onclick="sharePage(); return false;">↗ SHARE</a>
+        <button class="add-contact" onclick="downloadVCard()">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 6.5A4 4 0 1 1 16 6.5A4 4 0 0 1 8 6.5Z" fill="white"/>
+            <path d="M4.5 20.5C5.2 16.8 8.1 14.5 12 14.5C15.9 14.5 18.8 16.8 19.5 20.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M19 8V12M21 10H17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Αποθήκευση στις επαφές
+        </button>
+
+        <a class="share-btn" href="#" onclick="sharePage(); return false;">Share</a>
       </div>
 
-      <a class="big-btn review-btn" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">
-        <span class="review-icon-row">
-          <img class="review-icon" src="googlereview.jpg" alt="Google Review">
+      <a class="review-btn" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">
+        <span class="review-star">★</span>
+        <span class="review-text">
+          <strong>Google Review</strong>
           <span class="review-stars">★★★★★</span>
         </span>
-        <span class="review-text">Google Review</span>
-        <span class="review-subtext">Αφήστε το σχόλιό σας</span>
+        <span class="review-arrow">›</span>
       </a>
 
-      <a class="big-btn blue-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
-        <img class="big-btn-icon" src="googlemap.jpg" alt="Google Map">
+      <a class="main-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
+          <circle cx="12" cy="10" r="2.5"></circle>
+        </svg>
         Google Map
-      </a>
-
-      <a class="big-btn gold-btn" href="create-card.html" target="_self">
-        ✨ Θέλω τη δική μου ψηφιακή κάρτα
       </a>
 
     </section>
@@ -757,30 +812,13 @@
           </div>
         </div>
 
-        <div class="business-socials">
-          <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">
-            <img src="facebook.jpg" alt="Facebook"> Facebook
-          </a>
-
-          <a class="small-btn" href="https://www.instagram.com/lazaros_jewelart/" target="_self">
-            <img src="instagram.jpg" alt="Instagram"> Instagram
-          </a>
-
-          <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">
-            <img src="tiktok.jpg" alt="TikTok"> TikTok
-          </a>
-
-          <a class="small-btn blue" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
-            <img src="googlemap.jpg" alt="Map"> Map
-          </a>
-
-          <a class="small-btn blue" href="https://www.eop.gr/dir-az/agorapolisies-autokiniton/patra/car-bridge" target="_self">
-            Website
-          </a>
-
-          <a class="small-btn blue" href="tel:+306988128099" target="_self">
-            <img src="call.jpg" alt="Call"> Call
-          </a>
+        <div class="business-actions">
+          <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">Facebook</a>
+          <a class="small-btn" href="https://www.instagram.com/lazaros_jewelart/" target="_self">Instagram</a>
+          <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">TikTok</a>
+          <a class="small-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">Map</a>
+          <a class="small-btn" href="https://www.eop.gr/dir-az/agorapolisies-autokiniton/patra/car-bridge" target="_self">Website</a>
+          <a class="small-btn" href="tel:+306988128099" target="_self">Call</a>
         </div>
       </article>
 
@@ -790,44 +828,45 @@
           <div>
             <strong>Jewel Art</strong>
             <span>
-              Προσωποποιημένα κοσμήματα, χάραξη, δώρα και NFC business λύσεις για επαγγελματίες.
+              Προσωποποιημένα κοσμήματα, χάραξη, δώρα και δημιουργικές λύσεις προβολής για επαγγελματίες.
             </span>
           </div>
         </div>
 
-        <div class="business-socials">
-          <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart" target="_self">
-            <img src="instagram.jpg" alt="Instagram"> Instagram
-          </a>
-
-          <a class="small-btn gold" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">
-            <img src="tiktok.jpg" alt="TikTok"> TikTok
-          </a>
+        <div class="business-actions">
+          <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart" target="_self">Instagram</a>
+          <a class="small-btn gold" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">TikTok</a>
         </div>
       </article>
 
       <article class="business-card nfc-card">
         <div class="business-top">
-          <div class="nfc-icon">⌁</div>
+          <div class="nfc-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 17a7 7 0 0 1 0-10"></path>
+              <path d="M10 15a4 4 0 0 1 0-6"></path>
+              <path d="M14 9a4 4 0 0 1 0 6"></path>
+              <path d="M17 7a7 7 0 0 1 0 10"></path>
+            </svg>
+          </div>
           <div>
             <strong>NFC Business Solutions</strong>
             <span>
-              Δημιουργούμε ψηφιακές επαγγελματικές κάρτες που ανοίγουν με NFC βραχιόλι, μπρελόκ ή QR code.
-              Ο πελάτης βλέπει social, Google Review, χάρτη, προϊόντα και μπορεί να κρατήσει το προφίλ στο κινητό του.
+              Ψηφιακές business cards που ανοίγουν με NFC βραχιόλι, NFC μπρελόκ ή QR, ώστε ο πελάτης να βλέπει άμεσα επαφές, social, χάρτη, review και υπηρεσίες.
             </span>
           </div>
         </div>
 
-        <div class="premium-services">
-          <div class="premium-service">NFC βραχιόλι</div>
-          <div class="premium-service">NFC μπρελόκ</div>
-          <div class="premium-service">Google Review</div>
-          <div class="premium-service">Social Links</div>
-          <div class="premium-service">Προσφορές</div>
-          <div class="premium-service">Βίντεο / Gallery</div>
+        <div class="nfc-features">
+          <div class="nfc-feature">NFC βραχιόλι</div>
+          <div class="nfc-feature">NFC μπρελόκ</div>
+          <div class="nfc-feature">Digital profile</div>
+          <div class="nfc-feature">Google Review</div>
+          <div class="nfc-feature">Google Map</div>
+          <div class="nfc-feature">Social links</div>
         </div>
 
-        <a class="create-card-cta" href="create-card.html" target="_self">
+        <a class="cta-card-btn" href="create-card.html" target="_self">
           Θέλω τη δική μου ψηφιακή κάρτα
         </a>
       </article>
@@ -835,11 +874,9 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelok • Jewel Art<br>
+      Powered by CarBridge Europe • Jewel Art • NFC Business Solutions<br>
       Instagram:
-      <a href="https://www.instagram.com/lazaros_jewelart" target="_self">
-        @lazaros_jewelart
-      </a>
+      <a href="https://www.instagram.com/lazaros_jewelart" target="_self">@lazaros_jewelart</a>
     </footer>
 
   </main>
@@ -855,7 +892,7 @@
       <h2>Κράτησε το προφίλ στο κινητό σου</h2>
       <p>
         Σε Android μπορείς να εγκαταστήσεις το προφίλ στην αρχική οθόνη.<br><br>
-        Σε iPhone μπορείς να το αποθηκεύσεις άμεσα στις επαφές σου με το link της ψηφιακής κάρτας, ώστε να το βρίσκεις εύκολα όποτε το χρειαστείς.
+        Σε iPhone μπορείς να το αποθηκεύσεις άμεσα στις επαφές σου ή να σου στείλεις το link με email για να το βρίσκεις εύκολα όποτε το χρειάζεσαι.
       </p>
 
       <button class="modal-action" onclick="downloadVCard()">
@@ -917,7 +954,7 @@
       const body = encodeURIComponent(
         "Κράτησε αυτό το link για να βρίσκεις εύκολα την ψηφιακή κάρτα του Ανδρέα Λάζαρου:\n\n" +
         "https://carbridgefr-glitch.github.io/test-profil-page/\n\n" +
-        "Μέσα θα βρεις τηλέφωνο, email, social, Google Map, Google Review και τις υπηρεσίες CarBridge Europe, Jewel Art και NFC Business Solutions."
+        "Μέσα θα βρεις τηλέφωνο, email, social, Google Map, Google Review και πληροφορίες για CarBridge Europe, Jewel Art και NFC Business Solutions."
       );
 
       window.location.href = "mailto:?subject=" + subject + "&body=" + body;
@@ -932,7 +969,7 @@ TITLE:Founder
 TEL;TYPE=CELL:+306988128099
 EMAIL:carbridgefr@gmail.com
 URL:https://carbridgefr-glitch.github.io/test-profil-page/
-NOTE:Ψηφιακή κάρτα Ανδρέας Λάζαρος. Άνοιξε το προφίλ εδώ: https://carbridgefr-glitch.github.io/test-profil-page/ | CarBridge Europe - εισαγωγή αυτοκινήτων από Γαλλία. Jewel Art - προσωποποιημένα κοσμήματα, χάραξη και NFC Business Solutions.
+NOTE:Ψηφιακή κάρτα Ανδρέας Λάζαρος. Άνοιξε το προφίλ εδώ: https://carbridgefr-glitch.github.io/test-profil-page/
 END:VCARD`;
 
       const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
