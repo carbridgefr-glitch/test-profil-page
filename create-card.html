@@ -108,6 +108,37 @@
       max-width: 420px;
     }
 
+    .video-section {
+      padding: 26px 18px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .video-box {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+      background: #000000;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .video-box video {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: #000000;
+    }
+
+    .video-note {
+      margin: 12px auto 0;
+      text-align: center;
+      color: #667085;
+      font-size: 12.5px;
+      line-height: 1.45;
+      max-width: 400px;
+    }
+
     .steps {
       display: grid;
       gap: 12px;
@@ -432,6 +463,24 @@
       <a class="hero-btn" href="#contact">Θέλω να με καλέσετε</a>
     </header>
 
+    <section class="video-section">
+      <h2 class="section-title">Δες πώς λειτουργεί</h2>
+      <p class="section-subtitle">
+        Με ένα απλό άγγιγμα NFC, το βραχιόλι ή το μπρελόκ ανοίγει την ψηφιακή κάρτα στο κινητό του πελάτη.
+      </p>
+
+      <div class="video-box">
+        <video autoplay muted loop playsinline controls>
+          <source src="nfc-demo.mp4.mp4" type="video/mp4">
+          Το πρόγραμμα περιήγησής σας δεν υποστηρίζει βίντεο.
+        </video>
+      </div>
+
+      <p class="video-note">
+        Δεν χρειάζεται εφαρμογή. Το προφίλ ανοίγει απευθείας από NFC ή QR και μπορεί να αποθηκευτεί στο κινητό.
+      </p>
+    </section>
+
     <section>
       <h2 class="section-title">Πώς λειτουργεί</h2>
       <p class="section-subtitle">
@@ -635,7 +684,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelok • Jewel Art<br>
+      Powered by NFC Brelot • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart" target="_self">@lazaros_jewelart</a>
     </footer>
