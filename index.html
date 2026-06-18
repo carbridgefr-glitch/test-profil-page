@@ -617,26 +617,27 @@
 
     .profile-action-btn {
       width: 100%;
-      min-height: 64px;
+      min-height: 72px;
       border: 0;
-      border-radius: 18px;
+      border-radius: 20px;
       text-decoration: none;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
       display: grid;
-      grid-template-columns: 46px 1fr 18px;
+      grid-template-columns: 52px 1fr 22px;
       align-items: center;
-      gap: 12px;
-      padding: 12px 15px;
+      gap: 13px;
+      padding: 13px 16px;
       text-align: left;
-      box-shadow: 0 14px 30px rgba(10,34,64,0.15);
+      box-shadow: 0 16px 34px rgba(10,34,64,0.18);
+      border: 1px solid rgba(255,255,255,0.18);
     }
 
     .profile-action-btn strong {
       display: block;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.15;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     .profile-action-btn span {
@@ -665,24 +666,28 @@
     }
 
     .profile-action-icon {
-      width: 46px;
-      height: 46px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
       display: flex;
       align-items: center;
       justify-content: center;
+      place-self: center;
+      flex: 0 0 52px;
     }
 
     .profile-action-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
+      display: block;
       stroke: #fff;
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
+      margin: auto;
     }
 
     .experience-card {
@@ -738,13 +743,15 @@
       border: 1px solid rgba(10,34,64,0.12);
       background: #fff;
       border-radius: 18px;
-      min-height: 96px;
+      min-height: 104px;
       text-decoration: none;
       color: var(--navy);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 10px 6px;
       box-shadow: 0 10px 22px rgba(10,34,64,0.08);
       transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
     }
@@ -775,9 +782,14 @@
     }
 
     .face-label {
+      width: 100%;
+      display: block;
       font-size: 12px;
       font-weight: 900;
       color: #2b374a;
+      text-align: center;
+      line-height: 1.2;
+      padding: 0 2px;
     }
 
     .face-choice.best {
@@ -996,10 +1008,10 @@
         <button class="profile-action-btn primary" onclick="downloadVCard()">
           <span class="profile-action-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0z"></path>
-              <path d="M4.5 21c.7-4 3.7-6.4 7.5-6.4s6.8 2.4 7.5 6.4"></path>
-              <path d="M19 8v5"></path>
-              <path d="M21.5 10.5h-5"></path>
+              <circle cx="12" cy="8" r="3.4"></circle>
+              <path d="M5.8 20.5c.8-3.8 3.2-6 6.2-6s5.4 2.2 6.2 6"></path>
+              <path d="M18.2 5.6v4.6"></path>
+              <path d="M20.5 7.9h-4.6"></path>
             </svg>
           </span>
           <span>
@@ -1012,11 +1024,11 @@
         <a class="profile-action-btn dark" href="#" onclick="sharePage(); return false;">
           <span class="profile-action-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <path d="M8.7 10.7l6.6-4.4"></path>
-              <path d="M8.7 13.3l6.6 4.4"></path>
+              <circle cx="17" cy="7" r="2.8"></circle>
+              <circle cx="7" cy="12" r="2.8"></circle>
+              <circle cx="17" cy="17" r="2.8"></circle>
+              <path d="M9.5 10.8l5-2.5"></path>
+              <path d="M9.5 13.2l5 2.5"></path>
             </svg>
           </span>
           <span>
@@ -1071,9 +1083,6 @@
           </a>
         </div>
 
-        <p class="review-note">
-          Αν η εμπειρία σας ήταν άριστη, μπορείτε να αφήσετε δημόσια αξιολόγηση στο Google.
-        </p>
       </div>
 
       <a class="main-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
