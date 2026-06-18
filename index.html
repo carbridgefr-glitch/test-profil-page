@@ -608,6 +608,235 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+
+    .profile-tools {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .profile-action-btn {
+      width: 100%;
+      min-height: 64px;
+      border: 0;
+      border-radius: 18px;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      display: grid;
+      grid-template-columns: 46px 1fr 18px;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 15px;
+      text-align: left;
+      box-shadow: 0 14px 30px rgba(10,34,64,0.15);
+    }
+
+    .profile-action-btn strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .profile-action-btn span {
+      display: block;
+      font-size: 12px;
+      line-height: 1.25;
+      opacity: 0.88;
+      font-weight: 700;
+    }
+
+    .profile-action-btn .arrow {
+      font-size: 25px;
+      font-weight: 900;
+      text-align: right;
+      line-height: 1;
+    }
+
+    .profile-action-btn.primary {
+      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      color: #fff;
+    }
+
+    .profile-action-btn.dark {
+      background: linear-gradient(135deg, #101827, #25334b);
+      color: #fff;
+    }
+
+    .profile-action-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-action-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .experience-card {
+      background:
+        radial-gradient(circle at top right, rgba(202,162,79,0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff, #f8fafc);
+      border: 1px solid rgba(10,34,64,0.10);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 14px 32px rgba(10,34,64,0.12);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+    }
+
+    .experience-header {
+      text-align: center;
+      padding-top: 4px;
+      margin-bottom: 14px;
+    }
+
+    .experience-header strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .experience-header span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .face-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .face-choice {
+      border: 1px solid rgba(10,34,64,0.12);
+      background: #fff;
+      border-radius: 18px;
+      min-height: 96px;
+      text-decoration: none;
+      color: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 22px rgba(10,34,64,0.08);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .face-choice:active {
+      transform: scale(0.97);
+    }
+
+    .face-choice:hover {
+      border-color: rgba(202,162,79,0.65);
+      box-shadow: 0 14px 28px rgba(10,34,64,0.13);
+    }
+
+    .face-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 8px;
+    }
+
+    .face-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .face-label {
+      font-size: 12px;
+      font-weight: 900;
+      color: #2b374a;
+    }
+
+    .face-choice.best {
+      background: linear-gradient(180deg, #ffffff, #fffaf0);
+      border-color: rgba(202,162,79,0.55);
+    }
+
+    .face-choice.best .face-icon svg {
+      stroke: #ae8737;
+    }
+
+    .face-choice.best .face-label {
+      color: #8a6824;
+    }
+
+    .review-note {
+      margin: 12px 0 0;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .business-card.nfc-card {
+      box-shadow: 0 16px 34px rgba(10,34,64,0.18);
+    }
+
+    .nfc-cta-title {
+      margin: 16px 0 8px;
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+    }
+
+    .nfc-cta-subtitle {
+      margin: 0 0 12px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .cta-card-btn {
+      min-height: 58px;
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 14px;
+      line-height: 1.2;
+    }
+
+    .cta-card-btn small {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      opacity: 0.92;
+    }
+
     @media (max-width: 380px) {
       .icon-grid {
         gap: 15px 4px;
@@ -763,27 +992,89 @@
 
     <section class="main-actions">
 
-      <div class="split-row">
-        <button class="add-contact" onclick="downloadVCard()">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M8 6.5A4 4 0 1 1 16 6.5A4 4 0 0 1 8 6.5Z" fill="white"/>
-            <path d="M4.5 20.5C5.2 16.8 8.1 14.5 12 14.5C15.9 14.5 18.8 16.8 19.5 20.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <path d="M19 8V12M21 10H17" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Αποθήκευση στις επαφές
+      <div class="profile-tools">
+        <button class="profile-action-btn primary" onclick="downloadVCard()">
+          <span class="profile-action-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0z"></path>
+              <path d="M4.5 21c.7-4 3.7-6.4 7.5-6.4s6.8 2.4 7.5 6.4"></path>
+              <path d="M19 8v5"></path>
+              <path d="M21.5 10.5h-5"></path>
+            </svg>
+          </span>
+          <span>
+            <strong>Αποθήκευση στις επαφές</strong>
+            <span>Κράτησε άμεσα τη digital card στο κινητό σου</span>
+          </span>
+          <span class="arrow">›</span>
         </button>
 
-        <a class="share-btn" href="#" onclick="sharePage(); return false;">Share</a>
+        <a class="profile-action-btn dark" href="#" onclick="sharePage(); return false;">
+          <span class="profile-action-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <path d="M8.7 10.7l6.6-4.4"></path>
+              <path d="M8.7 13.3l6.6 4.4"></path>
+            </svg>
+          </span>
+          <span>
+            <strong>Κοινοποίηση προφίλ</strong>
+            <span>Στείλε το προφίλ σε πελάτη ή συνεργάτη</span>
+          </span>
+          <span class="arrow">›</span>
+        </a>
       </div>
 
-      <a class="review-btn" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self">
-        <span class="review-star">★</span>
-        <span class="review-text">
-          <strong>Google Review</strong>
-          <span class="review-stars">★★★★★</span>
-        </span>
-        <span class="review-arrow">›</span>
-      </a>
+      <div class="experience-card">
+        <div class="experience-header">
+          <strong>Πώς ήταν η εμπειρία σας;</strong>
+          <span>Η γνώμη σας μας βοηθά να γινόμαστε καλύτεροι.</span>
+        </div>
+
+        <div class="face-row">
+          <a class="face-choice" href="feedback.html?rating=1" target="_self" aria-label="Δεν έμεινα ικανοποιημένος">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M17 33c3-3 11-3 14 0"></path>
+              </svg>
+            </span>
+            <span class="face-label">Χρειάζεται βελτίωση</span>
+          </a>
+
+          <a class="face-choice" href="feedback.html?rating=3" target="_self" aria-label="Μέτρια εμπειρία">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M17 31h14"></path>
+              </svg>
+            </span>
+            <span class="face-label">Μέτρια</span>
+          </a>
+
+          <a class="face-choice best" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self" aria-label="Άριστη εμπειρία - Google Review">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M16 29c3 5 13 5 16 0"></path>
+              </svg>
+            </span>
+            <span class="face-label">Άριστη</span>
+          </a>
+        </div>
+
+        <p class="review-note">
+          Αν η εμπειρία σας ήταν άριστη, μπορείτε να αφήσετε δημόσια αξιολόγηση στο Google.
+        </p>
+      </div>
 
       <a class="main-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
         <svg viewBox="0 0 24 24">
@@ -866,8 +1157,14 @@
           <div class="nfc-feature">Social links</div>
         </div>
 
+        <div class="nfc-cta-title">Φτιάξε τη δική σου digital card</div>
+        <p class="nfc-cta-subtitle">
+          Επαγγελματικό προφίλ με NFC, QR, social, Google Review, χάρτη και κουμπιά επικοινωνίας.
+        </p>
+
         <a class="cta-card-btn" href="create-card.html" target="_self">
-          Θέλω τη δική μου ψηφιακή κάρτα
+          Δες πακέτα digital card
+          <small>Επίλεξε το πακέτο που σε ενδιαφέρει</small>
         </a>
       </article>
 
