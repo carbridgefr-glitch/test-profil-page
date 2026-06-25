@@ -15,7 +15,6 @@
     :root {
       --black: #050505;
       --black-2: #0b0b0d;
-      --black-3: #141417;
       --cream: #f4ead8;
       --gold: #d7b76a;
       --gold-light: #ffe3a0;
@@ -24,8 +23,6 @@
       --blue-soft: #17446f;
       --white: #ffffff;
       --green: #22a63a;
-      --muted: rgba(255,255,255,0.70);
-      --line: rgba(215,183,106,0.26);
     }
 
     html,
@@ -151,7 +148,8 @@
     }
 
     .hero-btn,
-    .hero-btn.secondary {
+    .hero-btn.secondary,
+    .hero-share-btn {
       min-height: 54px;
       border-radius: 18px;
       display: flex;
@@ -163,14 +161,18 @@
       font-size: 15px;
       box-shadow: 0 14px 30px rgba(0,0,0,0.26);
       padding: 0 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
     }
 
     .hero-btn {
       background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
       color: #1a1205;
+      border: 0;
     }
 
-    .hero-btn.secondary {
+    .hero-btn.secondary,
+    .hero-share-btn {
       background: rgba(255,255,255,0.10);
       color: #ffffff;
       border: 1px solid rgba(255,255,255,0.14);
@@ -255,16 +257,10 @@
       padding: 14px;
     }
 
-    .image-gallery {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
     .preview-image {
       width: 100%;
       display: block;
-      border-radius: 22px;
+      border-radius: 24px;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(215,183,106,0.16);
       box-shadow: 0 12px 28px rgba(0,0,0,0.24);
@@ -274,7 +270,7 @@
       width: 100%;
       max-width: 280px;
       aspect-ratio: 9 / 16;
-      margin: 0 auto;
+      margin: 18px auto 0;
       border-radius: 26px;
       overflow: hidden;
       background: #000000;
@@ -296,7 +292,7 @@
     }
 
     .client-card {
-      min-height: 178px;
+      min-height: 205px;
       padding: 15px 12px;
       border-radius: 26px;
       background:
@@ -349,35 +345,20 @@
       line-height: 1.25;
     }
 
-    .parking-logo {
-      background: #fff;
-      color: #000;
-      border-radius: 50%;
-      text-align: center;
+    .view-profile {
+      width: 100%;
+      min-height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11.5px;
       font-weight: 900;
-      font-size: 11px;
-      line-height: 1.05;
-      padding: 9px;
-    }
-
-    .parking-logo b {
-      display: block;
-      font-size: 30px;
-      line-height: 0.9;
-      margin-bottom: 5px;
-    }
-
-    .client-wide {
-      grid-column: 1 / -1;
-      min-height: 154px;
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
-      padding: 16px;
-    }
-
-    .client-wide .client-logo {
-      min-width: 82px;
+      padding: 7px 9px;
+      margin-top: 4px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.20);
     }
 
     .steps {
@@ -633,6 +614,41 @@
       font-weight: 700;
     }
 
+    .share-box {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .share-box h2 {
+      margin: 0 0 9px;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .share-box p {
+      margin: 0 0 15px;
+      color: rgba(255,255,255,0.66);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .share-main-btn {
+      width: 100%;
+      min-height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+      border: 0;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+    }
+
     .contact-box {
       background:
         radial-gradient(circle at top right, rgba(255,227,160,0.10), transparent 30%),
@@ -778,7 +794,7 @@
       }
 
       .client-card {
-        min-height: 166px;
+        min-height: 195px;
       }
 
       .client-logo {
@@ -804,6 +820,7 @@
         <div class="hero-actions">
           <a class="hero-btn" href="#contact">Θέλω να φτιάξω τη δική μου κάρτα</a>
           <a class="hero-btn secondary" href="#work">Δες πραγματικά παραδείγματα</a>
+          <button class="hero-share-btn" onclick="shareCreatePage()">Κοινοποίηση σελίδας</button>
         </div>
       </div>
     </header>
@@ -840,6 +857,7 @@
             <strong>Love2Print</strong>
             <span>Digital profile επαγγελματία</span>
           </div>
+          <div class="view-profile">Πάτα εδώ για να δεις το προφίλ</div>
         </a>
 
         <a class="client-card" href="https://carbridgefr-glitch.github.io/thiela-patron/" target="_self">
@@ -848,6 +866,7 @@
             <strong>Θύελλα Πατρών</strong>
             <span>Αθλητικός οργανισμός</span>
           </div>
+          <div class="view-profile">Πάτα εδώ για να δεις το προφίλ</div>
         </a>
 
         <a class="client-card" href="https://carbridgefr-glitch.github.io/baby-parking/" target="_self">
@@ -856,6 +875,7 @@
             <strong>Baby Parking</strong>
             <span>Σχολείο / παιδικός σταθμός</span>
           </div>
+          <div class="view-profile">Πάτα εδώ για να δεις το προφίλ</div>
         </a>
 
         <a class="client-card" href="https://carbridgefr-glitch.github.io/veneris/" target="_self">
@@ -864,33 +884,20 @@
             <strong>Veneris Motors</strong>
             <span>Premium επαγγελματικό προφίλ</span>
           </div>
-        </a>
-
-        <a class="client-card client-wide" href="https://carbridgefr-glitch.github.io/parking-page/" target="_self">
-          <div class="client-logo parking-logo">
-            <b>P</b>
-            Γιαννακόπουλος<br>Parking
-          </div>
-          <div>
-            <strong>Γιαννακόπουλος Parking</strong>
-            <span>Παράδειγμα απλής NFC σελίδας για υπηρεσία parking χωρίς έτοιμο λογότυπο.</span>
-          </div>
+          <div class="view-profile">Πάτα εδώ για να δεις το προφίλ</div>
         </a>
 
       </div>
     </section>
 
     <section class="media-showcase">
-      <h2 class="section-title">Δες το στην πράξη</h2>
+      <h2 class="section-title">Βραχιόλι ή μπρελόκ, ίδιο αποτέλεσμα</h2>
       <p class="section-subtitle">
-        Παραδείγματα NFC tap και Google Review, ώστε ο πελάτης να καταλαβαίνει αμέσως την αξία της digital card.
+        Η ίδια digital card μπορεί να ανοίγει είτε από NFC βραχιόλι είτε από NFC μπρελόκ.
       </p>
 
       <div class="premium-card media-card">
-        <div class="image-gallery">
-          <img class="preview-image" src="1%20tap.png" alt="Παράδειγμα NFC tap σε digital card">
-          <img class="preview-image" src="tap%20google%20review.png" alt="Παράδειγμα NFC tap για Google Review">
-        </div>
+        <img class="preview-image" src="bracelet%20brelok.png" alt="NFC βραχιόλι και NFC μπρελόκ για digital profile">
 
         <div class="youtube-short">
           <iframe
@@ -1078,6 +1085,18 @@
       </div>
     </section>
 
+    <section>
+      <div class="premium-card share-box">
+        <h2>Στείλε αυτή τη σελίδα σε κάποιον που ενδιαφέρεται</h2>
+        <p>
+          Με ένα πάτημα μπορείς να κοινοποιήσεις τη σελίδα σε πελάτη, συνεργάτη ή φίλο που θέλει να φτιάξει τη δική του digital card.
+        </p>
+        <button class="share-main-btn" onclick="shareCreatePage()">
+          Κοινοποίηση σελίδας
+        </button>
+      </div>
+    </section>
+
     <section id="contact" class="contact-box">
       <h2 class="section-title">Θέλω να με καλέσετε</h2>
       <p class="section-subtitle">
@@ -1133,7 +1152,7 @@
     </section>
 
     <footer class="footer">
-      Powered by NFC Brelok • Jewel Art<br>
+      Powered by NFC Brelot • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart/" target="_self">@lazaros_jewelart</a>
     </footer>
@@ -1147,10 +1166,27 @@
   <script>
     const YOUR_PHONE = "306988128099";
     const YOUR_EMAIL = "carbridgefr@gmail.com";
+    const CREATE_PAGE_URL = "https://carbridgefr-glitch.github.io/test-profil-page/create-card.html";
 
     function selectPackage(packageName) {
       document.getElementById("package").value = packageName;
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function shareCreatePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Φτιάξε τη δική σου NFC Digital Card",
+          text: "Δες πώς μπορείς να φτιάξεις τη δική σου NFC digital card με βραχιόλι, μπρελόκ ή QR.",
+          url: CREATE_PAGE_URL
+        });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(CREATE_PAGE_URL).then(function () {
+          alert("Το link αντιγράφηκε. Μπορείς τώρα να το στείλεις όπου θέλεις.");
+        });
+      } else {
+        alert("Αντιγράψτε αυτό το link: " + CREATE_PAGE_URL);
+      }
     }
 
     function getFormText() {
