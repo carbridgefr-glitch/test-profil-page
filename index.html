@@ -27,21 +27,14 @@
     :root {
       --black: #050505;
       --black-2: #0b0b0d;
-      --black-3: #141417;
       --cream: #f4ead8;
-      --cream-soft: #d8cab4;
       --gold: #d7b76a;
       --gold-light: #ffe3a0;
       --gold-dark: #9e7834;
       --blue: #0e2d52;
       --blue-soft: #17446f;
       --white: #ffffff;
-      --muted: rgba(255,255,255,0.68);
-      --line: rgba(215,183,106,0.28);
-      --glass: rgba(255,255,255,0.075);
-      --glass-2: rgba(255,255,255,0.11);
       --green: #26a846;
-      --shadow: 0 24px 70px rgba(0,0,0,0.45);
     }
 
     html,
@@ -97,9 +90,9 @@
     }
 
     .cover {
-      height: 260px;
+      height: 270px;
       background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.88)),
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.88)),
         url("cover.jpg.jpg");
       background-size: cover;
       background-position: center;
@@ -125,7 +118,7 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      z-index: 2;
+      z-index: 3;
     }
 
     .top-badge,
@@ -154,52 +147,59 @@
 
     .hero-message {
       position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 28px;
+      left: 18px;
+      top: 84px;
       z-index: 2;
+      max-width: 285px;
+      padding: 14px 15px;
+      border-radius: 22px;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(215,183,106,0.26);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
     }
 
     .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--gold-light);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.4px;
     }
 
     .hero-kicker::before {
       content: "";
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--gold-light);
       box-shadow: 0 0 16px rgba(255,227,160,0.88);
     }
 
     .hero-message h2 {
-      margin: 0 0 8px;
-      font-size: 25px;
-      line-height: 1.08;
-      letter-spacing: -0.8px;
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.12;
+      letter-spacing: -0.3px;
       color: #fff;
     }
 
     .hero-message p {
       margin: 0;
-      font-size: 14px;
-      line-height: 1.45;
-      color: rgba(255,255,255,0.84);
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.82);
       font-weight: 700;
     }
 
     .profile-section {
       text-align: center;
       padding: 0 18px 18px;
-      margin-top: -76px;
+      margin-top: -66px;
     }
 
     .profile-ring {
@@ -617,56 +617,41 @@
     .small-btn.gold {
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       border-color: rgba(255,227,160,0.24);
+      color: #fff;
     }
 
-    .nfc-showcase {
+    .small-btn.blue {
+      background: linear-gradient(135deg, var(--blue), var(--blue-soft));
+      border-color: rgba(255,227,160,0.24);
+    }
+
+    .jewelart-card {
       background:
-        radial-gradient(circle at top right, rgba(255,227,160,0.24), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(23,68,111,0.45), transparent 30%),
-        linear-gradient(145deg, #050505, #0e1420 48%, #111111);
-      border-color: rgba(255,227,160,0.36);
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(23,68,111,0.42), transparent 30%),
+        linear-gradient(145deg, #080808, #16120c 48%, #090909);
+      border-color: rgba(255,227,160,0.34);
     }
 
-    .nfc-icon-box {
-      width: 76px;
-      height: 76px;
-      border-radius: 25px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,227,160,0.28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nfc-icon-box svg {
-      width: 38px;
-      height: 38px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .nfc-benefits {
+    .jewelart-features {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 9px;
-      margin-top: 15px;
+      gap: 8px;
+      margin: 13px 0 14px;
     }
 
-    .nfc-benefit {
-      min-height: 58px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.08);
+    .jewelart-feature {
+      min-height: 50px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.075);
       border: 1px solid rgba(255,255,255,0.10);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10px 8px;
-      color: rgba(255,255,255,0.88);
-      font-size: 12px;
+      padding: 8px;
+      color: rgba(255,255,255,0.86);
+      font-size: 11.5px;
       line-height: 1.25;
       font-weight: 900;
     }
@@ -860,11 +845,21 @@
 
     @media (max-width: 380px) {
       .cover {
-        height: 245px;
+        height: 265px;
+      }
+
+      .hero-message {
+        top: 78px;
+        max-width: 265px;
+        padding: 12px 13px;
       }
 
       .hero-message h2 {
-        font-size: 22px;
+        font-size: 16px;
+      }
+
+      .hero-message p {
+        font-size: 11.8px;
       }
 
       .top-badge,
@@ -922,9 +917,9 @@
 
       <div class="hero-message">
         <div class="hero-kicker">One tap experience</div>
-        <h2>Η επαγγελματική σου παρουσία, σε μία premium digital εμπειρία.</h2>
+        <h2>Premium digital profile με ένα tap.</h2>
         <p>
-          Με NFC βραχιόλι, μπρελόκ ή QR, ο πελάτης βλέπει άμεσα επαφές, social, χάρτη, review και υπηρεσίες.
+          NFC βραχιόλι, μπρελόκ ή QR για επαφές, social, χάρτη και Google Review.
         </p>
       </div>
     </section>
@@ -935,7 +930,7 @@
       </div>
 
       <h1>Ανδρέας Λάζαρος</h1>
-      <p class="main-subtitle">CarBridge Europe • Jewel Art • NFC Business Solutions</p>
+      <p class="main-subtitle">CarBridge Europe • lazaros_jewelart • NFC Business Solutions</p>
       <div class="gold-line"></div>
 
       <div class="premium-intro">
@@ -1170,7 +1165,7 @@
 
         <div class="business-actions">
           <a class="small-btn" href="https://www.facebook.com/profile.php?id=61580015963969" target="_self">Facebook</a>
-          <a class="small-btn" href="https://www.instagram.com/lazaros_jewelart/" target="_self">Instagram</a>
+          <a class="small-btn" href="https://www.instagram.com/car.bridge.fr?igsh=MTAwNWFsZmNtbGRxcg==" target="_self">Instagram</a>
           <a class="small-btn" href="https://www.tiktok.com/@car_bridge.gr" target="_self">TikTok</a>
           <a class="small-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">Map</a>
           <a class="small-btn" href="https://www.eop.gr/dir-az/agorapolisies-autokiniton/patra/car-bridge" target="_self">Website</a>
@@ -1178,48 +1173,28 @@
         </div>
       </article>
 
-      <article class="business-card">
+      <article class="business-card jewelart-card">
         <div class="business-top">
-          <img src="jewelart-logo.png.jpeg" alt="Jewel Art" class="business-logo">
+          <img src="jewelart-logo.png.jpeg" alt="lazaros_jewelart" class="business-logo">
           <div>
-            <strong>Jewel Art</strong>
+            <strong>lazaros_jewelart</strong>
             <span>
-              Προσωποποιημένα κοσμήματα, χάραξη, δώρα και δημιουργικές λύσεις προβολής για επαγγελματίες.
+              Προσωποποιημένα κοσμήματα, χάραξη, δώρα και NFC λύσεις για επαγγελματίες. Δημιουργούμε βραχιόλια, μπρελόκ και digital profiles που ανοίγουν με ένα tap και δείχνουν επαφές, social, Google Review, χάρτη, βίντεο και υπηρεσίες.
             </span>
           </div>
+        </div>
+
+        <div class="jewelart-features">
+          <div class="jewelart-feature">NFC βραχιόλια</div>
+          <div class="jewelart-feature">NFC μπρελόκ</div>
+          <div class="jewelart-feature">Digital profiles</div>
+          <div class="jewelart-feature">Google Review</div>
         </div>
 
         <div class="business-actions">
-          <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart" target="_self">Instagram</a>
+          <a class="small-btn gold" href="https://www.instagram.com/lazaros_jewelart/" target="_self">Instagram</a>
           <a class="small-btn gold" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">TikTok</a>
-        </div>
-      </article>
-
-      <article class="business-card nfc-showcase">
-        <div class="business-top">
-          <div class="nfc-icon-box">
-            <svg viewBox="0 0 24 24">
-              <path d="M7 17a7 7 0 0 1 0-10"></path>
-              <path d="M10 15a4 4 0 0 1 0-6"></path>
-              <path d="M14 9a4 4 0 0 1 0 6"></path>
-              <path d="M17 7a7 7 0 0 1 0 10"></path>
-            </svg>
-          </div>
-          <div>
-            <strong>NFC Business Solutions</strong>
-            <span>
-              Το προφίλ μπορεί να ανοίγει με NFC βραχιόλι, NFC μπρελόκ ή QR και να λειτουργεί σαν ολοκληρωμένη παρουσίαση για την επιχείρησή σου.
-            </span>
-          </div>
-        </div>
-
-        <div class="nfc-benefits">
-          <div class="nfc-benefit">Επαφές & social</div>
-          <div class="nfc-benefit">Google Review</div>
-          <div class="nfc-benefit">Google Map</div>
-          <div class="nfc-benefit">Website & βίντεο</div>
-          <div class="nfc-benefit">Προσφορές</div>
-          <div class="nfc-benefit">Προφίλ πελάτη</div>
+          <a class="small-btn blue" href="create-card.html" target="_self">NFC Card</a>
         </div>
       </article>
 
@@ -1239,9 +1214,9 @@
     </section>
 
     <footer class="footer">
-      Powered by CarBridge Europe • Jewel Art • NFC Business Solutions<br>
+      Powered by CarBridge Europe • lazaros_jewelart • NFC Business Solutions<br>
       Instagram:
-      <a href="https://www.instagram.com/lazaros_jewelart" target="_self">@lazaros_jewelart</a>
+      <a href="https://www.instagram.com/lazaros_jewelart/" target="_self">@lazaros_jewelart</a>
     </footer>
 
   </main>
@@ -1319,7 +1294,7 @@
       const body = encodeURIComponent(
         "Κράτησε αυτό το link για να βρίσκεις εύκολα την ψηφιακή κάρτα του Ανδρέα Λάζαρου:\n\n" +
         "https://carbridgefr-glitch.github.io/test-profil-page/\n\n" +
-        "Μέσα θα βρεις τηλέφωνο, email, social, Google Map, Google Review και πληροφορίες για CarBridge Europe, Jewel Art και NFC Business Solutions."
+        "Μέσα θα βρεις τηλέφωνο, email, social, Google Map, Google Review και πληροφορίες για CarBridge Europe, lazaros_jewelart και NFC Business Solutions."
       );
 
       window.location.href = "mailto:?subject=" + subject + "&body=" + body;
@@ -1329,7 +1304,7 @@
       const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Ανδρέας Λάζαρος | Digital Card
-ORG:CarBridge Europe;Jewel Art;NFC Business Solutions
+ORG:CarBridge Europe;lazaros_jewelart;NFC Business Solutions
 TITLE:Founder
 TEL;TYPE=CELL:+306988128099
 EMAIL:carbridgefr@gmail.com
