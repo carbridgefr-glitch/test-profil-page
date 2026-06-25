@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Ανδρέας Λάζαρος | Digital Business Card</title>
+  <title>Ανδρέας Λάζαρος | Premium Digital Profile</title>
 
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="andreas-profile.jpg.jpeg">
 
-  <meta name="theme-color" content="#0a2240">
+  <meta name="theme-color" content="#050505">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Ανδρέας Λάζαρος">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,34 +25,46 @@
     }
 
     :root {
-      --navy: #0a2240;
-      --navy-2: #0d2b52;
-      --navy-3: #123764;
-      --navy-soft: #1d4f86;
-      --gold: #caa24f;
-      --gold-soft: #e6c57d;
-      --green: #2fad49;
-      --text: #122033;
-      --muted: #657187;
+      --black: #050505;
+      --black-2: #0b0b0d;
+      --black-3: #141417;
+      --cream: #f4ead8;
+      --cream-soft: #d8cab4;
+      --gold: #d7b76a;
+      --gold-light: #ffe3a0;
+      --gold-dark: #9e7834;
+      --blue: #0e2d52;
+      --blue-soft: #17446f;
       --white: #ffffff;
-      --line: #e6ebf2;
-      --bg-soft: #f5f8fc;
+      --muted: rgba(255,255,255,0.68);
+      --line: rgba(215,183,106,0.28);
+      --glass: rgba(255,255,255,0.075);
+      --glass-2: rgba(255,255,255,0.11);
+      --green: #26a846;
+      --shadow: 0 24px 70px rgba(0,0,0,0.45);
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+      color: var(--white);
       background:
-        radial-gradient(circle at top left, rgba(29,79,134,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(202,162,79,0.16), transparent 22%),
-        linear-gradient(180deg, #eaf0f7 0%, #f6f9fc 38%, #eef3f9 100%);
+        radial-gradient(circle at top left, rgba(215,183,106,0.30), transparent 28%),
+        radial-gradient(circle at top right, rgba(23,68,111,0.38), transparent 25%),
+        radial-gradient(circle at bottom center, rgba(215,183,106,0.16), transparent 32%),
+        linear-gradient(180deg, #050505 0%, #0b0b0d 42%, #050505 100%);
       background-attachment: fixed;
     }
 
     body {
-      padding-bottom: 96px;
+      padding-bottom: 104px;
+    }
+
+    a,
+    button {
+      touch-action: manipulation;
     }
 
     .page {
@@ -61,123 +73,268 @@
       min-height: 100vh;
       margin: 0 auto;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.97)),
-        radial-gradient(circle at top right, rgba(202,162,79,0.10), transparent 26%);
-      box-shadow: 0 0 40px rgba(10,34,64,0.20);
+        radial-gradient(circle at 80% 0%, rgba(215,183,106,0.20), transparent 28%),
+        radial-gradient(circle at 0% 25%, rgba(14,45,82,0.42), transparent 34%),
+        linear-gradient(180deg, #060606 0%, #101014 45%, #070707 100%);
+      box-shadow: 0 0 80px rgba(0,0,0,0.75);
       overflow: hidden;
       position: relative;
     }
 
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 34%),
+        linear-gradient(90deg, transparent, rgba(215,183,106,0.045), transparent);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
     .cover {
-      height: 210px;
+      height: 260px;
       background-image:
-        linear-gradient(rgba(10,34,64,0.15), rgba(10,34,64,0.45)),
+        linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.88)),
         url("cover.jpg.jpg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       position: relative;
       overflow: hidden;
-      border-bottom: 5px solid var(--navy);
     }
 
     .cover::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0) 45%, rgba(10,34,64,0.32)),
-        radial-gradient(circle at top right, rgba(230,197,125,0.30), transparent 32%);
-      pointer-events: none;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
     }
 
-    .top-badge {
+    .top-bar {
       position: absolute;
       top: 16px;
       left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
       z-index: 2;
-      background: rgba(255,255,255,0.93);
-      color: var(--navy);
-      border: 1px solid rgba(202,162,79,0.55);
-      padding: 8px 13px;
+    }
+
+    .top-badge,
+    .top-badge-light {
+      padding: 9px 12px;
       border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(215,183,106,0.42);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+      white-space: nowrap;
+    }
+
+    .top-badge {
+      background: rgba(0,0,0,0.55);
+      color: var(--gold-light);
+    }
+
+    .top-badge-light {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    .hero-message {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 28px;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--gold-light);
       font-size: 12px;
       font-weight: 900;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      letter-spacing: 0.4px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 16px rgba(255,227,160,0.88);
+    }
+
+    .hero-message h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+      color: #fff;
+    }
+
+    .hero-message p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.84);
+      font-weight: 700;
     }
 
     .profile-section {
       text-align: center;
-      padding: 0 18px 10px;
-      position: relative;
-      z-index: 3;
+      padding: 0 18px 18px;
+      margin-top: -76px;
+    }
+
+    .profile-ring {
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      padding: 4px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--gold-light), #fff7d8, var(--gold-dark), var(--blue-soft));
+      box-shadow: 0 24px 52px rgba(0,0,0,0.48);
     }
 
     .profile-img {
-      width: 148px;
-      height: 148px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
-      margin-top: -74px;
-      border: 5px solid #fff;
+      border: 5px solid #070707;
+      display: block;
       background: #fff;
-      box-shadow: 0 14px 34px rgba(10,34,64,0.24);
     }
 
     h1 {
-      margin: 16px 0 6px;
-      font-size: 31px;
-      line-height: 1.08;
+      margin: 18px 0 7px;
+      font-size: 32px;
+      line-height: 1.05;
       font-weight: 900;
-      color: #0e1726;
+      letter-spacing: -0.8px;
+      color: #fff;
     }
 
     .main-subtitle {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.4;
-      font-weight: 800;
-      color: var(--navy);
+      margin: 0 auto;
+      max-width: 350px;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 900;
+      color: var(--cream);
     }
 
     .gold-line {
-      width: 80px;
+      width: 90px;
       height: 3px;
       border-radius: 999px;
-      margin: 14px auto 0;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 15px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
     }
 
-    .icon-grid {
+    .premium-intro {
+      margin: 17px 0 0;
+      padding: 16px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.14), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid rgba(215,183,106,0.30);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.28);
+      text-align: left;
+    }
+
+    .premium-intro strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 900;
+    }
+
+    .premium-intro span {
+      display: block;
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .section-label {
+      padding: 0 18px;
+      margin: 10px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(215,183,106,0.55), transparent);
+    }
+
+    .section-label h2 {
+      margin: 0;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .quick-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 16px 6px;
-      padding: 24px 14px 24px;
+      gap: 12px 7px;
+      padding: 0 14px 22px;
       text-align: center;
     }
 
-    .icon-link {
+    .quick-link {
       text-decoration: none;
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 800;
+      color: rgba(255,255,255,0.86);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.15;
     }
 
-    .navy-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+    .quick-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 7px;
+      border-radius: 19px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.20), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.055));
+      border: 1px solid rgba(215,183,106,0.25);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 7px;
-      box-shadow: 0 10px 22px rgba(10,34,64,0.18);
-      border: 1px solid rgba(255,255,255,0.55);
     }
 
-    .navy-icon svg {
+    .quick-icon svg {
       width: 23px;
       height: 23px;
       stroke: #fff;
@@ -187,278 +344,67 @@
       stroke-linejoin: round;
     }
 
+    .quick-link:active .quick-icon {
+      transform: scale(0.96);
+    }
+
     .main-actions {
-      padding: 0 18px 22px;
+      padding: 0 18px 20px;
     }
 
-    .split-row {
+    .action-stack {
       display: grid;
-      grid-template-columns: 1fr 0.36fr;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 26px rgba(10,34,64,0.14);
-      margin-bottom: 14px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
-    .split-row button,
-    .split-row a {
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 0;
+    .premium-action {
+      min-height: 76px;
+      border-radius: 26px;
+      border: 1px solid rgba(215,183,106,0.28);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.115), rgba(255,255,255,0.05));
+      color: #fff;
       text-decoration: none;
+      display: grid;
+      grid-template-columns: 56px 1fr 24px;
+      align-items: center;
+      gap: 13px;
+      padding: 14px 16px;
+      text-align: left;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.26);
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 900;
-      padding: 8px 10px;
-    }
-
-    .add-contact {
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
-      color: #fff;
-      border-right: 2px solid rgba(255,255,255,0.95);
-    }
-
-    .contact-icon {
-      width: 21px;
-      height: 21px;
-      display: block;
-    }
-
-    .share-btn {
-      background: #122033;
-      color: #fff;
-    }
-
-    .review-btn {
       width: 100%;
-      min-height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-2));
-      text-decoration: none;
-      color: #fff;
-      display: grid;
-      grid-template-columns: 40px 1fr 20px;
-      align-items: center;
-      gap: 10px;
-      padding: 0 14px;
-      box-shadow: 0 12px 26px rgba(10,34,64,0.16);
-      margin-bottom: 14px;
     }
 
-    .review-star {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.10);
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .review-text {
-      text-align: left;
-      line-height: 1.1;
-    }
-
-    .review-text strong {
-      display: block;
-      font-size: 14px;
-      color: #fff;
-      margin-bottom: 3px;
-    }
-
-    .review-stars {
-      color: var(--gold-soft);
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .review-arrow {
-      font-size: 24px;
-      color: #fff;
-      text-align: right;
-    }
-
-    .main-btn {
-      width: 100%;
-      min-height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
-      text-decoration: none;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-size: 16px;
-      font-weight: 900;
-      box-shadow: 0 12px 26px rgba(10,34,64,0.16);
-      margin-bottom: 14px;
-      text-align: center;
-      padding: 0 14px;
-    }
-
-    .main-btn svg {
-      width: 22px;
-      height: 22px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0 18px;
-      margin: 4px 0 14px;
-    }
-
-    .section-title-wrap::before,
-    .section-title-wrap::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(202,162,79,0.9), transparent);
-    }
-
-    .section-title {
-      margin: 0;
-      white-space: nowrap;
-      text-align: center;
-      font-size: 17px;
-      font-weight: 900;
-      color: var(--navy);
-    }
-
-    .business-list {
-      display: grid;
-      gap: 14px;
-      padding: 0 18px 24px;
-    }
-
-    .business-card {
-      background: rgba(255,255,255,0.98);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: 0 12px 26px rgba(10,34,64,0.08);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .business-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy-soft));
-    }
-
-    .business-top {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .business-logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #fff;
-      border: 1px solid #edf1f5;
-      box-shadow: 0 8px 18px rgba(10,34,64,0.08);
-    }
-
-    .business-card strong {
-      display: block;
-      font-size: 18px;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-
-    .business-card span {
-      display: block;
-      color: #5a6578;
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .business-actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .small-btn {
-      min-height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 900;
-      text-align: center;
-      padding: 6px;
-    }
-
-    .small-btn.gold {
-      background: linear-gradient(135deg, #caa24f, #ae8737);
-    }
-
-    .nfc-card {
+    .premium-action.primary {
       background:
-        radial-gradient(circle at top right, rgba(202,162,79,0.10), transparent 24%),
-        linear-gradient(135deg, #0a2240, #123764);
-      border: 1px solid rgba(202,162,79,0.38);
-      color: #fff;
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 28%),
+        linear-gradient(135deg, #132f55, #07172d);
     }
 
-    .nfc-card::before {
-      background: linear-gradient(90deg, var(--gold), #fff3d1, var(--gold));
+    .premium-action.gold {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 28%),
+        linear-gradient(135deg, var(--gold), var(--gold-dark));
     }
 
-    .nfc-card strong,
-    .nfc-card span {
-      color: #fff;
-    }
-
-    .nfc-card span {
-      color: rgba(255,255,255,0.88);
-    }
-
-    .nfc-icon-box {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.10);
+    .premium-action-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.11);
       border: 1px solid rgba(255,255,255,0.16);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .nfc-icon-box svg {
-      width: 34px;
-      height: 34px;
+    .premium-action-icon svg {
+      width: 27px;
+      height: 27px;
       stroke: #fff;
       fill: none;
       stroke-width: 2;
@@ -466,51 +412,346 @@
       stroke-linejoin: round;
     }
 
-    .nfc-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-top: 12px;
+    .premium-action strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      line-height: 1.12;
     }
 
-    .nfc-feature {
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      padding: 10px 8px;
+    .premium-action span span {
+      display: block;
+      color: rgba(255,255,255,0.74);
+      font-size: 12.2px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .premium-action .arrow {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .experience-card,
+    .business-card,
+    .final-cta {
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.13), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.27);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .experience-card::before,
+    .business-card::before,
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    .experience-card {
+      padding: 17px;
+      margin-bottom: 14px;
+    }
+
+    .experience-header {
       text-align: center;
+      padding-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .experience-header strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .experience-header span {
+      color: rgba(255,255,255,0.70);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .face-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .face-choice {
+      min-height: 108px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.075);
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 6px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .face-choice.best {
+      border-color: rgba(255,227,160,0.44);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.18), transparent 30%),
+        rgba(255,255,255,0.085);
+    }
+
+    .face-choice:active {
+      transform: scale(0.96);
+    }
+
+    .face-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 8px;
+    }
+
+    .face-icon svg {
+      width: 50px;
+      height: 50px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .face-choice.best .face-icon svg {
+      stroke: var(--gold-light);
+    }
+
+    .face-label {
       font-size: 12px;
       font-weight: 900;
-      line-height: 1.25;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.2;
     }
 
-    .cta-card-btn {
-      width: 100%;
-      min-height: 52px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #caa24f, #ae8737);
+    .map-btn {
+      margin-top: 14px;
+    }
+
+    .business-list {
+      display: grid;
+      gap: 15px;
+      padding: 0 18px 26px;
+    }
+
+    .business-card {
+      padding: 17px;
+    }
+
+    .business-top {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .business-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid rgba(215,183,106,0.22);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+    }
+
+    .business-card strong {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .business-card span {
+      display: block;
+      color: rgba(255,255,255,0.68);
+      font-size: 13.4px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .business-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .small-btn {
+      min-height: 44px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.085);
+      border: 1px solid rgba(255,255,255,0.10);
       color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      padding: 7px;
+    }
+
+    .small-btn.gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-color: rgba(255,227,160,0.24);
+    }
+
+    .nfc-showcase {
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.24), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(23,68,111,0.45), transparent 30%),
+        linear-gradient(145deg, #050505, #0e1420 48%, #111111);
+      border-color: rgba(255,227,160,0.36);
+    }
+
+    .nfc-icon-box {
+      width: 76px;
+      height: 76px;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,227,160,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nfc-icon-box svg {
+      width: 38px;
+      height: 38px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nfc-benefits {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .nfc-benefit {
+      min-height: 58px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 8px;
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .final-cta {
+      padding: 20px;
+      margin: 0 18px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.28), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(23,68,111,0.44), transparent 30%),
+        linear-gradient(145deg, #0c0c0d, #17120a 52%, #070707);
+      text-align: center;
+      border-color: rgba(255,227,160,0.42);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.40);
+    }
+
+    .final-cta .mini {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,227,160,0.25);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .final-cta h2 {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+      font-weight: 900;
+    }
+
+    .final-cta p {
+      margin: 0 0 15px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .final-cta-btn {
+      width: 100%;
+      min-height: 66px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 30%),
+        linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      color: #1a1205;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
       font-size: 15px;
       font-weight: 900;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      line-height: 1.2;
+      box-shadow: 0 18px 38px rgba(0,0,0,0.30);
+      padding: 10px 14px;
+    }
+
+    .final-cta-btn small {
+      display: block;
+      font-size: 11px;
+      font-weight: 900;
+      opacity: 0.82;
     }
 
     .footer {
-      padding: 0 18px 28px;
+      padding: 0 18px 32px;
       text-align: center;
-      color: #7a8596;
+      color: rgba(255,255,255,0.45);
       font-size: 11px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .footer a {
-      color: var(--navy-soft);
-      font-weight: 800;
+      color: var(--gold-light);
+      font-weight: 900;
       text-decoration: none;
     }
 
@@ -526,16 +767,19 @@
 
     .install-btn {
       width: 100%;
-      min-height: 62px;
+      min-height: 64px;
       border: 0;
-      border-radius: 16px;
-      background: var(--green);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 26%),
+        linear-gradient(135deg, #2fad49, #188232);
       color: #fff;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.40);
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
+      border: 1px solid rgba(255,255,255,0.20);
     }
 
     .install-btn:active {
@@ -547,7 +791,7 @@
       position: fixed;
       inset: 0;
       z-index: 10000;
-      background: rgba(0,0,0,0.64);
+      background: rgba(0,0,0,0.72);
       padding: 20px;
       align-items: center;
       justify-content: center;
@@ -556,33 +800,38 @@
     .modal-box {
       width: 100%;
       max-width: 380px;
-      background: #fff;
-      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 30%),
+        linear-gradient(145deg, #111111, #050505);
+      border: 1px solid rgba(255,227,160,0.30);
+      border-radius: 30px;
       padding: 24px 20px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.58);
     }
 
     .modal-box h2 {
       margin: 0 0 12px;
-      color: var(--navy);
+      color: var(--gold-light);
       font-size: 23px;
+      font-weight: 900;
     }
 
     .modal-box p {
       margin: 0;
-      color: #3f4a5e;
+      color: rgba(255,255,255,0.74);
       font-size: 15px;
       line-height: 1.55;
+      font-weight: 700;
     }
 
     .modal-action {
       width: 100%;
-      min-height: 48px;
+      min-height: 50px;
       border: 0;
-      border-radius: 12px;
+      border-radius: 16px;
       margin-top: 12px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
+      background: linear-gradient(135deg, var(--blue), var(--blue-soft));
       color: #fff;
       font-size: 15px;
       font-weight: 900;
@@ -591,295 +840,72 @@
     }
 
     .modal-action.gold {
-      background: linear-gradient(135deg, #caa24f, #ae8737);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
     }
 
     .close-btn {
       width: 100%;
-      min-height: 46px;
+      min-height: 48px;
       border: 0;
-      border-radius: 12px;
+      border-radius: 16px;
       margin-top: 10px;
-      background: #111827;
+      background: rgba(255,255,255,0.12);
       color: #fff;
       font-size: 15px;
       font-weight: 800;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
-    }
-
-
-    .profile-tools {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .profile-action-btn {
-      width: 100%;
-      min-height: 72px;
-      border: 0;
-      border-radius: 20px;
-      text-decoration: none;
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-      display: grid;
-      grid-template-columns: 52px 1fr 22px;
-      align-items: center;
-      gap: 13px;
-      padding: 13px 16px;
-      text-align: left;
-      box-shadow: 0 16px 34px rgba(10,34,64,0.18);
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .profile-action-btn strong {
-      display: block;
-      font-size: 16px;
-      line-height: 1.15;
-      margin-bottom: 4px;
-    }
-
-    .profile-action-btn span {
-      display: block;
-      font-size: 12px;
-      line-height: 1.25;
-      opacity: 0.88;
-      font-weight: 700;
-    }
-
-    .profile-action-btn .arrow {
-      font-size: 25px;
-      font-weight: 900;
-      text-align: right;
-      line-height: 1;
-    }
-
-    .profile-action-btn.primary {
-      background: linear-gradient(135deg, var(--navy), var(--navy-3));
-      color: #fff;
-    }
-
-    .profile-action-btn.dark {
-      background: linear-gradient(135deg, #101827, #25334b);
-      color: #fff;
-    }
-
-    .profile-action-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      place-self: center;
-      flex: 0 0 52px;
-    }
-
-    .profile-action-icon svg {
-      width: 26px;
-      height: 26px;
-      display: block;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      margin: auto;
-    }
-
-    .experience-card {
-      background:
-        radial-gradient(circle at top right, rgba(202,162,79,0.12), transparent 26%),
-        linear-gradient(180deg, #ffffff, #f8fafc);
-      border: 1px solid rgba(10,34,64,0.10);
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: 0 14px 32px rgba(10,34,64,0.12);
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .experience-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
-    }
-
-    .experience-header {
-      text-align: center;
-      padding-top: 4px;
-      margin-bottom: 14px;
-    }
-
-    .experience-header strong {
-      display: block;
-      color: var(--navy);
-      font-size: 17px;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    .experience-header span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
-    .face-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .face-choice {
-      border: 1px solid rgba(10,34,64,0.12);
-      background: #fff;
-      border-radius: 18px;
-      min-height: 104px;
-      text-decoration: none;
-      color: var(--navy);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 10px 6px;
-      box-shadow: 0 10px 22px rgba(10,34,64,0.08);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-    }
-
-    .face-choice:active {
-      transform: scale(0.97);
-    }
-
-    .face-choice:hover {
-      border-color: rgba(202,162,79,0.65);
-      box-shadow: 0 14px 28px rgba(10,34,64,0.13);
-    }
-
-    .face-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 8px;
-    }
-
-    .face-icon svg {
-      width: 48px;
-      height: 48px;
-      stroke: var(--navy);
-      fill: none;
-      stroke-width: 2.1;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .face-label {
-      width: 100%;
-      display: block;
-      font-size: 12px;
-      font-weight: 900;
-      color: #2b374a;
-      text-align: center;
-      line-height: 1.2;
-      padding: 0 2px;
-    }
-
-    .face-choice.best {
-      background: linear-gradient(180deg, #ffffff, #fffaf0);
-      border-color: rgba(202,162,79,0.55);
-    }
-
-    .face-choice.best .face-icon svg {
-      stroke: #ae8737;
-    }
-
-    .face-choice.best .face-label {
-      color: #8a6824;
-    }
-
-    .review-note {
-      margin: 12px 0 0;
-      text-align: center;
-      font-size: 11.5px;
-      color: var(--muted);
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
-    .business-card.nfc-card {
-      box-shadow: 0 16px 34px rgba(10,34,64,0.18);
-    }
-
-    .nfc-cta-title {
-      margin: 16px 0 8px;
-      font-size: 15px;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-    }
-
-    .nfc-cta-subtitle {
-      margin: 0 0 12px;
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.86);
-      line-height: 1.4;
-      text-align: center;
-    }
-
-    .cta-card-btn {
-      min-height: 58px;
-      flex-direction: column;
-      gap: 3px;
-      padding: 10px 14px;
-      line-height: 1.2;
-    }
-
-    .cta-card-btn small {
-      display: block;
-      font-size: 11px;
-      font-weight: 800;
-      opacity: 0.92;
     }
 
     @media (max-width: 380px) {
-      .icon-grid {
-        gap: 15px 4px;
-        padding-left: 10px;
-        padding-right: 10px;
+      .cover {
+        height: 245px;
       }
 
-      .navy-icon {
-        width: 47px;
-        height: 47px;
+      .hero-message h2 {
+        font-size: 22px;
       }
 
-      .navy-icon svg {
-        width: 21px;
-        height: 21px;
-      }
-
-      .icon-link {
-        font-size: 11px;
+      .top-badge,
+      .top-badge-light {
+        font-size: 10px;
+        padding: 8px 9px;
       }
 
       h1 {
         font-size: 28px;
       }
 
-      .main-subtitle {
-        font-size: 16px;
+      .quick-grid {
+        gap: 12px 4px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .quick-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 17px;
+      }
+
+      .quick-link {
+        font-size: 10.5px;
+      }
+
+      .premium-action {
+        grid-template-columns: 52px 1fr 18px;
+        padding: 13px;
+        gap: 10px;
+      }
+
+      .premium-action-icon {
+        width: 52px;
+        height: 52px;
       }
 
       .install-btn {
-        font-size: 16px;
+        font-size: 15.5px;
       }
     }
   </style>
@@ -889,20 +915,45 @@
   <main class="page">
 
     <section class="cover">
-      <div class="top-badge">Premium Digital Profile</div>
+      <div class="top-bar">
+        <div class="top-badge">Premium NFC Profile</div>
+        <div class="top-badge-light">Digital Card</div>
+      </div>
+
+      <div class="hero-message">
+        <div class="hero-kicker">One tap experience</div>
+        <h2>Η επαγγελματική σου παρουσία, σε μία premium digital εμπειρία.</h2>
+        <p>
+          Με NFC βραχιόλι, μπρελόκ ή QR, ο πελάτης βλέπει άμεσα επαφές, social, χάρτη, review και υπηρεσίες.
+        </p>
+      </div>
     </section>
 
     <section class="profile-section">
-      <img src="andreas-profile.jpg.jpeg" alt="Ανδρέας Λάζαρος" class="profile-img">
+      <div class="profile-ring">
+        <img src="andreas-profile.jpg.jpeg" alt="Ανδρέας Λάζαρος" class="profile-img">
+      </div>
+
       <h1>Ανδρέας Λάζαρος</h1>
       <p class="main-subtitle">CarBridge Europe • Jewel Art • NFC Business Solutions</p>
       <div class="gold-line"></div>
+
+      <div class="premium-intro">
+        <strong>Αυτό είναι ένα ολοκληρωμένο premium digital profile.</strong>
+        <span>
+          Ένα παράδειγμα του πώς μπορεί να παρουσιαστεί ένας επαγγελματίας ή μία επιχείρηση μέσα από NFC τεχνολογία, με καθαρή εικόνα, άμεση επικοινωνία και δυνατότητα Google Review.
+        </span>
+      </div>
     </section>
 
-    <section class="icon-grid">
+    <div class="section-label">
+      <h2>Άμεση επικοινωνία</h2>
+    </div>
 
-      <a class="icon-link" href="mailto:carbridgefr@gmail.com">
-        <div class="navy-icon">
+    <section class="quick-grid">
+
+      <a class="quick-link" href="mailto:carbridgefr@gmail.com">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="5" width="18" height="14" rx="2"></rect>
             <path d="M4 7l8 6 8-6"></path>
@@ -911,8 +962,8 @@
         Email
       </a>
 
-      <a class="icon-link" href="tel:+306988128099">
-        <div class="navy-icon">
+      <a class="quick-link" href="tel:+306988128099">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.2 19.2 0 0 1-5.9-5.9A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path>
           </svg>
@@ -920,8 +971,8 @@
         Call
       </a>
 
-      <a class="icon-link" href="sms:+306988128099">
-        <div class="navy-icon">
+      <a class="quick-link" href="sms:+306988128099">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
@@ -929,8 +980,8 @@
         SMS
       </a>
 
-      <a class="icon-link" href="viber://chat?number=%2B306988128099">
-        <div class="navy-icon">
+      <a class="quick-link" href="viber://chat?number=%2B306988128099">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M8 4h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4h-2l-4 4v-4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"></path>
             <path d="M9.5 9.5c.4 2.2 2.2 4 4.4 4.4"></path>
@@ -940,8 +991,8 @@
         Viber
       </a>
 
-      <a class="icon-link" href="https://wa.me/306988128099">
-        <div class="navy-icon">
+      <a class="quick-link" href="https://wa.me/306988128099">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l.9-4.3A8 8 0 1 1 20 12z"></path>
             <path d="M9.8 9.3c.3 1.8 1.7 3.2 3.5 3.5"></path>
@@ -950,8 +1001,8 @@
         WhatsApp
       </a>
 
-      <a class="icon-link" href="https://www.facebook.com/profile.php?id=61580015963969">
-        <div class="navy-icon">
+      <a class="quick-link" href="https://www.facebook.com/profile.php?id=61580015963969">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M14 8h2V4h-2c-2.2 0-4 1.8-4 4v2H8v4h2v6h4v-6h2.5l.5-4H14V8c0-.6.4-1 1-1z"></path>
           </svg>
@@ -959,8 +1010,8 @@
         Facebook
       </a>
 
-      <a class="icon-link" href="https://www.instagram.com/lazaros_jewelart/">
-        <div class="navy-icon">
+      <a class="quick-link" href="https://www.instagram.com/lazaros_jewelart/">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <rect x="4" y="4" width="16" height="16" rx="4"></rect>
             <circle cx="12" cy="12" r="3.5"></circle>
@@ -970,8 +1021,8 @@
         Instagram
       </a>
 
-      <a class="icon-link" href="https://www.tiktok.com/@car_bridge.gr">
-        <div class="navy-icon">
+      <a class="quick-link" href="https://www.tiktok.com/@car_bridge.gr">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M14 4v8.5a3.5 3.5 0 1 1-3.5-3.5"></path>
             <path d="M14 4c1 1.8 2.7 3 5 3"></path>
@@ -980,8 +1031,8 @@
         TikTok
       </a>
 
-      <a class="icon-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49">
-        <div class="navy-icon">
+      <a class="quick-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
             <circle cx="12" cy="10" r="2.5"></circle>
@@ -990,8 +1041,8 @@
         Map
       </a>
 
-      <a class="icon-link" href="create-card.html">
-        <div class="navy-icon">
+      <a class="quick-link" href="create-card.html">
+        <div class="quick-icon">
           <svg viewBox="0 0 24 24">
             <path d="M12 5v14"></path>
             <path d="M5 12h14"></path>
@@ -1004,10 +1055,10 @@
 
     <section class="main-actions">
 
-      <div class="profile-tools">
-        <button class="profile-action-btn primary" onclick="downloadVCard()">
-          <span class="profile-action-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+      <div class="action-stack">
+        <button class="premium-action primary" onclick="downloadVCard()">
+          <span class="premium-action-icon">
+            <svg viewBox="0 0 24 24">
               <circle cx="12" cy="8" r="3.4"></circle>
               <path d="M5.8 20.5c.8-3.8 3.2-6 6.2-6s5.4 2.2 6.2 6"></path>
               <path d="M18.2 5.6v4.6"></path>
@@ -1016,14 +1067,14 @@
           </span>
           <span>
             <strong>Αποθήκευση στις επαφές</strong>
-            <span>Κράτησε άμεσα τη digital card στο κινητό σου</span>
+            <span>Κράτησε τη digital card στο κινητό σου</span>
           </span>
           <span class="arrow">›</span>
         </button>
 
-        <a class="profile-action-btn dark" href="#" onclick="sharePage(); return false;">
-          <span class="profile-action-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a class="premium-action" href="#" onclick="sharePage(); return false;">
+          <span class="premium-action-icon">
+            <svg viewBox="0 0 24 24">
               <circle cx="17" cy="7" r="2.8"></circle>
               <circle cx="7" cy="12" r="2.8"></circle>
               <circle cx="17" cy="17" r="2.8"></circle>
@@ -1082,21 +1133,26 @@
             <span class="face-label">Άριστη</span>
           </a>
         </div>
-
       </div>
 
-      <a class="main-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
-          <circle cx="12" cy="10" r="2.5"></circle>
-        </svg>
-        Google Map
+      <a class="premium-action gold map-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" target="_self">
+        <span class="premium-action-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </span>
+        <span>
+          <strong>Google Map</strong>
+          <span>Δες την τοποθεσία και οδηγίες διαδρομής</span>
+        </span>
+        <span class="arrow">›</span>
       </a>
 
     </section>
 
-    <div class="section-title-wrap">
-      <h2 class="section-title">Οι δραστηριότητές μου</h2>
+    <div class="section-label">
+      <h2>Δραστηριότητες</h2>
     </div>
 
     <section class="business-list">
@@ -1139,7 +1195,7 @@
         </div>
       </article>
 
-      <article class="business-card nfc-card">
+      <article class="business-card nfc-showcase">
         <div class="business-top">
           <div class="nfc-icon-box">
             <svg viewBox="0 0 24 24">
@@ -1152,31 +1208,34 @@
           <div>
             <strong>NFC Business Solutions</strong>
             <span>
-              Ψηφιακές business cards που ανοίγουν με NFC βραχιόλι, NFC μπρελόκ ή QR, ώστε ο πελάτης να βλέπει άμεσα επαφές, social, χάρτη, review και υπηρεσίες.
+              Το προφίλ μπορεί να ανοίγει με NFC βραχιόλι, NFC μπρελόκ ή QR και να λειτουργεί σαν ολοκληρωμένη παρουσίαση για την επιχείρησή σου.
             </span>
           </div>
         </div>
 
-        <div class="nfc-features">
-          <div class="nfc-feature">NFC βραχιόλι</div>
-          <div class="nfc-feature">NFC μπρελόκ</div>
-          <div class="nfc-feature">Digital profile</div>
-          <div class="nfc-feature">Google Review</div>
-          <div class="nfc-feature">Google Map</div>
-          <div class="nfc-feature">Social links</div>
+        <div class="nfc-benefits">
+          <div class="nfc-benefit">Επαφές & social</div>
+          <div class="nfc-benefit">Google Review</div>
+          <div class="nfc-benefit">Google Map</div>
+          <div class="nfc-benefit">Website & βίντεο</div>
+          <div class="nfc-benefit">Προσφορές</div>
+          <div class="nfc-benefit">Προφίλ πελάτη</div>
         </div>
-
-        <div class="nfc-cta-title">Φτιάξε τη δική σου digital card</div>
-        <p class="nfc-cta-subtitle">
-          Επαγγελματικό προφίλ με NFC, QR, social, Google Review, χάρτη και κουμπιά επικοινωνίας.
-        </p>
-
-        <a class="cta-card-btn" href="create-card.html" target="_self">
-          Δες πακέτα digital card
-          <small>Επίλεξε το πακέτο που σε ενδιαφέρει</small>
-        </a>
       </article>
 
+    </section>
+
+    <section class="final-cta">
+      <span class="mini">Για πελάτες που θέλουν κάτι ξεχωριστό</span>
+      <h2>Θες ένα digital προφίλ σαν αυτό για τη δική σου επιχείρηση;</h2>
+      <p>
+        Δες πραγματικά παραδείγματα από πελάτες μας και πάρε ιδέα για το πώς μπορεί να παρουσιαστεί η δική σου επιχείρηση με NFC βραχιόλι, μπρελόκ ή QR.
+      </p>
+
+      <a class="final-cta-btn" href="create-card.html" target="_self">
+        Δες παρόμοια digital προφίλ πελατών μας
+        <small>Παραδείγματα, δυνατότητες και επιλογές δημιουργίας</small>
+      </a>
     </section>
 
     <footer class="footer">
