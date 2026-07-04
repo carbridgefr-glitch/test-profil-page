@@ -1,23 +1,11 @@
-const CACHE_NAME = "andreas-business-card-v3";
+const CACHE_NAME = "andreas-lazaros-profile-v2";
 
 const FILES_TO_CACHE = [
   "./",
-  "index.html",
-  "manifest.json",
-  "andreas-profile.jpg.jpeg",
-  "carbridge-logo.png.png",
-  "jewelart-logo.png.jpeg",
-  "cover.jpg.jpg",
-  "gmail.jpg",
-  "call.jpg",
-  "sms.jpg",
-  "viber.jpg",
-  "watsapp.jpg",
-  "facebook.jpg",
-  "instagram.jpg",
-  "tiktok.jpg",
-  "googlemap.jpg",
-  "googlereview.jpg"
+  "./index.html",
+  "./manifest.json",
+  "./andreas-profile.jpg.jpeg",
+  "./andreas-lazaros-carbridge.vcf"
 ];
 
 self.addEventListener("install", function (event) {
@@ -32,11 +20,11 @@ self.addEventListener("install", function (event) {
 
 self.addEventListener("activate", function (event) {
   event.waitUntil(
-    caches.keys().then(function (keys) {
+    caches.keys().then(function (cacheNames) {
       return Promise.all(
-        keys.map(function (key) {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
+        cacheNames.map(function (cacheName) {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
           }
         })
       );
@@ -47,16 +35,7 @@ self.addEventListener("activate", function (event) {
 });
 
 self.addEventListener("fetch", function (event) {
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      fetch(event.request, { cache: "no-store" })
-        .then(function (response) {
-          return response;
-        })
-        .catch(function () {
-          return caches.match("index.html");
-        })
-    );
+  if (event.request.method !== "GET") {
     return;
   }
 
