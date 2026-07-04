@@ -1231,8 +1231,8 @@
     <div class="modal-box">
       <h2>Κράτησε το προφίλ στο κινητό σου</h2>
       <p>
-        Σε Android μπορείς να εγκαταστήσεις το προφίλ στην αρχική οθόνη.<br><br>
-        Σε iPhone μπορείς να το αποθηκεύσεις άμεσα στις επαφές σου ή να σου στείλεις το link με email για να το βρίσκεις εύκολα όποτε το χρειάζεσαι.
+        Σε Android μπορείς να εγκαταστήσεις το προφίλ στην αρχική οθόνη, όταν το υποστηρίζει ο browser.<br><br>
+        Σε iPhone ανοίγει έτοιμη επαφή vCard. Πάτα αποθήκευση και μετά θα βρίσκεις το προφίλ ψάχνοντας Andreas Lazaros, Ανδρέας Λάζαρος ή CarBridge.
       </p>
 
       <button class="modal-action" onclick="downloadVCard()">
@@ -1249,12 +1249,22 @@
 
   <script>
     let deferredPrompt;
+    const VCF_FILE = "andreas-lazaros-carbridge.vcf";
+
+    function isIOSDevice() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    }
+
+    function isAndroidDevice() {
+      return /Android/i.test(navigator.userAgent);
+    }
 
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("service-worker.js").then(function(registration) {
           registration.update();
-        });
+        }).catch(function() {});
       });
     }
 
@@ -1264,13 +1274,19 @@
     });
 
     document.getElementById("installButton").addEventListener("click", async function () {
-      if (deferredPrompt) {
+      if (isIOSDevice()) {
+        saveContactFile();
+        return;
+      }
+
+      if (isAndroidDevice() && deferredPrompt) {
         deferredPrompt.prompt();
         await deferredPrompt.userChoice;
         deferredPrompt = null;
-      } else {
-        document.getElementById("installModal").style.display = "flex";
+        return;
       }
+
+      document.getElementById("installModal").style.display = "flex";
     });
 
     function closeModal() {
@@ -1282,8 +1298,8 @@
         navigator.share({
           title: "Ανδρέας Λάζαρος | Digital Business Card",
           text: "Δες την ψηφιακή επαγγελματική κάρτα του Ανδρέα Λάζαρου.",
-          url: window.location.href
-        });
+          url: "https://carbridgefr-glitch.github.io/test-profil-page/"
+        }).catch(function() {});
       } else {
         alert("Αντιγράψτε το link της σελίδας από τον browser.");
       }
@@ -1300,29 +1316,12 @@
       window.location.href = "mailto:?subject=" + subject + "&body=" + body;
     }
 
+    function saveContactFile() {
+      window.location.href = VCF_FILE;
+    }
+
     function downloadVCard() {
-      const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:Ανδρέας Λάζαρος | Digital Card
-ORG:CarBridge Europe;lazaros_jewelart;NFC Business Solutions
-TITLE:Founder
-TEL;TYPE=CELL:+306988128099
-EMAIL:carbridgefr@gmail.com
-URL:https://carbridgefr-glitch.github.io/test-profil-page/
-NOTE:Ψηφιακή κάρτα Ανδρέας Λάζαρος. Άνοιξε το προφίλ εδώ: https://carbridgefr-glitch.github.io/test-profil-page/
-END:VCARD`;
-
-      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-
-      link.href = url;
-      link.download = "andreas-lazaros-digital-card.vcf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      URL.revokeObjectURL(url);
+      saveContactFile();
     }
   </script>
 </body>
