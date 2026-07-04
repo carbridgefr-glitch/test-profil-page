@@ -1,12 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
 N:Lazaros;Andreas;;;
-FN:Andreas Lazaros - Ανδρέας Λάζαρος - CarBridge
-NICKNAME:Andreas,Ανδρέας,Lazaros,Λάζαρος,CarBridge,Car Bridge,CarBridge Europe,lazaros_jewelart,NFC
-ORG:CarBridge Europe
-TITLE:Andreas Lazaros | Ανδρέας Λάζαρος | CarBridge | NFC Business Solutions
+FN:Andreas Lazaros
+NICKNAME:Andreas Lazaros,Ανδρέας Λάζαρος,Andreas,Ανδρέας,Lazaros,Λάζαρος,CarBridge,Car Bridge,Cardbridge,DigitalCard,Digital Card,JewelArt,lazaros_jewelart,NFC
+ORG:CarBridge Europe; DigitalCard; JewelArt
+TITLE:CarBridge Europe | DigitalCard | JewelArt | NFC Business Solutions
 TEL;TYPE=CELL:+306988128099
 EMAIL;TYPE=INTERNET:carbridgefr@gmail.com
 URL:https://carbridgefr-glitch.github.io/test-profil-page/
-NOTE:Andreas Lazaros, Ανδρέας Λάζαρος, Lazaros, Λάζαρος, CarBridge, Car Bridge, CarBridge Europe, lazaros_jewelart, NFC Business Solutions, Digital Profile. Link: https://carbridgefr-glitch.github.io/test-profil-page/
+NOTE:Andreas Lazaros, Ανδρέας Λάζαρος, CarBridge, Car Bridge, Cardbridge, DigitalCard, Digital Card, JewelArt, lazaros_jewelart, NFC Business Solutions. Digital Profile: https://carbridgefr-glitch.github.io/test-profil-page/
 END:VCARD
