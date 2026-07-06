@@ -226,15 +226,14 @@
     .choice-btn {
       width: 100%;
       min-height: 126px;
-      padding: 20px 18px;
+      padding: 22px 18px;
       border: 0;
       border-radius: 28px;
-      display: grid;
-      grid-template-columns: 54px 1fr;
-      grid-template-rows: auto auto;
-      column-gap: 14px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      text-align: left;
+      justify-content: center;
+      text-align: center;
       color: #fff;
       cursor: pointer;
       background:
@@ -259,32 +258,21 @@
     .choice-btn.partner {
       background:
         radial-gradient(circle at top right, rgba(255,255,255,.28), transparent 30%),
-        linear-gradient(135deg, #ef4135, #d52635);
+        linear-gradient(135deg, #19c6a3, #0b8e8b);
     }
 
     .choice-btn:active {
       transform: scale(.985);
     }
 
-    .choice-num {
-      grid-row: 1 / span 2;
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,.20);
-      border: 1px solid rgba(255,255,255,.50);
-      font-size: 16px;
-      font-weight: 900;
-    }
-
     .choice-btn strong {
       display: block;
+      max-width: 390px;
       font-size: 22px;
       line-height: 1.08;
       font-weight: 900;
       letter-spacing: -.35px;
+      text-align: center;
     }
 
     .choice-action {
@@ -748,6 +736,36 @@
       background: #fff;
     }
 
+    .footer-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      margin-bottom: 12px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #23b7ff, #0077ff);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(0,104,230,.18);
+    }
+
+    .footer-powered {
+      display: block;
+      margin-top: 2px;
+    }
+
+    .email-note {
+      margin: 2px 0 0;
+      color: #607189;
+      font-size: 11.5px;
+      line-height: 1.4;
+      text-align: center;
+      font-weight: 700;
+    }
+
     @media (max-width: 380px) {
       .section-title { font-size: 26px; }
       .choice-btn { min-height: 118px; padding: 18px 14px; }
@@ -794,25 +812,21 @@
 
       <div class="choice-grid">
         <button class="choice-btn" type="button" onclick="openFlow('buy')">
-          <span class="choice-num">01</span>
           <strong>Θέλω να αγοράσω αυτοκίνητο</strong>
           <span class="choice-action">Πάτα εδώ</span>
         </button>
 
         <button class="choice-btn sell" type="button" onclick="openFlow('sell')">
-          <span class="choice-num">02</span>
           <strong>Θέλω να πουλήσω το αυτοκίνητό μου</strong>
           <span class="choice-action">Πάτα εδώ</span>
         </button>
 
         <button class="choice-btn available" type="button" onclick="openFlow('available')">
-          <span class="choice-num">03</span>
           <strong>Διαθέσιμα αυτοκίνητα</strong>
           <span class="choice-action">Πάτα εδώ</span>
         </button>
 
         <button class="choice-btn partner" type="button" onclick="openFlow('partner')">
-          <span class="choice-num">04</span>
           <strong>Θέλω συνεργασία</strong>
           <span class="choice-action">Πάτα εδώ</span>
         </button>
@@ -919,12 +933,13 @@
     </section>
 
     <footer class="footer">
-      Powered by NFCSolutions.gr
+      <a class="footer-back" href="index.html">← Πίσω στο προφίλ NFC</a>
+      <span class="footer-powered">Powered by NFCSolutions.gr</span>
     </footer>
   </main>
 
   <script>
-    const FORM_ENDPOINT = "https://formsubmit.co/ajax/carbridgefr@gmail.com";
+    const CARBRIDGE_EMAIL = "carbridgefr@gmail.com";
 
     const vehicles = [
       // Παράδειγμα για αργότερα:
@@ -1006,6 +1021,7 @@
           <div class="field"><label>Email</label><input name="Email πελάτη" type="email" placeholder="Προαιρετικά"></div>
           <label class="consent"><input type="checkbox" required><span>Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου μόνο για επικοινωνία σχετικά με το αίτημά μου.</span></label>
           <button class="submit-btn" type="submit">Στείλε το αίτημά μου στην CarBridge</button>
+          <p class="email-note">Θα ανοίξει το email σου με έτοιμα όλα τα στοιχεία. Πατάς μόνο Αποστολή.</p>
           <div class="form-status" aria-live="polite"></div>
         </form>
       `;
@@ -1014,53 +1030,48 @@
       assistant.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    async function submitLead(event, type) {
+    function submitLead(event, type) {
       event.preventDefault();
       const form = event.currentTarget;
-      const button = form.querySelector(".submit-btn");
       const status = form.querySelector(".form-status");
-
-      button.disabled = true;
-      button.textContent = "Αποστολή...";
-      status.className = "form-status";
-      status.textContent = "";
-
       const formData = new FormData(form);
-      const payload = {
-        "Τύπος αιτήματος": flowConfig[type].title,
-        "Σελίδα": "CarBridge Europe",
-        "Ημερομηνία": new Date().toLocaleString("el-GR"),
-        "_subject": "ΝΕΟ ΑΙΤΗΜΑ CARBRIDGE - " + flowConfig[type].title,
-        "_template": "table"
-      };
+
+      const lines = [
+        "ΝΕΟ ΑΙΤΗΜΑ CARBRIDGE",
+        "",
+        "Τύπος αιτήματος: " + flowConfig[type].title,
+        "Ημερομηνία: " + new Date().toLocaleString("el-GR"),
+        ""
+      ];
 
       formData.forEach((value, key) => {
-        payload[key] = value;
+        const clean = String(value).trim();
+        if (clean) lines.push(key + ": " + clean);
       });
 
-      try {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(payload)
-        });
+      lines.push("", "Στάλθηκε από τη σελίδα CarBridge Europe.");
 
-        const data = await response.json();
-        if (!response.ok || data.success === "false") throw new Error("Submission failed");
+      const subject = encodeURIComponent("ΝΕΟ ΑΙΤΗΜΑ CARBRIDGE - " + flowConfig[type].title);
+      const body = encodeURIComponent(lines.join("\n"));
 
-        form.reset();
-        status.className = "form-status success";
-        status.textContent = "✓ Το αίτημά σου στάλθηκε. Ο Ανδρέας θα δει ακριβώς τι χρειάζεσαι και θα επικοινωνήσει μαζί σου.";
-      } catch (error) {
-        status.className = "form-status error";
-        status.textContent = "Δεν ολοκληρώθηκε η αποστολή. Δοκίμασε ξανά ή κάλεσε στο 698 812 8099.";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Στείλε το αίτημά μου στην CarBridge";
-      }
+      status.className = "form-status success";
+      status.textContent = "✓ Το αίτημά σου είναι έτοιμο. Άνοιξε το email σου και πάτησε Αποστολή.";
+
+      setTimeout(function () {
+        window.location.href = `mailto:${CARBRIDGE_EMAIL}?subject=${subject}&body=${body}`;
+      }, 250);
+    }
+
+    function buildVehicleEmail(vehicle) {
+      const subject = encodeURIComponent("ΕΝΔΙΑΦΕΡΟΝ ΓΙΑ ΔΙΑΘΕΣΙΜΟ ΟΧΗΜΑ - " + vehicle.title);
+      const body = encodeURIComponent(
+        "Καλησπέρα,\n\nΜε ενδιαφέρει το διαθέσιμο όχημα:\n" +
+        vehicle.title + "\n" +
+        vehicle.meta + "\n" +
+        "Τιμή: " + vehicle.price + "\n\n" +
+        "Θα ήθελα περισσότερες πληροφορίες."
+      );
+      return `mailto:${CARBRIDGE_EMAIL}?subject=${subject}&body=${body}`;
     }
 
     function renderVehicles() {
@@ -1085,7 +1096,7 @@
             <div class="vehicle-price">${vehicle.price}</div>
             <div class="vehicle-actions">
               <a class="vehicle-action" href="${vehicle.link}">Δες το αυτοκίνητο</a>
-              <a class="vehicle-action primary" href="https://wa.me/306988128099?text=${encodeURIComponent('Με ενδιαφέρει το ' + vehicle.title)}">Με ενδιαφέρει</a>
+              <a class="vehicle-action primary" href="${buildVehicleEmail(vehicle)}">Με ενδιαφέρει</a>
             </div>
           </div>
         </article>
