@@ -423,11 +423,49 @@
     }
 
     .quick-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: #fff;
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    .quick-icon.call {
+      background: linear-gradient(135deg, #2387ff, #0f5fc7);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.whatsapp {
+      background: linear-gradient(135deg, #35d66f, #159447);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.sms {
+      background: linear-gradient(135deg, #4aa8ff, #1d6fd1);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.viber {
+      background: linear-gradient(135deg, #8d66d8, #5d36a8);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.email {
+      background: linear-gradient(135deg, #f06a72, #b93445);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.map {
+      background: linear-gradient(135deg, #ff6a5f, #d63732);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon .icon-fill {
+      fill: #ffffff;
+    }
+
+    .quick-icon .icon-stroke {
       fill: none;
-      stroke-width: 2;
+      stroke: #ffffff;
+      stroke-width: 1.9;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -1181,60 +1219,62 @@
 
     <section class="quick-grid">
 
-      <a class="quick-link" href="tel:+306988128099">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.2 19.2 0 0 1-5.9-5.9A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path>
+      <a class="quick-link" href="tel:+306988128099" aria-label="Κλήση">
+        <div class="quick-icon call">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M6.7 2.5h2.5c.6 0 1.1.4 1.2 1l.6 3c.1.5-.1 1-.5 1.3L8.9 9.4a14.7 14.7 0 0 0 5.7 5.7l1.6-1.6c.4-.4.9-.5 1.3-.4l3 .6c.6.1 1 .6 1 1.2v2.5c0 .7-.5 1.2-1.2 1.3C10.5 19.5 4.5 13.5 5.4 3.7c.1-.7.6-1.2 1.3-1.2z"/>
           </svg>
         </div>
         Call
       </a>
 
-      <a class="quick-link" href="https://wa.me/306988128099">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l.9-4.3A8 8 0 1 1 20 12z"></path>
-            <path d="M9.8 9.3c.3 1.8 1.7 3.2 3.5 3.5"></path>
+      <a class="quick-link" href="https://wa.me/306988128099" aria-label="WhatsApp">
+        <div class="quick-icon whatsapp">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.3a9.4 9.4 0 0 0-8 14.4L2.8 21l4.4-1.2A9.4 9.4 0 1 0 12 2.3zm0 15.3c-1.2 0-2.4-.4-3.4-1l-.2-.1-2.6.7.7-2.5-.2-.3A5.9 5.9 0 1 1 12 17.6zm3.2-4.4c-.2-.1-1.1-.6-1.3-.6-.2-.1-.4-.1-.5.1-.2.2-.5.6-.6.8-.1.1-.2.2-.4.1-1.2-.5-2-1-2.8-2.3-.2-.3.2-.3.5-1 .1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 4 3.4 1.5.6 2.1.6 2.8.5.4-.1 1.1-.5 1.3-.9.2-.4.2-.8.1-.9-.1-.2-.3-.2-.5-.3z"/>
           </svg>
         </div>
         WhatsApp
       </a>
 
-      <a class="quick-link" href="sms:+306988128099">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <a class="quick-link" href="sms:+306988128099" aria-label="SMS">
+        <div class="quick-icon sms">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M4.2 4h15.6A2.2 2.2 0 0 1 22 6.2v9.6a2.2 2.2 0 0 1-2.2 2.2H9l-5.5 3.2.9-3.2h-.2A2.2 2.2 0 0 1 2 15.8V6.2A2.2 2.2 0 0 1 4.2 4z"/>
+            <circle cx="8" cy="11" r="1" fill="#2c7bd8"/>
+            <circle cx="12" cy="11" r="1" fill="#2c7bd8"/>
+            <circle cx="16" cy="11" r="1" fill="#2c7bd8"/>
           </svg>
         </div>
         SMS
       </a>
 
-      <a class="quick-link" href="viber://chat?number=%2B306988128099">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 4h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4h-2l-4 4v-4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"></path>
-            <path d="M9.5 9.5c.4 2.2 2.2 4 4.4 4.4"></path>
-            <path d="M13 8.5c.7.1 1.4.8 1.5 1.5"></path>
+      <a class="quick-link" href="viber://chat?number=%2B306988128099" aria-label="Viber">
+        <div class="quick-icon viber">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.5c-5.2 0-9.4 3.5-9.4 7.9 0 2.6 1.5 4.9 3.9 6.4v3.6l3.4-2.1c.7.1 1.4.2 2.1.2 5.2 0 9.4-3.5 9.4-8S17.2 2.5 12 2.5z"/>
+            <path d="M9.2 7.6c.3 2.9 2.2 4.9 5.1 5.3" fill="none" stroke="#6b43b5" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13.5 6.5c1.4.2 2.5 1.3 2.7 2.7M13.3 8.3c.5.1.9.5 1 1" fill="none" stroke="#6b43b5" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
         </div>
         Viber
       </a>
 
-      <a class="quick-link" href="mailto:carbridgefr@gmail.com">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-            <path d="M4 7l8 6 8-6"></path>
+      <a class="quick-link" href="mailto:carbridgefr@gmail.com" aria-label="Email">
+        <div class="quick-icon email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="icon-fill" x="2.5" y="5" width="19" height="14" rx="2.4"/>
+            <path d="M4.5 7.3 12 13l7.5-5.7" fill="none" stroke="#c84554" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         Email
       </a>
 
-      <a class="quick-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49">
-        <div class="quick-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path>
-            <circle cx="12" cy="10" r="2.5"></circle>
+      <a class="quick-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" aria-label="Google Map">
+        <div class="quick-icon map">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.5a7 7 0 0 0-7 7c0 5.3 7 12 7 12s7-6.7 7-12a7 7 0 0 0-7-7z"/>
+            <circle cx="12" cy="9.5" r="2.5" fill="#d9413a"/>
           </svg>
         </div>
         Map
@@ -1251,8 +1291,8 @@
       <a class="category-action car" href="carbridge.html" target="_self">
         <span class="category-icon logo-icon"><img src="carbridge-logo.png.png" alt="CarBridge Europe logo"></span>
         <span>
-          <strong>Θέλω αυτοκίνητο</strong>
-          <span>CarBridge Europe • εισαγωγή επιλεγμένων αυτοκινήτων από τη Γαλλία.</span>
+          <strong>Λύσεις Αυτοκινήτου</strong>
+          <span>Αγορά • Πώληση • Εισαγωγή • Συνεργασία</span>
         </span>
         <span class="category-arrow">›</span>
       </a>
@@ -1330,7 +1370,7 @@
 
 
     <footer class="footer">
-      Powered by NFC solutions • Jewel Art<br>
+      Powered by NFC Brelot • Jewel Art<br>
       Instagram:
       <a href="https://www.instagram.com/lazaros_jewelart/" target="_self">@lazaros_jewelart</a>
     </footer>
