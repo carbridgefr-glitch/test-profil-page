@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarBridge Europe | Λύσεις Αυτοκινήτου</title>
+  <meta name="description" content="Αγορά, πώληση, εισαγωγή αυτοκινήτου και συνεργασίες με την CarBridge Europe.">
+  <meta name="theme-color" content="#07101f">
+
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg: #05070b;
+      --panel: #0b111c;
+      --panel-2: #111927;
+      --line: rgba(255,255,255,.10);
+      --white: #fff;
+      --muted: rgba(255,255,255,.68);
+      --blue: #0d5eaf;
+      --blue-2: #06376b;
+      --electric: #00a8ff;
+      --electric-2: #006dff;
+      --fr-blue: #0055a4;
+      --fr-red: #ef4135;
+      --gr-blue: #0d5eaf;
+      --gold: #d7b76a;
+      --gold-light: #f7df9c;
+      --green: #23984a;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(0,168,255,.30), transparent 28%),
+        radial-gradient(circle at 8% 40%, rgba(13,94,175,.24), transparent 30%),
+        radial-gradient(circle at 92% 72%, rgba(239,65,53,.12), transparent 24%),
+        linear-gradient(180deg, #02050a 0%, #07111f 48%, #02050a 100%);
+      color: var(--white);
+    }
+
+    body { padding-bottom: 28px; }
+
+    button, input, select, textarea { font: inherit; }
+    button, a { touch-action: manipulation; }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 100% 18%, rgba(0,168,255,.10), transparent 26%),
+        radial-gradient(circle at 0% 68%, rgba(13,94,175,.10), transparent 28%),
+        linear-gradient(180deg, rgba(4,10,18,.99), rgba(3,7,12,.99));
+      box-shadow: 0 0 70px rgba(0,0,0,.55);
+      overflow: hidden;
+    }
+
+    .hero {
+      min-height: 330px;
+      position: relative;
+      background-image:
+        linear-gradient(180deg, rgba(0,28,60,.12), rgba(0,7,16,.90)),
+        linear-gradient(110deg, rgba(0,168,255,.14), transparent 44%, rgba(239,65,53,.08)),
+        url("carbridge%20cover.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px 18px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--electric), #ffffff, var(--electric), transparent);
+    }
+
+    .back-link {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 0 13px;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(0,0,0,.48);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .hero-card {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      padding: 18px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.16), transparent 34%),
+        rgba(2,7,14,.70);
+      border: 1px solid rgba(0,168,255,.34);
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.38);
+    }
+
+    .brand-row {
+      display: grid;
+      grid-template-columns: 66px 1fr;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .brand-logo {
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 12px 30px rgba(0,0,0,.30);
+    }
+
+    .eyebrow {
+      color: #8edcff;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -.5px;
+    }
+
+    .hero-card p {
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .quick-contact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .quick-btn {
+      min-height: 92px;
+      padding: 13px 10px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.20), transparent 34%),
+        linear-gradient(145deg, #0e2035, #07111e);
+      border: 1px solid rgba(0,168,255,.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 7px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0,0,0,.20);
+    }
+
+    .quick-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 18px;
+    }
+
+    section { padding: 28px 18px; }
+
+    .section-title {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 25px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .section-subtitle {
+      margin: 0 auto 18px;
+      max-width: 430px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .choice-btn {
+      min-height: 154px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 26px;
+      padding: 16px;
+      text-align: left;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.34), transparent 32%),
+        linear-gradient(145deg, #0b2947, #06101c);
+      box-shadow: 0 18px 38px rgba(0,0,0,.24);
+      cursor: pointer;
+    }
+
+    .choice-btn.sell {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.18), transparent 34%),
+        linear-gradient(145deg, #1a1d22, #090b0f);
+    }
+
+    .choice-btn.available {
+      background:
+        radial-gradient(circle at top right, rgba(13,94,175,.34), transparent 34%),
+        linear-gradient(145deg, #0b2845, #06101c);
+    }
+
+    .choice-btn.partner {
+      background:
+        radial-gradient(circle at top right, rgba(239,65,53,.24), transparent 34%),
+        linear-gradient(145deg, #291113, #0f0809);
+    }
+
+    .choice-num {
+      display: inline-flex;
+      min-width: 35px;
+      height: 35px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,.10);
+      color: #8edcff;
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .choice-btn strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.15;
+      margin-bottom: 7px;
+      font-weight: 900;
+    }
+
+    .choice-btn span {
+      display: block;
+      color: rgba(255,255,255,.66);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .assistant-section {
+      display: none;
+      padding-top: 2px;
+    }
+
+    .assistant-section.active { display: block; }
+
+    .assistant-box {
+      border-radius: 30px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.22), transparent 30%),
+        linear-gradient(145deg, #0c2034, #06101b);
+      border: 1px solid rgba(255,255,255,.11);
+      box-shadow: 0 20px 50px rgba(0,0,0,.28);
+    }
+
+    .assistant-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .assistant-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--electric), var(--electric-2));
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .assistant-head strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .assistant-head span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .smart-form { display: grid; gap: 12px; }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 900;
+      margin: 0 0 6px;
+      color: rgba(255,255,255,.90);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 50px;
+      padding: 11px 13px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .field textarea { min-height: 92px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.38); }
+    .field select option { color: #111; background: #fff; }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .consent {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+      color: rgba(255,255,255,.58);
+      font-size: 11.5px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .consent input { width: 18px; height: 18px; margin-top: 1px; }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 56px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--electric), var(--electric-2));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0,0,0,.28);
+    }
+
+    .submit-btn[disabled] { opacity: .55; cursor: wait; }
+
+    .form-status {
+      display: none;
+      margin-top: 12px;
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .form-status.success { display: block; background: rgba(35,152,74,.16); border: 1px solid rgba(35,152,74,.35); color: #c8ffd8; }
+    .form-status.error { display: block; background: rgba(190,63,63,.16); border: 1px solid rgba(190,63,63,.35); color: #ffd2d2; }
+
+    .vehicles-panel { display: none; }
+    .vehicles-panel.active { display: block; }
+
+    .vehicle-list { display: grid; gap: 14px; }
+
+    .vehicle-card {
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.11);
+      background: linear-gradient(145deg, #111924, #080d14);
+      box-shadow: 0 18px 38px rgba(0,0,0,.24);
+    }
+
+    .vehicle-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+
+    .vehicle-body { padding: 16px; }
+    .vehicle-body h3 { margin: 0 0 5px; font-size: 19px; }
+    .vehicle-meta { color: var(--muted); font-size: 12.5px; font-weight: 700; line-height: 1.45; }
+    .vehicle-price { margin-top: 11px; color: var(--gold-light); font-size: 22px; font-weight: 900; }
+
+    .vehicle-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .vehicle-action {
+      min-height: 46px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      padding: 7px;
+    }
+    .vehicle-action.primary { background: linear-gradient(135deg, var(--blue), var(--blue-2)); }
+
+    .empty-state {
+      padding: 22px 16px;
+      text-align: center;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,.17);
+      background: rgba(255,255,255,.04);
+    }
+
+    .empty-state strong { display: block; font-size: 17px; margin-bottom: 7px; }
+    .empty-state span { display: block; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .how-grid { display: grid; gap: 10px; }
+    .how-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 11px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .how-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #8edcff, var(--electric-2));
+      color: #02111d;
+      font-weight: 900;
+    }
+    .how-item strong { display: block; font-size: 14px; margin-bottom: 3px; }
+    .how-item span { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .social-section { padding-top: 10px; }
+    .social-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .social-btn {
+      min-height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.16), transparent 34%),
+        linear-gradient(145deg, #101b29, #080f18);
+      border: 1px solid rgba(0,168,255,.18);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .experience-card {
+      margin: 0 18px 26px;
+      padding: 18px;
+      border-radius: 28px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top right, rgba(0,168,255,.16), transparent 34%),
+        linear-gradient(145deg, #0b1f33, #070d15);
+      border: 1px solid rgba(0,168,255,.25);
+      box-shadow: 0 18px 44px rgba(0,0,0,.24);
+    }
+    .experience-card h2 { margin: 0 0 7px; font-size: 21px; }
+    .experience-card p { margin: 0 0 15px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .face-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .face-choice {
+      min-height: 108px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 6px;
+    }
+    .face-choice.best {
+      border-color: rgba(0,168,255,.42);
+      background: radial-gradient(circle at top right, rgba(0,168,255,.20), transparent 34%), rgba(255,255,255,.07);
+    }
+    .face-choice:active { transform: scale(.97); }
+    .face-icon { width: 48px; height: 48px; margin-bottom: 7px; }
+    .face-icon svg { width: 48px; height: 48px; stroke: #fff; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+    .face-choice.best .face-icon svg { stroke: #8edcff; }
+    .face-label { font-size: 11.5px; font-weight: 900; line-height: 1.2; color: rgba(255,255,255,.86); }
+
+    .contact-section {
+      padding-top: 12px;
+      background:
+        linear-gradient(180deg, transparent, rgba(0,168,255,.05)),
+        radial-gradient(circle at bottom left, rgba(239,65,53,.08), transparent 30%);
+    }
+
+    .country-line {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 18px;
+      margin: -6px 0 18px;
+    }
+    .flag-line { height: 4px; border-radius: 999px; overflow: hidden; }
+    .flag-line.fr { background: linear-gradient(90deg, var(--fr-blue) 0 33.33%, #fff 33.33% 66.66%, var(--fr-red) 66.66% 100%); }
+    .flag-line.gr { background: repeating-linear-gradient(180deg, var(--gr-blue) 0 11%, #fff 11% 22%); }
+
+    .flag-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .flag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 10.5px;
+      font-weight: 900;
+      color: rgba(255,255,255,.86);
+    }
+
+    .footer {
+      padding: 0 18px 28px;
+      text-align: center;
+      color: rgba(255,255,255,.42);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    .footer a { color: var(--gold-light); text-decoration: none; font-weight: 900; }
+
+    @media (max-width: 390px) {
+      .choice-grid { grid-template-columns: 1fr; }
+      .choice-btn { min-height: 132px; }
+      .field-grid { grid-template-columns: 1fr; }
+      .quick-contact { gap: 9px; }
+      .quick-btn { min-height: 86px; font-size: 12px; }
+      h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <a class="back-link" href="index.html">‹ Πίσω στο προφίλ</a>
+
+      <div class="hero-card">
+        <div class="brand-row">
+          <img class="brand-logo" src="carbridge-logo.png.png" alt="CarBridge Europe">
+          <div>
+            <div class="eyebrow">Λύσεις Αυτοκινήτου</div>
+            <h1>CarBridge Europe</h1>
+          </div>
+        </div>
+        <p>
+          Αγορά, πώληση και εισαγωγή αυτοκινήτου με ξεκάθαρη καθοδήγηση και προσωπική επικοινωνία.
+        </p>
+        <div class="flag-badges">
+          <span class="flag-badge">🇫🇷 Επιλογές από Γαλλία</span>
+          <span class="flag-badge">🇬🇷 Παράδοση στην Ελλάδα</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="country-line" aria-hidden="true"><span class="flag-line fr"></span><span class="flag-line gr"></span></div>
+
+    <section>
+      <h2 class="section-title">Τι θέλεις να κάνεις;</h2>
+      <p class="section-subtitle">Διάλεξε αυτό που σε ενδιαφέρει και θα σε καθοδηγήσουμε άμεσα.</p>
+
+      <div class="choice-grid">
+        <button class="choice-btn" type="button" onclick="openFlow('buy')">
+          <span class="choice-num">01</span>
+          <strong>Θέλω να αγοράσω αυτοκίνητο</strong>
+          <span>Πες μας τι ψάχνεις και ποιο είναι το budget σου.</span>
+        </button>
+
+        <button class="choice-btn sell" type="button" onclick="openFlow('sell')">
+          <span class="choice-num">02</span>
+          <strong>Θέλω να πουλήσω το αυτοκίνητό μου</strong>
+          <span>Στείλε τα βασικά στοιχεία του οχήματος.</span>
+        </button>
+
+        <button class="choice-btn available" type="button" onclick="openFlow('available')">
+          <span class="choice-num">03</span>
+          <strong>Διαθέσιμα αυτοκίνητα</strong>
+          <span>Δες όσα οχήματα είναι αυτή τη στιγμή διαθέσιμα.</span>
+        </button>
+
+        <button class="choice-btn partner" type="button" onclick="openFlow('partner')">
+          <span class="choice-num">04</span>
+          <strong>Θέλω συνεργασία</strong>
+          <span>Για επαγγελματίες, εμπόρους και συνεργάτες.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="assistantSection" class="assistant-section">
+      <div class="assistant-box">
+        <div class="assistant-head">
+          <div class="assistant-avatar">CB</div>
+          <div>
+            <strong id="assistantTitle">CarBridge Assistant</strong>
+            <span id="assistantText">Πες μας τι χρειάζεσαι και θα λάβουμε οργανωμένο το αίτημά σου.</span>
+          </div>
+        </div>
+        <div id="formContainer"></div>
+      </div>
+    </section>
+
+    <section id="vehiclesPanel" class="vehicles-panel">
+      <h2 class="section-title">Διαθέσιμα αυτοκίνητα</h2>
+      <p class="section-subtitle">Τα διαθέσιμα οχήματα εμφανίζονται εδώ με φωτογραφία, στοιχεία και άμεσο ενδιαφέρον.</p>
+      <div id="vehicleList" class="vehicle-list"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Πώς λειτουργεί η CarBridge</h2>
+      <p class="section-subtitle">Καθαρή διαδικασία, από το πρώτο αίτημα μέχρι την ολοκλήρωση.</p>
+
+      <div class="how-grid">
+        <div class="how-item"><div class="how-num">1</div><div><strong>Μας λες τι χρειάζεσαι</strong><span>Αγορά, πώληση, εισαγωγή ή συνεργασία.</span></div></div>
+        <div class="how-item"><div class="how-num">2</div><div><strong>Εξετάζουμε την περίπτωση</strong><span>Βλέπουμε τα στοιχεία και τις πραγματικές επιλογές.</span></div></div>
+        <div class="how-item"><div class="how-num">3</div><div><strong>Επικοινωνούμε προσωπικά</strong><span>Ο Ανδρέας σε καθοδηγεί στα επόμενα βήματα.</span></div></div>
+      </div>
+    </section>
+
+    <section class="social-section">
+      <h2 class="section-title">Ακολούθησε την CarBridge</h2>
+      <p class="section-subtitle">Αυτοκίνητα, εισαγωγές, παραδόσεις και νέα.</p>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=61580015963969">Facebook</a>
+        <a class="social-btn" href="https://www.instagram.com/car.bridge.fr?igsh=MTAwNWFsZmNtbGRxcg==">Instagram</a>
+        <a class="social-btn" href="https://www.tiktok.com/@car_bridge.gr">TikTok</a>
+      </div>
+    </section>
+
+    <section class="experience-card">
+      <h2>Πώς ήταν η εμπειρία σας;</h2>
+      <p>Η γνώμη σας μας βοηθά να γινόμαστε καλύτεροι.</p>
+      <div class="face-row">
+        <a class="face-choice" href="feedback.html?rating=1" target="_self" aria-label="Χρειάζεται βελτίωση">
+          <span class="face-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"></circle><path d="M17 20h.1"></path><path d="M31 20h.1"></path><path d="M17 33c3-3 11-3 14 0"></path></svg></span>
+          <span class="face-label">Χρειάζεται βελτίωση</span>
+        </a>
+        <a class="face-choice" href="feedback.html?rating=3" target="_self" aria-label="Μέτρια εμπειρία">
+          <span class="face-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"></circle><path d="M17 20h.1"></path><path d="M31 20h.1"></path><path d="M17 31h14"></path></svg></span>
+          <span class="face-label">Μέτρια</span>
+        </a>
+        <a class="face-choice best" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self" aria-label="Άριστη εμπειρία - Google Review">
+          <span class="face-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"></circle><path d="M17 20h.1"></path><path d="M31 20h.1"></path><path d="M16 29c3 5 13 5 16 0"></path></svg></span>
+          <span class="face-label">Άριστη</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <h2 class="section-title">Άμεση Επικοινωνία</h2>
+      <p class="section-subtitle">Διάλεξε τον πιο εύκολο τρόπο και επικοινώνησε άμεσα με την CarBridge.</p>
+      <nav class="quick-contact" aria-label="Άμεση επικοινωνία">
+        <a class="quick-btn" href="tel:+306988128099">
+          <span class="quick-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.2 19.2 0 0 1-5.9-5.9A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.5c.8.4 1.7.6 2.6.7A2 2 0 0 1 22 16.9z"></path></svg></span>
+          Κλήση
+        </a>
+        <a class="quick-btn" href="https://wa.me/306988128099">
+          <span class="quick-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.7 7.1L4 20l.9-4.3A8 8 0 1 1 20 12z"></path><path d="M9.8 9.3c.3 1.8 1.7 3.2 3.5 3.5"></path></svg></span>
+          WhatsApp
+        </a>
+        <a class="quick-btn" href="mailto:carbridgefr@gmail.com">
+          <span class="quick-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg></span>
+          Email
+        </a>
+        <a class="quick-btn" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49">
+          <span class="quick-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+          Google Map
+        </a>
+      </nav>
+    </section>
+
+    <footer class="footer">
+      Powered by NFCSolutions.gr
+    </footer>
+  </main>
+
+  <script>
+    const FORM_ENDPOINT = "https://formsubmit.co/ajax/carbridgefr@gmail.com";
+
+    const vehicles = [
+      // Παράδειγμα για αργότερα:
+      // {
+      //   title: "Dacia Duster 4x4",
+      //   image: "duster.jpg",
+      //   meta: "2020 • Diesel • 138.000 km",
+      //   price: "18.000€",
+      //   link: "https://..."
+      // }
+    ];
+
+    const flowConfig = {
+      buy: {
+        title: "Αγορά αυτοκινήτου",
+        text: "Πες μας σε λιγότερο από ένα λεπτό τι αυτοκίνητο ψάχνεις.",
+        fields: `
+          <div class="field"><label>Τι αυτοκίνητο ψάχνεις;</label><input name="Αυτοκίνητο που ψάχνει" required placeholder="π.χ. Dacia Duster, SUV ή δεν έχω αποφασίσει"></div>
+          <div class="field-grid">
+            <div class="field"><label>Budget περίπου</label><input name="Budget" placeholder="π.χ. έως 18.000€"></div>
+            <div class="field"><label>Καύσιμο</label><select name="Καύσιμο"><option value="">Δεν με ενδιαφέρει</option><option>Βενζίνη</option><option>Diesel</option><option>Υβριδικό</option><option>Ηλεκτρικό</option></select></div>
+          </div>
+          <div class="field-grid">
+            <div class="field"><label>Κιβώτιο</label><select name="Κιβώτιο"><option value="">Δεν με ενδιαφέρει</option><option>Αυτόματο</option><option>Χειροκίνητο</option></select></div>
+            <div class="field"><label>Χρονιά περίπου</label><input name="Χρονιά" placeholder="π.χ. από 2020"></div>
+          </div>
+        `
+      },
+      sell: {
+        title: "Πώληση αυτοκινήτου",
+        text: "Στείλε τα βασικά στοιχεία του αυτοκινήτου σου.",
+        fields: `
+          <div class="field"><label>Μάρκα και μοντέλο</label><input name="Μάρκα και μοντέλο" required placeholder="π.χ. Peugeot 3008"></div>
+          <div class="field-grid">
+            <div class="field"><label>Έτος</label><input name="Έτος" placeholder="π.χ. 2020"></div>
+            <div class="field"><label>Χιλιόμετρα</label><input name="Χιλιόμετρα" placeholder="π.χ. 85.000"></div>
+          </div>
+          <div class="field-grid">
+            <div class="field"><label>Καύσιμο</label><select name="Καύσιμο"><option value="">Επιλογή</option><option>Βενζίνη</option><option>Diesel</option><option>Υβριδικό</option><option>Ηλεκτρικό</option></select></div>
+            <div class="field"><label>Τιμή που ζητάς</label><input name="Ζητούμενη τιμή" placeholder="π.χ. 15.000€"></div>
+          </div>
+        `
+      },
+      partner: {
+        title: "Συνεργασία με την CarBridge",
+        text: "Πες μας ποιος είσαι και τι είδους συνεργασία σε ενδιαφέρει.",
+        fields: `
+          <div class="field"><label>Εταιρεία ή επάγγελμα</label><input name="Εταιρεία ή επάγγελμα" placeholder="π.χ. Έμπορος αυτοκινήτων"></div>
+          <div class="field"><label>Τι συνεργασία σε ενδιαφέρει;</label><select name="Είδος συνεργασίας" required><option value="">Διάλεξε</option><option>Προμήθεια οχημάτων</option><option>Παραπομπή πελατών</option><option>Συνεργασία Ελλάδα - Γαλλία</option><option>Άλλο</option></select></div>
+        `
+      }
+    };
+
+    function openFlow(type) {
+      const assistant = document.getElementById("assistantSection");
+      const vehiclesPanel = document.getElementById("vehiclesPanel");
+
+      if (type === "available") {
+        assistant.classList.remove("active");
+        vehiclesPanel.classList.add("active");
+        renderVehicles();
+        vehiclesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      vehiclesPanel.classList.remove("active");
+      const config = flowConfig[type];
+      document.getElementById("assistantTitle").textContent = config.title;
+      document.getElementById("assistantText").textContent = config.text;
+
+      document.getElementById("formContainer").innerHTML = `
+        <form class="smart-form" onsubmit="submitLead(event, '${type}')">
+          ${config.fields}
+          <div class="field"><label>Κάτι ακόμα που πρέπει να γνωρίζουμε;</label><textarea name="Σημειώσεις" placeholder="Προαιρετικά"></textarea></div>
+          <div class="field-grid">
+            <div class="field"><label>Όνομα</label><input name="Όνομα" required placeholder="Το όνομά σου"></div>
+            <div class="field"><label>Τηλέφωνο</label><input name="Τηλέφωνο" required inputmode="tel" placeholder="69XXXXXXXX"></div>
+          </div>
+          <div class="field"><label>Email</label><input name="Email πελάτη" type="email" placeholder="Προαιρετικά"></div>
+          <label class="consent"><input type="checkbox" required><span>Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου μόνο για επικοινωνία σχετικά με το αίτημά μου.</span></label>
+          <button class="submit-btn" type="submit">Στείλε το αίτημά μου στην CarBridge</button>
+          <div class="form-status" aria-live="polite"></div>
+        </form>
+      `;
+
+      assistant.classList.add("active");
+      assistant.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    async function submitLead(event, type) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const button = form.querySelector(".submit-btn");
+      const status = form.querySelector(".form-status");
+
+      button.disabled = true;
+      button.textContent = "Αποστολή...";
+      status.className = "form-status";
+      status.textContent = "";
+
+      const formData = new FormData(form);
+      const payload = {
+        "Τύπος αιτήματος": flowConfig[type].title,
+        "Σελίδα": "CarBridge Europe",
+        "Ημερομηνία": new Date().toLocaleString("el-GR"),
+        "_subject": "ΝΕΟ ΑΙΤΗΜΑ CARBRIDGE - " + flowConfig[type].title,
+        "_template": "table"
+      };
+
+      formData.forEach((value, key) => {
+        payload[key] = value;
+      });
+
+      try {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        if (!response.ok || data.success === "false") throw new Error("Submission failed");
+
+        form.reset();
+        status.className = "form-status success";
+        status.textContent = "✓ Το αίτημά σου στάλθηκε. Ο Ανδρέας θα δει ακριβώς τι χρειάζεσαι και θα επικοινωνήσει μαζί σου.";
+      } catch (error) {
+        status.className = "form-status error";
+        status.textContent = "Δεν ολοκληρώθηκε η αποστολή. Δοκίμασε ξανά ή κάλεσε στο 698 812 8099.";
+      } finally {
+        button.disabled = false;
+        button.textContent = "Στείλε το αίτημά μου στην CarBridge";
+      }
+    }
+
+    function renderVehicles() {
+      const list = document.getElementById("vehicleList");
+
+      if (!vehicles.length) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <strong>Νέα διαθέσιμα οχήματα σύντομα</strong>
+            <span>Μόλις προσθέσουμε το πρώτο διαθέσιμο αυτοκίνητο, θα εμφανιστεί εδώ με φωτογραφίες, τιμή και άμεσο κουμπί ενδιαφέροντος.</span>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = vehicles.map((vehicle) => `
+        <article class="vehicle-card">
+          <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.title}">
+          <div class="vehicle-body">
+            <h3>${vehicle.title}</h3>
+            <div class="vehicle-meta">${vehicle.meta}</div>
+            <div class="vehicle-price">${vehicle.price}</div>
+            <div class="vehicle-actions">
+              <a class="vehicle-action" href="${vehicle.link}">Δες το αυτοκίνητο</a>
+              <a class="vehicle-action primary" href="https://wa.me/306988128099?text=${encodeURIComponent('Με ενδιαφέρει το ' + vehicle.title)}">Με ενδιαφέρει</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
