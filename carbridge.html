@@ -486,6 +486,28 @@
       background: #fff;
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .vehicle-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #22c55e, #0f9f4f);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 10px 24px rgba(5,120,58,.24);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .25px;
+      text-transform: uppercase;
     }
 
     .vehicle-image {
@@ -515,6 +537,26 @@
       margin: 10px 0 13px;
       color: var(--blue-deep);
       font-size: 25px;
+      font-weight: 900;
+    }
+
+    .vehicle-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 0 0 14px;
+    }
+
+    .vehicle-feature {
+      min-height: 31px;
+      padding: 0 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      background: #eef7ff;
+      color: #0d4f94;
+      border: 1px solid #d4e9ff;
+      font-size: 11px;
       font-weight: 900;
     }
 
@@ -942,14 +984,15 @@
     const CARBRIDGE_EMAIL = "carbridgefr@gmail.com";
 
     const vehicles = [
-      // Παράδειγμα για αργότερα:
-      // {
-      //   title: "Dacia Duster 4x4",
-      //   image: "duster.jpg",
-      //   meta: "2020 • Diesel • 138.000 km",
-      //   price: "18.000€",
-      //   link: "https://..."
-      // }
+      {
+        title: "Renault Kadjar 2019",
+        image: "renault-kadjar-2019.jpg",
+        meta: "1.3 Βενζίνη • 140 hp • 125.000 χλμ • Χειροκίνητο",
+        price: "14.399€",
+        tag: "Διαθέσιμο τώρα",
+        features: ["Apple CarPlay", "Adaptive Cruise Control", "Κάμερα οπισθοπορείας", "Θερμαινόμενα καθίσματα"],
+        link: "https://www.car.gr/classifieds/cars/view/53958947-renault-kadjar"
+      }
     ];
 
     const flowConfig = {
@@ -1089,13 +1132,19 @@
 
       list.innerHTML = vehicles.map((vehicle) => `
         <article class="vehicle-card">
+          ${vehicle.tag ? `<span class="vehicle-badge">${vehicle.tag}</span>` : ""}
           <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.title}">
           <div class="vehicle-body">
             <h3>${vehicle.title}</h3>
             <div class="vehicle-meta">${vehicle.meta}</div>
             <div class="vehicle-price">${vehicle.price}</div>
+            ${vehicle.features && vehicle.features.length ? `
+              <div class="vehicle-features">
+                ${vehicle.features.map((feature) => `<span class="vehicle-feature">${feature}</span>`).join("")}
+              </div>
+            ` : ""}
             <div class="vehicle-actions">
-              <a class="vehicle-action" href="${vehicle.link}">Δες το αυτοκίνητο</a>
+              <a class="vehicle-action" href="${vehicle.link}">Δες την αγγελία</a>
               <a class="vehicle-action primary" href="${buildVehicleEmail(vehicle)}">Με ενδιαφέρει</a>
             </div>
           </div>
