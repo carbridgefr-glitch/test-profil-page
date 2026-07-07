@@ -586,6 +586,77 @@
       color: #fff;
       background: linear-gradient(135deg, #23b7ff, #0077ff);
       border-color: transparent;
+      cursor: pointer;
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .vehicle-interest-box {
+      display: none;
+      margin-top: 12px;
+      padding: 13px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eef9ff, #ffffff);
+      border: 2px solid #cfe8ff;
+    }
+
+    .vehicle-interest-box.active {
+      display: block;
+    }
+
+    .vehicle-interest-box label {
+      display: block;
+      margin-bottom: 7px;
+      color: #0b315c;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .vehicle-interest-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+
+    .vehicle-interest-form input {
+      width: 100%;
+      min-height: 46px;
+      border-radius: 14px;
+      border: 1px solid #b9dcff;
+      background: #fff;
+      color: #081b35;
+      padding: 10px 12px;
+      outline: none;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .vehicle-interest-form input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,119,255,.10);
+    }
+
+    .vehicle-interest-submit {
+      min-height: 46px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #23b7ff, #0077ff);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .vehicle-interest-note {
+      margin: 8px 0 0;
+      color: #607189;
+      font-size: 10.5px;
+      line-height: 1.35;
+      text-align: center;
+      font-weight: 700;
     }
 
     .social-section {
@@ -813,6 +884,8 @@
       .choice-btn { min-height: 118px; padding: 18px 14px; }
       .choice-btn strong { font-size: 19px; }
       .field-grid { grid-template-columns: 1fr; }
+      .vehicle-interest-form { grid-template-columns: 1fr; }
+      .vehicle-interest-submit { width: 100%; }
       h1 { font-size: 26px; }
     }
   </style>
@@ -986,7 +1059,7 @@
     const vehicles = [
       {
         title: "Renault Kadjar 2019",
-        image: "renault-kadjar-2019.jpg",
+        image: "photo%20kadjar.jpg",
         meta: "1.3 Βενζίνη • 140 hp • 125.000 χλμ • Χειροκίνητο",
         price: "14.399€",
         tag: "Διαθέσιμο τώρα",
@@ -1105,16 +1178,38 @@
       }, 250);
     }
 
-    function buildVehicleEmail(vehicle) {
+    function buildVehicleEmail(vehicle, phone) {
       const subject = encodeURIComponent("ΕΝΔΙΑΦΕΡΟΝ ΓΙΑ ΔΙΑΘΕΣΙΜΟ ΟΧΗΜΑ - " + vehicle.title);
       const body = encodeURIComponent(
         "Καλησπέρα,\n\nΜε ενδιαφέρει το διαθέσιμο όχημα:\n" +
         vehicle.title + "\n" +
         vehicle.meta + "\n" +
         "Τιμή: " + vehicle.price + "\n\n" +
-        "Θα ήθελα περισσότερες πληροφορίες."
+        "Τηλέφωνο πελάτη: " + phone + "\n\n" +
+        "Παρακαλώ καλέστε με για περισσότερες πληροφορίες."
       );
       return `mailto:${CARBRIDGE_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    function toggleVehicleInterest(index) {
+      const box = document.getElementById("vehicleInterest" + index);
+      if (!box) return;
+      box.classList.toggle("active");
+      if (box.classList.contains("active")) {
+        const input = box.querySelector("input");
+        setTimeout(function () { input.focus(); }, 120);
+      }
+    }
+
+    function submitVehicleInterest(event, index) {
+      event.preventDefault();
+      const vehicle = vehicles[index];
+      const form = event.currentTarget;
+      const phone = form.querySelector('input[name="vehiclePhone"]').value.trim();
+
+      if (!phone) return;
+
+      window.location.href = buildVehicleEmail(vehicle, phone);
     }
 
     function renderVehicles() {
@@ -1145,7 +1240,15 @@
             ` : ""}
             <div class="vehicle-actions">
               <a class="vehicle-action" href="${vehicle.link}">Δες την αγγελία</a>
-              <a class="vehicle-action primary" href="${buildVehicleEmail(vehicle)}">Με ενδιαφέρει</a>
+              <button class="vehicle-action primary" type="button" onclick="toggleVehicleInterest(${vehicles.indexOf(vehicle)})">Με ενδιαφέρει</button>
+            </div>
+            <div class="vehicle-interest-box" id="vehicleInterest${vehicles.indexOf(vehicle)}">
+              <label>Βάλε το τηλέφωνό σου για να σε καλέσουμε</label>
+              <form class="vehicle-interest-form" onsubmit="submitVehicleInterest(event, ${vehicles.indexOf(vehicle)})">
+                <input name="vehiclePhone" type="tel" inputmode="tel" required placeholder="69XXXXXXXX">
+                <button class="vehicle-interest-submit" type="submit">Συνέχεια</button>
+              </form>
+              <p class="vehicle-interest-note">Μετά θα ανοίξει το email σου με έτοιμο το όχημα και το τηλέφωνό σου.</p>
             </div>
           </div>
         </article>
