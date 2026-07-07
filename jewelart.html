@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Προσωποποιημένες Δημιουργίες | lazaros_jewelart</title>
+
+  <meta name="description" content="Φωτογραφίες, χειρόγραφα, προσωπικά μηνύματα και μοναδικές ιστορίες χαραγμένες πάνω σε ξύλο. Πρόσθεσε NFC τεχνολογία και κρύψε μέσα στη δημιουργία σου φωτογραφίες, βίντεο, μουσική και αναμνήσεις.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --cream: #fffaf5;
+      --cream-2: #f7eee6;
+      --rose: #d88491;
+      --rose-dark: #a94f62;
+      --plum: #5d2b46;
+      --wine: #401e32;
+      --gold: #cda66d;
+      --gold-light: #f0d7ad;
+      --wood: #9b6845;
+      --text: #432d36;
+      --muted: #7c6870;
+      --white: #ffffff;
+      --green: #2d9c5c;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(216,132,145,0.17), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(205,166,109,0.18), transparent 30%),
+        linear-gradient(180deg, #fffaf5 0%, #f7eee6 100%);
+    }
+
+    button,
+    input,
+    textarea {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button,
+    a {
+      touch-action: manipulation;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 560px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.74);
+      box-shadow: 0 0 70px rgba(73,42,53,0.14);
+      overflow: hidden;
+    }
+
+    /* COVER */
+
+    .hero {
+      min-height: 610px;
+      padding: 24px 20px 34px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(45,20,33,0.08) 0%,
+          rgba(45,20,33,0.28) 44%,
+          rgba(45,20,33,0.90) 100%
+        ),
+        url("jewelart-logo.png.jpeg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      width: 100%;
+      padding: 22px 18px;
+      border-radius: 28px;
+      background: rgba(58,25,43,0.72);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 24px 55px rgba(40,20,30,0.36);
+      color: white;
+      text-align: center;
+    }
+
+    .hero-brand {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+    }
+
+    .hero p {
+      margin: 14px auto 0;
+      max-width: 420px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.86);
+      font-weight: 700;
+    }
+
+    .hero-btn {
+      width: 100%;
+      min-height: 58px;
+      margin-top: 19px;
+      border: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #3d2831;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.20);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 34px 18px;
+    }
+
+    .soft-section {
+      background:
+        radial-gradient(circle at top right, rgba(216,132,145,0.12), transparent 34%),
+        var(--cream);
+    }
+
+    .section-title {
+      margin: 0;
+      text-align: center;
+      font-size: 27px;
+      line-height: 1.12;
+      color: var(--wine);
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      max-width: 440px;
+      margin: 10px auto 22px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* MAIN MESSAGE */
+
+    .story-box {
+      padding: 26px 20px;
+      border-radius: 30px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top right, rgba(240,215,173,0.30), transparent 38%),
+        linear-gradient(145deg, #6e354f, #3f1f32);
+      color: white;
+      box-shadow: 0 22px 48px rgba(74,38,54,0.20);
+    }
+
+    .story-box strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    .story-box span {
+      display: block;
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
+    }
+
+    /* VIDEOS */
+
+    .video-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border-radius: 28px;
+      background: white;
+      border: 1px solid rgba(93,43,70,0.10);
+      box-shadow: 0 18px 42px rgba(75,45,56,0.13);
+    }
+
+    .video-title {
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--wine);
+    }
+
+    .instagram-frame {
+      width: 100%;
+      height: 580px;
+      border: 0;
+      display: block;
+      background: #ffffff;
+    }
+
+    .instagram-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      margin: 12px;
+      border-radius: 17px;
+      text-decoration: none;
+      background: linear-gradient(135deg, #833ab4, #e1306c, #fd1d1d);
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    /* CREATION OPTIONS */
+
+    .creation-options {
+      display: grid;
+      gap: 13px;
+    }
+
+    .creation-btn {
+      width: 100%;
+      min-height: 84px;
+      border: 1px solid rgba(93,43,70,0.12);
+      border-radius: 24px;
+      padding: 16px;
+      background:
+        radial-gradient(circle at top right, rgba(240,215,173,0.28), transparent 35%),
+        white;
+      color: var(--wine);
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(75,45,56,0.10);
+      text-align: center;
+    }
+
+    .creation-btn strong {
+      display: block;
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .creation-btn span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .creation-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* SELECTED CREATION */
+
+    .selected-area {
+      display: none;
+      margin-top: 20px;
+      padding: 20px 17px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(216,132,145,0.18), transparent 35%),
+        white;
+      border: 1px solid rgba(93,43,70,0.12);
+      box-shadow: 0 18px 40px rgba(75,45,56,0.13);
+    }
+
+    .selected-area.show {
+      display: block;
+    }
+
+    .selected-area h3 {
+      margin: 0;
+      text-align: center;
+      color: var(--wine);
+      font-size: 23px;
+    }
+
+    .selected-area p {
+      margin: 10px auto 18px;
+      text-align: center;
+      max-width: 400px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    /* NFC MAGIC */
+
+    .nfc-magic {
+      padding: 28px 20px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top right, rgba(240,215,173,0.19), transparent 35%),
+        linear-gradient(145deg, #48253b, #281521);
+      color: white;
+      text-align: center;
+      box-shadow: 0 24px 55px rgba(52,26,40,0.25);
+    }
+
+    .nfc-label {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .nfc-magic h2 {
+      margin: 14px 0 0;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    .nfc-magic p {
+      margin: 14px auto 0;
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.78);
+      font-weight: 700;
+    }
+
+    .nfc-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .nfc-item {
+      min-height: 48px;
+      padding: 9px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    /* FORM */
+
+    .form-card {
+      padding: 20px;
+      border-radius: 30px;
+      background: white;
+      border: 1px solid rgba(93,43,70,0.12);
+      box-shadow: 0 20px 45px rgba(75,45,56,0.13);
+    }
+
+    .form-card label {
+      display: block;
+      margin: 14px 0 7px;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--wine);
+    }
+
+    .form-card input,
+    .form-card textarea {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid rgba(93,43,70,0.16);
+      border-radius: 17px;
+      padding: 11px 13px;
+      font-size: 14px;
+      color: var(--text);
+      background: #fffaf7;
+      outline: none;
+    }
+
+    .form-card textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .send-btn {
+      width: 100%;
+      min-height: 55px;
+      margin-top: 17px;
+      border: 0;
+      border-radius: 19px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #35bd68, #228c4b);
+      color: white;
+    }
+
+    .email-btn {
+      margin-top: 10px;
+      background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+      color: white;
+    }
+
+    /* SOCIAL */
+
+    .social-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .social-btn {
+      min-height: 66px;
+      padding: 10px 15px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 900;
+      color: white;
+      box-shadow: 0 15px 34px rgba(50,30,40,0.15);
+    }
+
+    .social-btn img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: white;
+    }
+
+    .instagram-btn {
+      background: linear-gradient(135deg, #833ab4, #e1306c, #fd1d1d);
+    }
+
+    .tiktok-btn {
+      background: linear-gradient(135deg, #111111, #292929);
+    }
+
+    /* BUSINESS LINK */
+
+    .business-card {
+      padding: 22px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #f2e3cf, #fffaf2);
+      border: 1px solid rgba(155,104,69,0.20);
+      text-align: center;
+    }
+
+    .business-card h3 {
+      margin: 0;
+      color: var(--wine);
+      font-size: 22px;
+    }
+
+    .business-card p {
+      margin: 9px 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .business-link {
+      min-height: 53px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--wine);
+      color: white;
+      font-weight: 900;
+    }
+
+    /* EXPERIENCE */
+
+    .faces {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .face {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 0;
+      background: white;
+      box-shadow: 0 10px 25px rgba(75,45,56,0.13);
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 26px 18px 34px;
+      text-align: center;
+      background: #3d2131;
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer a {
+      color: var(--gold-light);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    @media (max-width: 390px) {
+      .hero {
+        min-height: 560px;
+      }
+
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .instagram-frame {
+        height: 530px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- COVER -->
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-brand">lazaros_jewelart</div>
+
+      <h1>Μια στιγμή.<br>Μια ιστορία.<br>Χαραγμένη για πάντα.</h1>
+
+      <p>
+        Η δική σου φωτογραφία, τα δικά σου λόγια και η δική σου ιστορία
+        μετατρέπονται σε μία μοναδική δημιουργία πάνω σε ξύλο.
+      </p>
+
+      <button class="hero-btn" onclick="goToCreation()">
+        Δημιούργησε κάτι δικό σου
+      </button>
+    </div>
+  </header>
+
+
+  <!-- PHILOSOPHY -->
+
+  <section>
+    <div class="story-box">
+      <strong>
+        Το ξύλο κρατά αυτό που χαράζεις.
+      </strong>
+
+      <span>
+        Η τεχνολογία NFC μπορεί να κρατήσει ολόκληρη την ιστορία που κρύβεται πίσω από αυτό.
+      </span>
+    </div>
+  </section>
+
+
+  <!-- REAL CREATIONS -->
+
+  <section class="soft-section">
+    <h2 class="section-title">Πραγματικές δημιουργίες</h2>
+
+    <p class="section-subtitle">
+      Τέσσερις διαφορετικοί τρόποι για να μετατρέψεις μια στιγμή σε κάτι που μένει.
+    </p>
+
+    <div class="video-grid">
+
+      <!-- VIDEO 1 -->
+
+      <article class="video-card">
+        <div class="video-title">Διπλή καρδιά</div>
+
+        <iframe
+          class="instagram-frame"
+          src="https://www.instagram.com/p/DT8GRAmDCKo/embed/"
+          loading="lazy">
+        </iframe>
+
+        <a
+          class="instagram-open"
+          href="https://www.instagram.com/p/DT8GRAmDCKo/"
+          target="_self">
+          Δες το στο Instagram
+        </a>
+      </article>
+
+
+      <!-- VIDEO 2 -->
+
+      <article class="video-card">
+        <div class="video-title">Κάδρο αναμνήσεων</div>
+
+        <iframe
+          class="instagram-frame"
+          src="https://www.instagram.com/p/DTSDJndjK0V/embed/"
+          loading="lazy">
+        </iframe>
+
+        <a
+          class="instagram-open"
+          href="https://www.instagram.com/p/DTSDJndjK0V/"
+          target="_self">
+          Δες το στο Instagram
+        </a>
+      </article>
+
+
+      <!-- VIDEO 3 -->
+
+      <article class="video-card">
+        <div class="video-title">NFC μπρελόκ</div>
+
+        <iframe
+          class="instagram-frame"
+          src="https://www.instagram.com/p/DS5Ml16jOq5/embed/"
+          loading="lazy">
+        </iframe>
+
+        <a
+          class="instagram-open"
+          href="https://www.instagram.com/p/DS5Ml16jOq5/"
+          target="_self">
+          Δες το στο Instagram
+        </a>
+      </article>
+
+
+      <!-- VIDEO 4 -->
+
+      <article class="video-card">
+        <div class="video-title">Ζωντανή χάραξη</div>
+
+        <iframe
+          class="instagram-frame"
+          src="https://www.instagram.com/p/DSVjrBNgBt8/embed/"
+          loading="lazy">
+        </iframe>
+
+        <a
+          class="instagram-open"
+          href="https://www.instagram.com/p/DSVjrBNgBt8/"
+          target="_self">
+          Δες το στο Instagram
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- CHOOSE -->
+
+  <section id="creation">
+    <h2 class="section-title">Τι θέλεις να δημιουργήσεις;</h2>
+
+    <p class="section-subtitle">
+      Δεν χρειάζεται να ξέρεις ακριβώς τι θέλεις. Διάλεξε από πού θέλεις να ξεκινήσεις.
+    </p>
+
+    <div class="creation-options">
+
+      <button class="creation-btn" onclick="selectCreation('photo')">
+        <strong>Φωτογραφία σε ξύλο</strong>
+        <span>Η δική σου στιγμή χαραγμένη για πάντα</span>
+      </button>
+
+      <button class="creation-btn" onclick="selectCreation('writing')">
+        <strong>Κείμενο ή χειρόγραφο</strong>
+        <span>Ακόμα και με τα πραγματικά γράμματα του ανθρώπου σου</span>
+      </button>
+
+      <button class="creation-btn" onclick="selectCreation('couple')">
+        <strong>Δώρο για δύο ανθρώπους</strong>
+        <span>Δύο κομμάτια που ενώνονται σε μία ιστορία</span>
+      </button>
+
+      <button class="creation-btn" onclick="selectCreation('nfc')">
+        <strong>Έξυπνο δώρο με NFC</strong>
+        <span>Η δημιουργία ανοίγει κάτι που μόνο εσύ έχεις επιλέξει</span>
+      </button>
+
+    </div>
+
+
+    <div class="selected-area" id="selectedArea">
+      <h3 id="selectedTitle"></h3>
+      <p id="selectedText"></p>
+
+      <button class="send-btn whatsapp-btn" onclick="goToForm()">
+        Συνέχεια στη δημιουργία μου
+      </button>
+    </div>
+  </section>
+
+
+  <!-- NFC MAGIC -->
+
+  <section>
+    <div class="nfc-magic">
+
+      <div class="nfc-label">Η κρυφή μαγεία</div>
+
+      <h2>Τι μπορεί να κρύβεται μέσα στη δημιουργία σου;</h2>
+
+      <p>
+        Με ένα απλό άγγιγμα του κινητού, το ξύλο μπορεί να ανοίγει
+        έναν ολόκληρο προσωπικό κόσμο.
+      </p>
+
+      <div class="nfc-list">
+        <div class="nfc-item">Φωτογραφίες</div>
+        <div class="nfc-item">Βίντεο</div>
+        <div class="nfc-item">Μουσική</div>
+        <div class="nfc-item">Μήνυμα</div>
+        <div class="nfc-item">Ιστορία</div>
+        <div class="nfc-item">Αναμνήσεις</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FORM -->
+
+  <section id="contact" class="soft-section">
+    <h2 class="section-title">Πες μας την ιδέα σου</h2>
+
+    <p class="section-subtitle">
+      Δεν χρειάζεται να την έχεις ολοκληρωμένη. Πες μας απλά τι έχεις στο μυαλό σου.
+    </p>
+
+    <div class="form-card">
+
+      <label for="creationType">Τι θέλεις να δημιουργήσεις;</label>
+      <input id="creationType" type="text" readonly placeholder="Διάλεξε πρώτα μία δημιουργία">
+
+      <label for="customerName">Το όνομά σου</label>
+      <input id="customerName" type="text" placeholder="π.χ. Μαρία">
+
+      <label for="customerPhone">Τηλέφωνο</label>
+      <input id="customerPhone" type="tel" placeholder="π.χ. 69XXXXXXXX">
+
+      <label for="customerIdea">Πες μας με λίγα λόγια την ιδέα σου</label>
+      <textarea
+        id="customerIdea"
+        placeholder="π.χ. Θέλω να χαράξω μια φωτογραφία μας και να κρύβεται μέσα ένα προσωπικό βίντεο...">
+      </textarea>
+
+      <button class="send-btn whatsapp-btn" onclick="sendWhatsApp()">
+        Στείλε την ιδέα σου
+      </button>
+
+      <button class="send-btn email-btn" onclick="sendEmail()">
+        Αποστολή μέσω Email
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- SOCIAL -->
+
+  <section>
+    <h2 class="section-title">Δες περισσότερες δημιουργίες</h2>
+
+    <p class="section-subtitle">
+      Ανακάλυψε περισσότερες πραγματικές δημιουργίες και νέες ιδέες.
+    </p>
+
+    <div class="social-grid">
+
+      <a
+        class="social-btn instagram-btn"
+        href="https://www.instagram.com/lazaros_jewelart/"
+        target="_self">
+
+        <img src="instagram.jpg" alt="Instagram">
+
+        <span>Instagram • lazaros_jewelart</span>
+      </a>
+
+      <a
+        class="social-btn tiktok-btn"
+        href="https://www.tiktok.com/@lazaros_jewelart"
+        target="_self">
+
+        <img src="tiktok.jpg" alt="TikTok">
+
+        <span>TikTok • lazaros_jewelart</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- PROFESSIONAL NFC -->
+
+  <section>
+    <div class="business-card">
+
+      <h3>Ψάχνεις κάτι για την επιχείρησή σου;</h3>
+
+      <p>
+        Δες επαγγελματικά NFC profiles, βραχιόλια, μπρελόκ και ολοκληρωμένες ψηφιακές παρουσιάσεις.
+      </p>
+
+      <a class="business-link" href="create-card.html" target="_self">
+        Δες τις επαγγελματικές NFC λύσεις
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- EXPERIENCE -->
+
+  <section class="soft-section">
+    <h2 class="section-title">Πώς ήταν η εμπειρία σου;</h2>
+
+    <p class="section-subtitle">
+      Πάτησε μία φατσούλα.
+    </p>
+
+    <div class="faces">
+      <button class="face" onclick="location.href='feedback.html?rating=1'">☹</button>
+      <button class="face" onclick="location.href='feedback.html?rating=3'">●</button>
+      <button class="face" onclick="location.href='https://www.instagram.com/lazaros_jewelart/'">☺</button>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <a href="index.html" target="_self">
+      ← Πίσω στο προφίλ NFC
+    </a>
+
+    <br><br>
+
+    Powered by NFCSolutions.gr
+
+  </footer>
+
+</main>
+
+
+<script>
+
+  const PHONE = "306988128099";
+  const EMAIL = "carbridgefr@gmail.com";
+
+  let selectedCreation = "";
+
+
+  function goToCreation() {
+    document.getElementById("creation").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+
+  function selectCreation(type) {
+
+    const area = document.getElementById("selectedArea");
+    const title = document.getElementById("selectedTitle");
+    const text = document.getElementById("selectedText");
+    const input = document.getElementById("creationType");
+
+    const data = {
+
+      photo: {
+        title: "Φωτογραφία σε ξύλο",
+        text: "Στείλε μας τη φωτογραφία που αγαπάς και θα τη μετατρέψουμε σε χάραξη πάνω σε ξύλο."
+      },
+
+      writing: {
+        title: "Κείμενο ή χειρόγραφο",
+        text: "Μπορείς να μας στείλεις ένα κείμενο ή ακόμα και ένα χαρτί γραμμένο με το πραγματικό σου χέρι."
+      },
+
+      couple: {
+        title: "Δώρο για δύο ανθρώπους",
+        text: "Δύο πρόσωπα, δύο κομμάτια και μία κοινή ιστορία."
+      },
+
+      nfc: {
+        title: "Έξυπνο δώρο με NFC",
+        text: "Διάλεξε τι θέλεις να ανοίγει όταν κάποιος αγγίζει τη δημιουργία με το κινητό του."
+      }
+
+    };
+
+    selectedCreation = data[type].title;
+
+    title.textContent = data[type].title;
+    text.textContent = data[type].text;
+    input.value = data[type].title;
+
+    area.classList.add("show");
+
+    setTimeout(function() {
+      area.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 100);
+  }
+
+
+  function goToForm() {
+
+    document.getElementById("contact").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+
+  function buildMessage() {
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const idea = document.getElementById("customerIdea").value.trim();
+    const creation = document.getElementById("creationType").value.trim();
+
+    return `Νέα ιδέα για προσωποποιημένη δημιουργία
+
+Δημιουργία:
+${creation || "-"}
+
+Όνομα:
+${name || "-"}
+
+Τηλέφωνο:
+${phone || "-"}
+
+Η ιδέα του πελάτη:
+${idea || "-"}
+
+Θέλω να συζητήσουμε πώς μπορεί να δημιουργηθεί.`;
+  }
+
+
+  function sendWhatsApp() {
+
+    const text = encodeURIComponent(buildMessage());
+
+    window.location.href =
+      `https://wa.me/${PHONE}?text=${text}`;
+  }
+
+
+  function sendEmail() {
+
+    const subject = encodeURIComponent(
+      "Νέα ιδέα για προσωποποιημένη δημιουργία"
+    );
+
+    const body = encodeURIComponent(buildMessage());
+
+    window.location.href =
+      `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+</script>
+
+</body>
+</html>
