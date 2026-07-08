@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#7a2f57">
+
+  <title>Φωτογραφία + Χειρόγραφο | lazaros_jewelart</title>
+  <meta name="description" content="Στείλε τη φωτογραφία σου και το πραγματικό χειρόγραφο κείμενό σου. Τα χαράζουμε μαζί πάνω στο ξύλο, με δυνατότητα NFC τεχνολογίας.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://carbridgefr-glitch.github.io/test-profil-page/photo-text.html">
+  <meta property="og:title" content="Φωτογραφία + Χειρόγραφο | lazaros_jewelart">
+  <meta property="og:description" content="Η φωτογραφία σου και τα δικά σου πραγματικά γράμματα χαραγμένα πάνω σε ξύλο.">
+  <meta property="og:image" content="https://carbridgefr-glitch.github.io/test-profil-page/photo%2Btext.png">
+
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --plum: #7a2f57;
+      --plum-dark: #3d1a30;
+      --berry: #b34a78;
+      --rose: #e98ba6;
+      --gold: #d7a85e;
+      --gold-light: #ffebbd;
+      --cream: #fff8f3;
+      --ink: #422b36;
+      --muted: #7d6671;
+      --white: #ffffff;
+      --shadow: 0 22px 52px rgba(87,38,63,.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      padding-bottom: 92px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 5%, rgba(255,191,152,.72), transparent 25%),
+        radial-gradient(circle at 95% 18%, rgba(232,139,166,.52), transparent 25%),
+        radial-gradient(circle at 50% 58%, rgba(255,230,182,.62), transparent 34%),
+        linear-gradient(180deg, #fff8f1 0%, #ffece7 44%, #fff4e8 100%);
+      background-attachment: fixed;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button, a { touch-action: manipulation; }
+
+    .page {
+      width: 100%;
+      max-width: 560px;
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,255,255,.18));
+      box-shadow: 0 0 90px rgba(91,40,64,.16);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid rgba(122,47,87,.10);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .back-link,
+    .all-products-link {
+      min-height: 44px;
+      padding: 9px 12px;
+      border-radius: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .back-link {
+      color: #fff;
+      background: linear-gradient(135deg, var(--berry), var(--plum));
+    }
+
+    .all-products-link {
+      color: var(--plum);
+      background: rgba(122,47,87,.08);
+      border: 1px solid rgba(122,47,87,.12);
+    }
+
+    .hero {
+      padding: 18px 14px 30px;
+      background:
+        radial-gradient(circle at 10% 4%, rgba(255,218,184,.72), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(232,139,166,.44), transparent 30%),
+        linear-gradient(180deg, #fff5ec 0%, #f8e8ef 100%);
+    }
+
+    .product-image-card {
+      overflow: hidden;
+      border-radius: 30px;
+      background: #fff;
+      border: 1px solid rgba(122,47,87,.10);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image-card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-copy {
+      margin-top: 16px;
+      padding: 22px 18px;
+      border-radius: 28px;
+      text-align: center;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(255,230,182,.18), transparent 34%),
+        linear-gradient(145deg, #7a2f57, #3d1a30);
+      box-shadow: 0 22px 48px rgba(53,24,42,.26);
+    }
+
+    .kicker {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .hero-copy h1 {
+      margin: 14px 0 0;
+      font-size: 31px;
+      line-height: 1.08;
+      letter-spacing: -.6px;
+    }
+
+    .hero-copy p {
+      margin: 12px auto 0;
+      max-width: 430px;
+      color: rgba(255,255,255,.86);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .hero-price {
+      margin-top: 15px;
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .hero-note {
+      margin-top: 7px;
+      color: rgba(255,255,255,.74);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    section { padding: 32px 18px; }
+
+    .section-glow {
+      background:
+        radial-gradient(circle at top left, rgba(255,181,142,.30), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(225,117,158,.22), transparent 34%),
+        linear-gradient(145deg, rgba(255,255,255,.58), rgba(255,242,234,.38));
+      border-top: 1px solid rgba(255,255,255,.55);
+      border-bottom: 1px solid rgba(255,255,255,.55);
+    }
+
+    .section-title {
+      margin: 0;
+      text-align: center;
+      color: var(--plum-dark);
+      font-size: 27px;
+      line-height: 1.12;
+      letter-spacing: -.5px;
+    }
+
+    .section-subtitle {
+      max-width: 440px;
+      margin: 10px auto 22px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .included-grid {
+      display: grid;
+      gap: 11px;
+    }
+
+    .included-card {
+      padding: 16px;
+      border-radius: 22px;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: center;
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(122,47,87,.11);
+      box-shadow: 0 14px 30px rgba(87,38,63,.09);
+    }
+
+    .included-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--berry), var(--plum));
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .included-card strong {
+      display: block;
+      color: var(--plum-dark);
+      font-size: 15px;
+    }
+
+    .included-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .handwriting-card {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 26px;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(255,229,180,.18), transparent 35%),
+        linear-gradient(145deg, #5a2947, #321827);
+      box-shadow: var(--shadow);
+    }
+
+    .handwriting-card h3 {
+      margin: 0;
+      font-size: 21px;
+      color: var(--gold-light);
+    }
+
+    .handwriting-card p {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      line-height: 1.58;
+      font-weight: 700;
+    }
+
+    .handwriting-steps {
+      margin-top: 14px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .handwriting-step {
+      padding: 11px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .nfc-mini-links {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .nfc-mini-btn {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border: 1px dashed rgba(122,47,87,.22);
+      border-radius: 18px;
+      text-align: left;
+      color: var(--plum-dark);
+      background: rgba(255,255,255,.72);
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .nfc-mini-btn span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .builder-card {
+      padding: 20px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(255,224,172,.34), transparent 36%),
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,244,239,.98));
+      border: 1px solid rgba(111,44,82,.12);
+      box-shadow: var(--shadow);
+    }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 22px 0 9px;
+      color: var(--plum-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .step-label:first-of-type { margin-top: 0; }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--berry), var(--plum));
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .field,
+    .builder-card textarea,
+    .builder-card select {
+      width: 100%;
+      min-height: 52px;
+      padding: 11px 13px;
+      border: 1px solid rgba(111,44,82,.15);
+      border-radius: 17px;
+      outline: none;
+      color: var(--ink);
+      background: rgba(255,250,247,.98);
+      font-size: 14px;
+    }
+
+    .builder-card textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .small-note {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .upload-box {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border-radius: 22px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top right, rgba(255,220,169,.42), transparent 38%),
+        rgba(255,255,255,.88);
+      border: 1px dashed rgba(111,44,82,.28);
+    }
+
+    .upload-box input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-title {
+      display: block;
+      color: var(--plum-dark);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .upload-subtitle {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .upload-tap {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--berry), var(--plum));
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .preview-wrap {
+      display: none;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(111,44,82,.12);
+    }
+
+    .preview-wrap.show { display: block; }
+
+    .preview-wrap img {
+      width: 100%;
+      max-height: 280px;
+      display: block;
+      object-fit: contain;
+      border-radius: 13px;
+      background: #f7eef1;
+    }
+
+    .file-name {
+      margin-top: 7px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      word-break: break-word;
+    }
+
+    .extra-photo-upload {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .extra-photo-upload.show { display: block; }
+
+    .nfc-panel {
+      display: none;
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,229,180,.17), transparent 35%),
+        linear-gradient(145deg, #4d263f, #2c1724);
+      color: #fff;
+    }
+
+    .nfc-panel.show { display: block; }
+
+    .nfc-panel label {
+      display: block;
+      margin: 12px 0 7px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .nfc-panel .field,
+    .nfc-panel textarea,
+    .nfc-panel select {
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      border-color: rgba(255,255,255,.12);
+    }
+
+    .nfc-panel input::placeholder,
+    .nfc-panel textarea::placeholder {
+      color: rgba(255,255,255,.50);
+    }
+
+    .live-price-card {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 26px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top right, rgba(255,229,180,.18), transparent 35%),
+        linear-gradient(145deg, #7a3157, #442037);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .live-price-label {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .live-price {
+      margin-top: 7px;
+      font-size: 35px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .live-price-note {
+      margin-top: 8px;
+      color: rgba(255,255,255,.72);
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .summary-card {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 28px;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(255,229,180,.18), transparent 35%),
+        linear-gradient(145deg, #5a2947, #321827);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-card h3 {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: 21px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .summary-row {
+      padding: 10px 12px;
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .summary-row strong { color: var(--gold-light); }
+    .summary-long { grid-template-columns: 1fr; }
+
+    .consent {
+      margin-top: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .consent input {
+      margin-top: 2px;
+      accent-color: var(--plum);
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 60px;
+      margin-top: 14px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 20px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.20), transparent 32%),
+        linear-gradient(135deg, var(--berry), var(--plum));
+      box-shadow: 0 16px 34px rgba(57,26,43,.20);
+    }
+
+    .tap {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .4px;
+    }
+
+    .status {
+      display: none;
+      margin-bottom: 16px;
+      padding: 15px;
+      border-radius: 18px;
+      text-align: center;
+      color: #17633d;
+      background: #e8fff1;
+      border: 1px solid #a9e9c2;
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .status.show { display: block; }
+
+    .hidden-honey {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .social-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .social-btn {
+      min-height: 66px;
+      padding: 10px 15px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: 0 15px 34px rgba(50,30,40,.15);
+    }
+
+    .social-btn img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .social-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .instagram-btn { background: linear-gradient(135deg, #833ab4, #e1306c, #fd1d1d); }
+    .tiktok-btn { background: linear-gradient(135deg, #111111, #292929); }
+    .viber-btn { background: linear-gradient(135deg, #9b6bc4, #7360b7 58%, #5a4aa0); }
+
+    .footer {
+      padding: 26px 18px 34px;
+      text-align: center;
+      color: rgba(255,255,255,.74);
+      background: #3d2031;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .sticky-price {
+      position: fixed;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 520px;
+      z-index: 999;
+      padding: 10px 12px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 32%),
+        linear-gradient(135deg, #5a2947, #321827);
+      box-shadow: 0 18px 44px rgba(48,21,36,.34);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .sticky-price small {
+      display: block;
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .sticky-price strong {
+      display: block;
+      margin-top: 3px;
+      color: #fff;
+      font-size: 21px;
+    }
+
+    .sticky-price button {
+      min-height: 46px;
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 15px;
+      color: #3d2631;
+      background: linear-gradient(135deg, #ffe8b8, #d9a75e);
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(39,19,31,.62);
+      z-index: 1200;
+    }
+
+    .modal-backdrop.show { display: flex; }
+
+    .modal {
+      width: 100%;
+      max-width: 460px;
+      max-height: 88vh;
+      overflow: auto;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 28px 60px rgba(39,19,31,.35);
+    }
+
+    .modal-header {
+      padding: 16px 18px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .modal-title {
+      color: var(--plum-dark);
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .modal-close {
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, var(--berry), var(--plum));
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .modal-body {
+      padding: 0 18px 18px;
+    }
+
+    .modal-body img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 16px 34px rgba(57,26,43,.12);
+      border: 1px solid rgba(122,47,87,.10);
+    }
+
+    .modal-body p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .modal-body ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    @media (max-width: 390px) {
+      .hero-copy h1 { font-size: 28px; }
+      .section-title { font-size: 24px; }
+      .summary-row { grid-template-columns: 102px 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <div class="topbar">
+      <a class="back-link" href="jewelart.html" target="_self">← Πίσω</a>
+      <a class="all-products-link" href="jewelart.html" target="_self">Όλες οι δημιουργίες</a>
+    </div>
+
+    <header class="hero">
+      <div class="product-image-card">
+        <img src="photo+text.png" alt="Φωτογραφία και χειρόγραφο κείμενο χαραγμένα σε ξύλο">
+      </div>
+
+      <div class="hero-copy">
+        <div class="kicker">ΠΡΟΪΟΝ 02 • ΦΩΤΟΓΡΑΦΙΑ + ΧΕΙΡΟΓΡΑΦΟ</div>
+        <h1>Φωτογραφία + πραγματικό χειρόγραφο</h1>
+        <p>
+          Στείλε μας τη φωτογραφία σου και το δικό σου πραγματικό χειρόγραφο.
+          Το χαράζουμε πάνω στο ξύλο όπως ακριβώς το έγραψες εσύ.
+        </p>
+        <div class="hero-price">28,90€</div>
+        <div class="hero-note">Περιλαμβάνει 1 φωτογραφία + 1 χειρόγραφο κείμενο</div>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">Τι περιλαμβάνει;</h2>
+      <p class="section-subtitle">
+        Μία προσωπική φωτογραφία και ένα πραγματικό χειρόγραφο μήνυμα, ενωμένα στην ίδια ξύλινη δημιουργία.
+      </p>
+
+      <div class="included-grid">
+        <div class="included-card">
+          <div class="included-icon">1</div>
+          <div>
+            <strong>Μία βασική φωτογραφία</strong>
+            <span>Η φωτογραφία που θα χαράξουμε στο ξύλο.</span>
+          </div>
+        </div>
+
+        <div class="included-card">
+          <div class="included-icon">✎</div>
+          <div>
+            <strong>Ένα πραγματικό χειρόγραφο</strong>
+            <span>Τα δικά σου γράμματα, χαραγμένα όπως ακριβώς τα έγραψες.</span>
+          </div>
+        </div>
+
+        <div class="included-card">
+          <div class="included-icon">+</div>
+          <div>
+            <strong>Μία δεύτερη φωτογραφία +5€</strong>
+            <span>Σε αυτή τη δημιουργία μπορούν να μπουν μέχρι 2 φωτογραφίες συνολικά.</span>
+          </div>
+        </div>
+
+        <div class="included-card">
+          <div class="included-icon">N</div>
+          <div>
+            <strong>Απλό NFC +10€</strong>
+            <span>Με ένα tap ανοίγει μία φωτογραφία ή ένα βίντεο.</span>
+          </div>
+        </div>
+
+        <div class="included-card">
+          <div class="included-icon">★</div>
+          <div>
+            <strong>Πλήρης NFC σελίδα +20€</strong>
+            <span>Κεντρική φωτογραφία, βίντεο, έως 5 φωτογραφίες, μουσική και αφιέρωση.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="handwriting-card">
+        <h3>Πώς να μας στείλεις το χειρόγραφό σου</h3>
+        <p>
+          Θέλουμε να κρατήσουμε ακριβώς τους δικούς σου χαρακτήρες. Για το καλύτερο αποτέλεσμα:
+        </p>
+
+        <div class="handwriting-steps">
+          <div class="handwriting-step">1. Γράψε το κείμενο καθαρά σε λευκό χαρτί, ιδανικά Α4.</div>
+          <div class="handwriting-step">2. Χρησιμοποίησε σκούρο στυλό ή μαρκαδόρο.</div>
+          <div class="handwriting-step">3. Τράβηξε καθαρή φωτογραφία από πάνω, με καλό φως και χωρίς σκιές.</div>
+          <div class="handwriting-step">4. Ανέβασε τη φωτογραφία του χαρτιού στη φόρμα πιο κάτω.</div>
+        </div>
+      </div>
+
+      <div class="nfc-mini-links">
+        <button type="button" class="nfc-mini-btn" onclick="openNfcModal('simple')">
+          * Δες τι σημαίνει το απλό NFC
+          <span>Φωτογραφία ή βίντεο που ανοίγει με ένα tap.</span>
+        </button>
+
+        <button type="button" class="nfc-mini-btn" onclick="openNfcModal('full')">
+          * Δες τι σημαίνει η πλήρης NFC σελίδα
+          <span>Μία ολοκληρωμένη μικρή αφιέρωση με φωτογραφίες, βίντεο, μουσική και κείμενο.</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section-glow" id="builder">
+      <h2 class="section-title">Δημιούργησε το δικό σου</h2>
+      <p class="section-subtitle">
+        Ανέβασε τη φωτογραφία και το χειρόγραφό σου. Πρόσθεσε μόνο ό,τι πραγματικά θέλεις και δες την τελική τιμή.
+      </p>
+
+      <div class="status" id="successMessage">
+        Η δημιουργία σου στάλθηκε. Θα δούμε τη φωτογραφία, το χειρόγραφο και τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου.
+      </div>
+
+      <form
+        class="builder-card"
+        id="orderForm"
+        action="https://formsubmit.co/lazaros.jewelart@gmail.com"
+        method="POST"
+        enctype="multipart/form-data">
+
+        <input type="hidden" name="_subject" value="Νέα παραγγελία | Φωτογραφία + Χειρόγραφο | lazaros_jewelart">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://carbridgefr-glitch.github.io/test-profil-page/photo-text.html?sent=1#builder">
+        <input type="hidden" name="_url" value="https://carbridgefr-glitch.github.io/test-profil-page/photo-text.html">
+        <input type="hidden" name="Προϊόν" value="Φωτογραφία + πραγματικό χειρόγραφο">
+        <input type="hidden" name="Τελική τιμή" id="totalHidden" value="28,90€">
+        <input type="hidden" name="Πλήρης περίληψη" id="summaryHidden" value="">
+        <input type="text" name="_honey" class="hidden-honey" tabindex="-1" autocomplete="off">
+
+        <label class="step-label">
+          <span class="step-number">1</span>
+          Ανέβασε τη βασική φωτογραφία
+        </label>
+
+        <div class="upload-box">
+          <input id="mainPhoto" type="file" name="Βασική φωτογραφία" accept="image/*" required onchange="previewImage(event, 'main')">
+          <span class="upload-title">Επίλεξε τη φωτογραφία σου</span>
+          <span class="upload-subtitle">Η βασική φωτογραφία που θα χαράξουμε πάνω στο ξύλο.</span>
+          <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+        </div>
+
+        <div class="preview-wrap" id="mainPreviewWrap">
+          <img id="mainPreview" alt="Προεπισκόπηση βασικής φωτογραφίας">
+          <div class="file-name" id="mainFileName"></div>
+        </div>
+
+        <label class="step-label">
+          <span class="step-number">2</span>
+          Ανέβασε το χειρόγραφο κείμενό σου
+        </label>
+
+        <div class="upload-box">
+          <input id="handwritingPhoto" type="file" name="Φωτογραφία χειρόγραφου κειμένου" accept="image/*" required onchange="previewImage(event, 'handwriting')">
+          <span class="upload-title">Επίλεξε τη φωτογραφία του χειρόγραφου</span>
+          <span class="upload-subtitle">Λευκό χαρτί Α4, καθαρό γράψιμο, καλός φωτισμός.</span>
+          <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+        </div>
+
+        <div class="preview-wrap" id="handwritingPreviewWrap">
+          <img id="handwritingPreview" alt="Προεπισκόπηση χειρόγραφου">
+          <div class="file-name" id="handwritingFileName"></div>
+        </div>
+
+        <label class="step-label" for="extraPhotoChoice">
+          <span class="step-number">3</span>
+          Θέλεις δεύτερη φωτογραφία;
+        </label>
+
+        <select id="extraPhotoChoice" name="Δεύτερη φωτογραφία" onchange="toggleExtraPhoto(); updateAll()">
+          <option value="no">Όχι, μόνο 1 φωτογραφία</option>
+          <option value="yes">Ναι, πρόσθεσε δεύτερη φωτογραφία • +5€</option>
+        </select>
+
+        <div class="extra-photo-upload" id="extraPhotoUpload">
+          <div class="upload-box">
+            <input id="extraPhoto" type="file" name="Δεύτερη φωτογραφία" accept="image/*" onchange="updateAll()">
+            <span class="upload-title">Ανέβασε τη δεύτερη φωτογραφία</span>
+            <span class="upload-subtitle">Σε αυτή τη δημιουργία μπορούν να μπουν μέχρι 2 φωτογραφίες συνολικά.</span>
+            <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+          </div>
+        </div>
+
+        <label class="step-label" for="nfcChoice">
+          <span class="step-number">4</span>
+          Θέλεις να προσθέσεις NFC τεχνολογία;
+        </label>
+
+        <select id="nfcChoice" name="NFC επιλογή" onchange="toggleNfcPanel(); updateAll()">
+          <option value="none">Χωρίς NFC</option>
+          <option value="simple">Απλό NFC • +10€</option>
+          <option value="full">Πλήρης NFC σελίδα • +20€</option>
+        </select>
+
+        <div class="small-note">
+          Πάτησε στο * πιο πάνω για να δεις τη διαφορά ανάμεσα στο απλό NFC και στην πλήρη NFC σελίδα.
+        </div>
+
+        <div class="nfc-panel" id="nfcPanel">
+
+          <div id="simpleNfcFields">
+            <strong>Απλό NFC</strong>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,.72);font-size:12px;line-height:1.5;">
+              Με ένα tap στη δημιουργία ανοίγει μία φωτογραφία ή ένα βίντεο.
+            </p>
+
+            <label for="simpleNfcType">Τι θέλεις να ανοίγει;</label>
+            <select id="simpleNfcType" name="Τύπος απλού NFC" onchange="updateAll()">
+              <option value="Φωτογραφία">Φωτογραφία</option>
+              <option value="Βίντεο">Βίντεο</option>
+            </select>
+
+            <label for="simpleNfcFile">Ανέβασε τη φωτογραφία ή το μικρό βίντεο</label>
+            <div class="upload-box" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);">
+              <input id="simpleNfcFile" type="file" name="Υλικό απλού NFC" accept="image/*,video/*" onchange="updateAll()">
+              <span class="upload-title" style="color:white;">Επίλεξε αρχείο</span>
+              <span class="upload-subtitle" style="color:rgba(255,255,255,.62);">Αν το βίντεο είναι μεγάλο, βάλε link από κάτω.</span>
+              <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+            </div>
+
+            <label for="simpleNfcLink">Link φωτογραφίας ή βίντεο, αν υπάρχει</label>
+            <input class="field" id="simpleNfcLink" type="url" name="Link απλού NFC" placeholder="https://..." oninput="updateAll()">
+          </div>
+
+          <div id="fullNfcFields">
+            <strong>Πλήρης NFC σελίδα</strong>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,.72);font-size:12px;line-height:1.5;">
+              Κεντρική φωτογραφία, 1 βίντεο, έως 5 φωτογραφίες, μουσική και κείμενο / αφιέρωση.
+            </p>
+
+            <label for="fullNfcCover">Κεντρική φωτογραφία προφίλ</label>
+            <div class="upload-box" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);">
+              <input id="fullNfcCover" type="file" name="Κεντρική φωτογραφία NFC σελίδας" accept="image/*" onchange="updateAll()">
+              <span class="upload-title" style="color:white;">Επίλεξε την κεντρική φωτογραφία</span>
+              <span class="upload-subtitle" style="color:rgba(255,255,255,.62);">Αυτή θα είναι η βασική εικόνα της NFC σελίδας.</span>
+              <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+            </div>
+
+            <label for="fullNfcVideo">Βίντεο της αφιέρωσης</label>
+            <div class="upload-box" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);">
+              <input id="fullNfcVideo" type="file" name="Βίντεο NFC σελίδας" accept="video/*" onchange="updateAll()">
+              <span class="upload-title" style="color:white;">Επίλεξε βίντεο</span>
+              <span class="upload-subtitle" style="color:rgba(255,255,255,.62);">Ή βάλε link στο επόμενο πεδίο.</span>
+              <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+            </div>
+
+            <label for="fullNfcVideoLink">Link βίντεο, αν είναι μεγάλο</label>
+            <input class="field" id="fullNfcVideoLink" type="url" name="Link βίντεο NFC σελίδας" placeholder="YouTube, Drive ή άλλο link" oninput="updateAll()">
+
+            <label for="fullNfcGallery">Έως 5 επιπλέον φωτογραφίες</label>
+            <div class="upload-box" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);">
+              <input id="fullNfcGallery" type="file" name="Φωτογραφίες gallery NFC σελίδας" accept="image/*" multiple onchange="limitGalleryFiles(); updateAll()">
+              <span class="upload-title" style="color:white;">Επίλεξε φωτογραφίες</span>
+              <span class="upload-subtitle" style="color:rgba(255,255,255,.62);">Μέχρι 5 φωτογραφίες για τις στιγμές σας.</span>
+              <span class="upload-tap">ΠΑΤΑ ΕΔΩ ›</span>
+            </div>
+
+            <label for="fullNfcMusic">Link ή τίτλος μουσικής</label>
+            <input class="field" id="fullNfcMusic" type="text" name="Μουσική NFC σελίδας" placeholder="YouTube / Spotify link ή τίτλος τραγουδιού" oninput="updateAll()">
+
+            <label for="nfcStory">Κείμενο / αφιέρωση</label>
+            <textarea id="nfcStory" name="Ιστορία / αφιέρωση NFC" placeholder="Γράψε εδώ την αφιέρωση ή την ιστορία που θέλεις να εμφανίζεται." oninput="updateAll()"></textarea>
+          </div>
+        </div>
+
+        <label class="step-label" for="giftFor">
+          <span class="step-number">5</span>
+          Για ποιον είναι το δώρο;
+        </label>
+        <input class="field" id="giftFor" type="text" name="Για ποιον είναι το δώρο" placeholder="π.χ. σύντροφος, φίλη, μητέρα, οικογένεια" oninput="updateAll()">
+
+        <label class="step-label" for="neededBy">
+          <span class="step-number">6</span>
+          Μέχρι πότε το χρειάζεσαι;
+        </label>
+        <input class="field" id="neededBy" type="date" name="Ημερομηνία που το χρειάζεται" onchange="updateAll()">
+
+        <label class="step-label" for="notes">
+          <span class="step-number">7</span>
+          Πες μας πώς θέλεις να το στήσουμε
+        </label>
+        <textarea id="notes" name="Σημειώσεις πελάτη" placeholder="π.χ. Θέλω τη φωτογραφία αριστερά και το χειρόγραφο δεξιά..." oninput="updateAll()"></textarea>
+
+        <label class="step-label">
+          <span class="step-number">8</span>
+          Στοιχεία επικοινωνίας
+        </label>
+        <input class="field" id="customerName" type="text" name="Όνομα" placeholder="Το όνομά σου" required oninput="updateAll()">
+        <div style="height:9px"></div>
+        <input class="field" id="customerPhone" type="tel" name="Τηλέφωνο" inputmode="tel" placeholder="Τηλέφωνο • π.χ. 69XXXXXXXX" required oninput="updateAll()">
+        <div style="height:9px"></div>
+        <input class="field" id="customerEmail" type="email" name="email" placeholder="Email • για επικοινωνία" required oninput="updateAll()">
+
+        <div class="live-price-card" aria-live="polite">
+          <div class="live-price-label">Η ΤΙΜΗ ΣΟΥ ΤΩΡΑ</div>
+          <div class="live-price" id="livePrice">28,90€</div>
+          <div class="live-price-note" id="priceBreakdown">28,90€ • 1 φωτογραφία + 1 χειρόγραφο.</div>
+        </div>
+
+        <div class="summary-card" aria-live="polite">
+          <h3>Η δημιουργία μου</h3>
+
+          <div class="summary-list">
+            <div class="summary-row"><strong>Προϊόν</strong><span>Φωτογραφία + χειρόγραφο</span></div>
+            <div class="summary-row"><strong>Βασική φωτογραφία</strong><span id="summaryMainPhoto">Δεν έχει επιλεγεί</span></div>
+            <div class="summary-row"><strong>Χειρόγραφο</strong><span id="summaryHandwriting">Δεν έχει επιλεγεί</span></div>
+            <div class="summary-row"><strong>Δεύτερη φωτογραφία</strong><span id="summaryExtraPhoto">Όχι</span></div>
+            <div class="summary-row"><strong>NFC</strong><span id="summaryNfc">Χωρίς NFC</span></div>
+            <div class="summary-row"><strong>Για ποιον</strong><span id="summaryGiftFor">Δεν έχει συμπληρωθεί</span></div>
+            <div class="summary-row"><strong>Ημερομηνία</strong><span id="summaryNeededBy">Δεν έχει επιλεγεί</span></div>
+            <div class="summary-row summary-long"><strong>Σημειώσεις</strong><span id="summaryNotes">Δεν έχει συμπληρωθεί</span></div>
+            <div class="summary-row"><strong>Όνομα</strong><span id="summaryName">Δεν έχει συμπληρωθεί</span></div>
+            <div class="summary-row"><strong>Τηλέφωνο</strong><span id="summaryPhone">Δεν έχει συμπληρωθεί</span></div>
+            <div class="summary-row"><strong>Τελική τιμή</strong><span id="summaryTotal">28,90€</span></div>
+          </div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Συμφωνώ να χρησιμοποιηθούν τα στοιχεία και τα αρχεία μου μόνο για την επικοινωνία και τη δημιουργία του προϊόντος μου.</span>
+        </label>
+
+        <button class="submit-btn" id="submitBtn" type="submit">
+          Στείλε τη δημιουργία μου
+          <span class="tap">ΠΑΤΑ ΕΔΩ ›</span>
+        </button>
+
+        <p style="margin:12px 0 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.45;font-weight:700;">
+          Στην πρώτη δοκιμή του FormSubmit μπορεί να ζητηθεί μία επιβεβαίωση στο email του καταστήματος.
+        </p>
+      </form>
+    </section>
+
+    <section>
+      <h2 class="section-title">Θέλεις να δεις περισσότερα;</h2>
+      <p class="section-subtitle">Δες πραγματικές δημιουργίες ή μίλησε μαζί μας.</p>
+
+      <div class="social-grid">
+        <a class="social-btn instagram-btn" href="https://www.instagram.com/lazaros_jewelart/" target="_self">
+          <img src="instagram.jpg" alt="Instagram">
+          <span class="social-copy">
+            <span>Instagram • lazaros_jewelart</span>
+            <span class="tap">ΠΑΤΑ ΕΔΩ ›</span>
+          </span>
+        </a>
+
+        <a class="social-btn tiktok-btn" href="https://www.tiktok.com/@lazaros_jewelart" target="_self">
+          <img src="tiktok.jpg" alt="TikTok">
+          <span class="social-copy">
+            <span>TikTok • lazaros_jewelart</span>
+            <span class="tap">ΠΑΤΑ ΕΔΩ ›</span>
+          </span>
+        </a>
+
+        <a class="social-btn viber-btn" href="viber://chat?number=%2B306988128099" target="_self">
+          <img src="viber.jpg" alt="Viber">
+          <span class="social-copy">
+            <span>Συνομιλήστε μαζί μας στο Viber</span>
+            <span class="tap">ΠΑΤΑ ΕΔΩ ›</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="jewelart.html" target="_self">← Πίσω στις δημιουργίες</a>
+      <br><br>
+      <a href="index.html" target="_self">← Πίσω στο προφίλ NFC</a>
+      <br><br>
+      Powered by NFCSolutions.gr
+    </footer>
+  </main>
+
+  <div class="sticky-price">
+    <div>
+      <small>Η ΤΙΜΗ ΣΟΥ ΤΩΡΑ</small>
+      <strong id="stickyPrice">28,90€</strong>
+    </div>
+    <button type="button" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'})">
+      Δημιούργησέ το
+    </button>
+  </div>
+
+  <div class="modal-backdrop" id="nfcModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">NFC</div>
+        <button class="modal-close" type="button" onclick="closeNfcModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="NFC παράδειγμα">
+        <p id="modalText"></p>
+        <ul id="modalList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BASE_PRICE = 28.90;
+    const EXTRA_PHOTO_PRICE = 5;
+    const SIMPLE_NFC_PRICE = 10;
+    const FULL_NFC_PRICE = 20;
+    const MAX_TOTAL_UPLOAD = 9 * 1024 * 1024;
+
+    const modalData = {
+      simple: {
+        title: "Απλό NFC",
+        image: "aplo%20nfc.png",
+        text: "Με ένα απλό tap στη δημιουργία, το κινητό ανοίγει αμέσως αυτό που θέλεις: μία φωτογραφία ή ένα βίντεο.",
+        items: [
+          "1 φωτογραφία ή 1 βίντεο.",
+          "Ανοίγει κατευθείαν με ένα tap.",
+          "Ιδανικό όταν θέλεις κάτι απλό και άμεσο."
+        ]
+      },
+      full: {
+        title: "Πλήρης NFC σελίδα",
+        image: "olokliromeni%20nfc.png",
+        text: "Μία ολοκληρωμένη μικρή αφιέρωση που ανοίγει με tap στη δημιουργία.",
+        items: [
+          "1 κεντρική φωτογραφία.",
+          "1 βίντεο.",
+          "Έως 5 επιπλέον φωτογραφίες.",
+          "Μουσική ή τραγούδι.",
+          "Κείμενο / αφιέρωση."
+        ]
+      }
+    };
+
+    function euro(value) {
+      return value.toFixed(2).replace(".", ",") + "€";
+    }
+
+    function getTotal() {
+      const extraPhoto = document.getElementById("extraPhotoChoice").value === "yes";
+      const nfcChoice = document.getElementById("nfcChoice").value;
+
+      let total = BASE_PRICE;
+
+      if (extraPhoto) total += EXTRA_PHOTO_PRICE;
+      if (nfcChoice === "simple") total += SIMPLE_NFC_PRICE;
+      if (nfcChoice === "full") total += FULL_NFC_PRICE;
+
+      return total;
+    }
+
+    function formatDate(value) {
+      if (!value) return "Δεν έχει επιλεγεί";
+      const parts = value.split("-");
+      if (parts.length !== 3) return value;
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+
+    function previewImage(event, type) {
+      const file = event.target.files && event.target.files[0];
+
+      const wrap = document.getElementById(type === "main" ? "mainPreviewWrap" : "handwritingPreviewWrap");
+      const preview = document.getElementById(type === "main" ? "mainPreview" : "handwritingPreview");
+      const fileName = document.getElementById(type === "main" ? "mainFileName" : "handwritingFileName");
+
+      if (!file) {
+        wrap.classList.remove("show");
+        preview.removeAttribute("src");
+        fileName.textContent = "";
+        updateAll();
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        alert("Διάλεξε αρχείο φωτογραφίας.");
+        event.target.value = "";
+        return;
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+      preview.onload = () => URL.revokeObjectURL(objectUrl);
+      preview.src = objectUrl;
+      fileName.textContent = file.name;
+      wrap.classList.add("show");
+
+      updateAll();
+    }
+
+    function toggleExtraPhoto() {
+      const wantsExtra = document.getElementById("extraPhotoChoice").value === "yes";
+      const upload = document.getElementById("extraPhotoUpload");
+      const input = document.getElementById("extraPhoto");
+
+      upload.classList.toggle("show", wantsExtra);
+      input.required = wantsExtra;
+
+      if (!wantsExtra) input.value = "";
+    }
+
+    function toggleNfcPanel() {
+      const choice = document.getElementById("nfcChoice").value;
+      const panel = document.getElementById("nfcPanel");
+      const simple = document.getElementById("simpleNfcFields");
+      const full = document.getElementById("fullNfcFields");
+
+      panel.classList.toggle("show", choice !== "none");
+      simple.style.display = choice === "simple" ? "block" : "none";
+      full.style.display = choice === "full" ? "block" : "none";
+    }
+
+    function limitGalleryFiles() {
+      const input = document.getElementById("fullNfcGallery");
+
+      if (input.files && input.files.length > 5) {
+        alert("Μπορείς να επιλέξεις μέχρι 5 φωτογραφίες για την πλήρη NFC σελίδα.");
+        input.value = "";
+      }
+    }
+
+    function nfcLabel() {
+      const choice = document.getElementById("nfcChoice").value;
+
+      if (choice === "simple") return "Απλό NFC +10€";
+      if (choice === "full") return "Πλήρης NFC σελίδα +20€";
+
+      return "Χωρίς NFC";
+    }
+
+    function updateAll() {
+      const total = getTotal();
+      const wantsExtra = document.getElementById("extraPhotoChoice").value === "yes";
+      const nfcChoice = document.getElementById("nfcChoice").value;
+
+      const breakdown = [euro(BASE_PRICE)];
+
+      if (wantsExtra) breakdown.push(`+ ${euro(EXTRA_PHOTO_PRICE)} δεύτερη φωτογραφία`);
+      if (nfcChoice === "simple") breakdown.push(`+ ${euro(SIMPLE_NFC_PRICE)} απλό NFC`);
+      if (nfcChoice === "full") breakdown.push(`+ ${euro(FULL_NFC_PRICE)} πλήρης NFC σελίδα`);
+
+      document.getElementById("livePrice").textContent = euro(total);
+      document.getElementById("stickyPrice").textContent = euro(total);
+      document.getElementById("summaryTotal").textContent = euro(total);
+      document.getElementById("totalHidden").value = euro(total);
+      document.getElementById("priceBreakdown").textContent = breakdown.join(" • ");
+
+      const mainPhoto = document.getElementById("mainPhoto").files[0];
+      const handwritingPhoto = document.getElementById("handwritingPhoto").files[0];
+      const giftFor = document.getElementById("giftFor").value.trim() || "Δεν έχει συμπληρωθεί";
+      const neededBy = formatDate(document.getElementById("neededBy").value);
+      const notes = document.getElementById("notes").value.trim() || "Δεν έχει συμπληρωθεί";
+      const customerName = document.getElementById("customerName").value.trim() || "Δεν έχει συμπληρωθεί";
+      const customerPhone = document.getElementById("customerPhone").value.trim() || "Δεν έχει συμπληρωθεί";
+
+      document.getElementById("summaryMainPhoto").textContent =
+        mainPhoto ? mainPhoto.name : "Δεν έχει επιλεγεί";
+
+      document.getElementById("summaryHandwriting").textContent =
+        handwritingPhoto ? handwritingPhoto.name : "Δεν έχει επιλεγεί";
+
+      document.getElementById("summaryExtraPhoto").textContent =
+        wantsExtra ? "Ναι • +5€" : "Όχι";
+
+      document.getElementById("summaryNfc").textContent = nfcLabel();
+      document.getElementById("summaryGiftFor").textContent = giftFor;
+      document.getElementById("summaryNeededBy").textContent = neededBy;
+      document.getElementById("summaryNotes").textContent = notes;
+      document.getElementById("summaryName").textContent = customerName;
+      document.getElementById("summaryPhone").textContent = customerPhone;
+
+      document.getElementById("summaryHidden").value = [
+        "Προϊόν: Φωτογραφία + πραγματικό χειρόγραφο",
+        `Βασική φωτογραφία: ${mainPhoto ? mainPhoto.name : "Δεν έχει επιλεγεί"}`,
+        `Χειρόγραφο: ${handwritingPhoto ? handwritingPhoto.name : "Δεν έχει επιλεγεί"}`,
+        `Δεύτερη φωτογραφία: ${wantsExtra ? "Ναι" : "Όχι"}`,
+        `NFC: ${nfcLabel()}`,
+        `Για ποιον: ${giftFor}`,
+        `Ημερομηνία: ${neededBy}`,
+        `Σημειώσεις: ${notes}`,
+        `Όνομα: ${customerName}`,
+        `Τηλέφωνο: ${customerPhone}`,
+        `Τελική τιμή: ${euro(total)}`
+      ].join(" | ");
+    }
+
+    function totalUploadSize() {
+      let total = 0;
+
+      document.querySelectorAll('#orderForm input[type="file"]').forEach(input => {
+        Array.from(input.files || []).forEach(file => total += file.size);
+      });
+
+      return total;
+    }
+
+    function openNfcModal(type) {
+      const data = modalData[type];
+      if (!data) return;
+
+      document.getElementById("modalTitle").textContent = data.title;
+      document.getElementById("modalImage").src = data.image;
+      document.getElementById("modalImage").alt = data.title;
+      document.getElementById("modalText").textContent = data.text;
+
+      const list = document.getElementById("modalList");
+      list.innerHTML = "";
+
+      data.items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      document.getElementById("nfcModal").classList.add("show");
+    }
+
+    function closeNfcModal() {
+      document.getElementById("nfcModal").classList.remove("show");
+    }
+
+    document.getElementById("nfcModal").addEventListener("click", function(event) {
+      if (event.target.id === "nfcModal") closeNfcModal();
+    });
+
+    const form = document.getElementById("orderForm");
+
+    form.addEventListener("submit", function(event) {
+      updateAll();
+
+      if (totalUploadSize() > MAX_TOTAL_UPLOAD) {
+        event.preventDefault();
+        alert("Τα συνολικά αρχεία είναι πολύ μεγάλα. Κράτησέ τα κάτω από περίπου 9MB ή βάλε link για το βίντεο.");
+        return;
+      }
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = ".72";
+      submitBtn.innerHTML = "Αποστολή...";
+    });
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("sent") === "1") {
+      document.getElementById("successMessage").classList.add("show");
+    }
+
+    toggleExtraPhoto();
+    toggleNfcPanel();
+    updateAll();
+  </script>
+</body>
+</html>
