@@ -271,7 +271,7 @@
     }
 
     .package-tile {
-      min-height: 185px;
+      min-height: 248px;
       border: 1px solid rgba(215,183,106,0.24);
       border-radius: 26px;
       background:
@@ -280,10 +280,11 @@
       box-shadow: 0 16px 36px rgba(0,0,0,0.27);
       color: #ffffff;
       text-align: left;
-      padding: 14px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow: hidden;
     }
 
     .package-tile.highlight {
@@ -291,6 +292,23 @@
       background:
         radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 34%),
         linear-gradient(145deg, rgba(23,68,111,0.58), rgba(255,255,255,0.045));
+    }
+
+    .package-image {
+      width: 100%;
+      aspect-ratio: 1 / 0.78;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(215,183,106,0.18);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+    }
+
+    .package-image.custom-image {
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.02);
     }
 
     .package-icon {
@@ -662,7 +680,7 @@
       }
 
       .package-tile {
-        min-height: 175px;
+        min-height: 238px;
       }
 
       .package-tile h3 {
@@ -742,7 +760,7 @@
 
         <button class="package-tile" onclick="openPackage('basic')">
           <div>
-            <div class="package-icon">01</div>
+            <img class="package-image" src="basic.png" onerror="this.onerror=null; this.src='Basic.png';" alt="Basic NFC Digital Profile">
             <h3>Basic</h3>
             <p>Για καθαρή παρουσία με τα βασικά κουμπιά.</p>
           </div>
@@ -754,7 +772,7 @@
 
         <button class="package-tile" onclick="openPackage('professional')">
           <div>
-            <div class="package-icon">02</div>
+            <img class="package-image" src="professional.png" onerror="this.onerror=null; this.src='Professional.png';" alt="Professional NFC Digital Profile">
             <h3>Professional</h3>
             <p>Για πλήρη εικόνα με social και NFC βραχιόλι.</p>
           </div>
@@ -766,7 +784,7 @@
 
         <button class="package-tile highlight" onclick="openPackage('premium')">
           <div>
-            <div class="package-icon">03</div>
+            <img class="package-image" src="premium.png" onerror="this.onerror=null; this.src='Premium.png';" alt="Premium NFC Digital Profile">
             <h3>Premium</h3>
             <p>Πλήρης παρουσίαση με βίντεο, προσφορές και μπρελόκ.</p>
           </div>
@@ -778,7 +796,7 @@
 
         <button class="package-tile" onclick="openPackage('custom')">
           <div>
-            <div class="package-icon">04</div>
+            <img class="package-image custom-image" src="1%20tap.png" alt="Custom Business NFC Profile">
             <h3>Custom</h3>
             <p>Για εστιατόρια, σχολές, ομάδες ή ειδικές ανάγκες.</p>
           </div>
