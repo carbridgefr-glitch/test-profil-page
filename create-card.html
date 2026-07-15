@@ -666,6 +666,88 @@
       box-shadow: 0 14px 30px rgba(0,0,0,0.24);
     }
 
+
+
+    .video-demo-section {
+      background:
+        radial-gradient(circle at top right, rgba(215,183,106,0.10), transparent 30%),
+        rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .video-card {
+      border-radius: 28px;
+      padding: 12px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.14), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.27);
+      overflow: hidden;
+    }
+
+    .demo-video {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: #000000;
+      border: 1px solid rgba(215,183,106,0.18);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+    }
+
+    .video-caption {
+      margin: 11px 4px 2px;
+      color: rgba(255,255,255,0.66);
+      font-size: 12.2px;
+      line-height: 1.45;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .modal-media {
+      margin: 0 0 16px;
+      padding-right: 44px;
+    }
+
+    .modal-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(215,183,106,0.20);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+      object-fit: cover;
+    }
+
+    .modal-media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .modal-video {
+      width: 100%;
+      height: 100%;
+      min-height: 154px;
+      display: block;
+      object-fit: cover;
+      border-radius: 22px;
+      background: #000000;
+      border: 1px solid rgba(215,183,106,0.20);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+    }
+
+    .modal-video-note {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,0.60);
+      font-size: 11px;
+      line-height: 1.35;
+      text-align: center;
+      font-weight: 700;
+    }
+
     @media (max-width: 380px) {
       h1 {
         font-size: 27px;
@@ -746,6 +828,24 @@
           <strong>Σε κρατάει</strong>
           <span>Αποθηκεύει επαφή ή σε ξαναβρίσκει.</span>
         </div>
+      </div>
+    </section>
+
+
+    <section class="video-demo-section">
+      <h2 class="section-title">Δες το σε δράση</h2>
+      <p class="section-subtitle">
+        Ένα μικρό demo για να καταλάβει ο πελάτης ότι με ένα tap ανοίγει αμέσως το επαγγελματικό προφίλ.
+      </p>
+
+      <div class="video-card">
+        <video class="demo-video" autoplay muted loop playsinline controls>
+          <source src="nfc-demo.mp4.mp4" type="video/mp4">
+          Το πρόγραμμα περιήγησής σας δεν υποστηρίζει βίντεο.
+        </video>
+        <p class="video-caption">
+          Το ίδιο προφίλ μπορεί να ανοίγει από NFC βραχιόλι, NFC μπρελόκ ή QR.
+        </p>
       </div>
     </section>
 
@@ -854,6 +954,15 @@
           <div class="view-profile">Δες προφίλ</div>
         </a>
 
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/speedfactory/" target="_self">
+          <img class="proof-logo" src="icon-192.webp" alt="Speed Factory Moto logo">
+          <div>
+            <strong>Speed Factory Moto</strong>
+            <span>Premium επαγγελματικό προφίλ</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
       </div>
     </section>
 
@@ -920,6 +1029,7 @@
   <div class="modal" id="packageModal">
     <div class="modal-box">
       <button class="modal-close" onclick="closePackage()">×</button>
+      <div class="modal-media" id="modalMedia"></div>
       <h2 id="modalTitle"></h2>
       <div class="modal-price" id="modalPrice"></div>
       <p id="modalText"></p>
@@ -942,6 +1052,8 @@
       basic: {
         name: "Basic",
         price: "79,90€",
+        image: "basic.png",
+        fallbackImage: "Basic.png",
         text: "Για επαγγελματίες που θέλουν μία απλή και καθαρή ψηφιακή κάρτα.",
         items: [
           "Βασική NFC landing page",
@@ -954,12 +1066,17 @@
       professional: {
         name: "Professional",
         price: "159,90€",
-        text: "Για πιο ολοκληρωμένη επαγγελματική εικόνα με social και παρουσίαση.",
+        image: "professional.png",
+        fallbackImage: "Professional.png",
+        video: "nfc-demo.mp4.mp4",
+        splitMedia: true,
+        text: "Για πιο ολοκληρωμένη επαγγελματική εικόνα με social, επικοινωνία και NFC βραχιόλι.",
         items: [
           "Logo ή φωτογραφία προφίλ",
           "Social media και άμεση επικοινωνία",
           "Google Review, Google Map και βασικές πληροφορίες",
           "Δώρο 1 NFC βραχιόλι",
+          "Mini demo video για να καταλάβει ο πελάτης πώς λειτουργεί",
           "+15€ για κάθε αλλαγή ή προσθήκη κουμπιού μετά την παράδοση"
         ]
       },
@@ -967,7 +1084,9 @@
       premium: {
         name: "Premium",
         price: "359,90€",
-        text: "Για πλήρη παρουσίαση επιχείρησης με πιο premium εικόνα και NFC υλικό.",
+        image: "premium.png",
+        fallbackImage: "Premium.png",
+        text: "Για πλήρη παρουσίαση επιχείρησης με premium εικόνα, βίντεο, προσφορές και NFC υλικό.",
         items: [
           "Cover, logo, φωτογραφίες και πλήρης δομή προφίλ",
           "Προσφορές, βίντεο, βιογραφία ή gallery",
@@ -981,7 +1100,8 @@
       custom: {
         name: "Custom Business",
         price: "Κατόπιν συνεννόησης",
-        text: "Για επιχειρήσεις ή οργανισμούς που χρειάζονται ειδική παρουσίαση.",
+        image: "1%20tap.png",
+        text: "Για επιχειρήσεις ή οργανισμούς που χρειάζονται ειδική παρουσίαση και όχι απλό προφίλ.",
         items: [
           "Ιδανικό για εστιατόρια, σχολές, ομάδες, ξενοδοχεία ή καταστήματα",
           "Μπορεί να περιλαμβάνει menu, υπηρεσίες, προϊόντα ή ξεχωριστές σελίδες",
@@ -991,14 +1111,37 @@
       }
     };
 
+    function packageImageHtml(data) {
+      const fallback = data.fallbackImage
+        ? ` onerror="this.onerror=null; this.src='${data.fallbackImage}';"`
+        : "";
+
+      if (data.splitMedia && data.video) {
+        return `
+          <div class="modal-media-grid">
+            <img class="modal-image" src="${data.image}"${fallback} alt="${data.name} NFC Digital Profile">
+            <video class="modal-video" autoplay muted loop playsinline controls>
+              <source src="${data.video}" type="video/mp4">
+              Το πρόγραμμα περιήγησής σας δεν υποστηρίζει βίντεο.
+            </video>
+          </div>
+          <div class="modal-video-note">Professional: προφίλ + NFC βραχιόλι σε πραγματική χρήση.</div>
+        `;
+      }
+
+      return `<img class="modal-image" src="${data.image}"${fallback} alt="${data.name} NFC Digital Profile">`;
+    }
+
     function openPackage(key) {
-      currentPackage = packages[key].name;
+      const data = packages[key];
+      currentPackage = data.name;
 
-      document.getElementById("modalTitle").textContent = packages[key].name;
-      document.getElementById("modalPrice").textContent = packages[key].price;
-      document.getElementById("modalText").textContent = packages[key].text;
+      document.getElementById("modalMedia").innerHTML = packageImageHtml(data);
+      document.getElementById("modalTitle").textContent = data.name;
+      document.getElementById("modalPrice").textContent = data.price;
+      document.getElementById("modalText").textContent = data.text;
 
-      document.getElementById("modalList").innerHTML = packages[key].items
+      document.getElementById("modalList").innerHTML = data.items
         .map(item => `<div><span class="check">✓</span><span>${item}</span></div>`)
         .join("");
 
