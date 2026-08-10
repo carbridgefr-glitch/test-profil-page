@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TAP CREATE | Andreas Lazaros Profile</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/andreas-profile.jpg.jpeg">
+
+  <meta name="theme-color" content="#050505">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Andreas Lazaros | TAP CREATE">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --black: #050505;
+      --black-2: #0b0b0d;
+      --cream: #f4ead8;
+      --gold: #d7b76a;
+      --gold-light: #ffe3a0;
+      --gold-dark: #9e7834;
+      --blue: #0e2d52;
+      --blue-soft: #17446f;
+      --white: #ffffff;
+      --green: #26a846;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at top left, rgba(215,183,106,0.30), transparent 28%),
+        radial-gradient(circle at top right, rgba(23,68,111,0.38), transparent 25%),
+        radial-gradient(circle at bottom center, rgba(215,183,106,0.16), transparent 32%),
+        linear-gradient(180deg, #050505 0%, #0b0b0d 42%, #050505 100%);
+      background-attachment: fixed;
+    }
+
+    body {
+      padding-bottom: 104px;
+    }
+
+    a,
+    button {
+      touch-action: manipulation;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(215,183,106,0.20), transparent 28%),
+        radial-gradient(circle at 0% 25%, rgba(14,45,82,0.42), transparent 34%),
+        linear-gradient(180deg, #060606 0%, #101014 45%, #070707 100%);
+      box-shadow: 0 0 80px rgba(0,0,0,0.75);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 34%),
+        linear-gradient(90deg, transparent, rgba(215,183,106,0.045), transparent);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover {
+      height: 270px;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.88)),
+        url("/cover.jpg.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .top-badge,
+    .top-badge-light {
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(215,183,106,0.42);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+      white-space: nowrap;
+    }
+
+    .top-badge {
+      background: rgba(0,0,0,0.55);
+      color: var(--gold-light);
+    }
+
+    .top-badge-light {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    .hero-message {
+      position: absolute;
+      left: 18px;
+      top: 84px;
+      z-index: 2;
+      max-width: 285px;
+      padding: 14px 15px;
+      border-radius: 22px;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(215,183,106,0.26);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 16px rgba(255,227,160,0.88);
+    }
+
+    .hero-message h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.12;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .hero-message p {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+    }
+
+    .profile-section {
+      text-align: center;
+      padding: 0 18px 18px;
+      margin-top: -66px;
+      position: relative;
+    }
+
+    .profile-side-action {
+      position: absolute;
+      top: 38px;
+      width: 76px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: #ffffff;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .profile-side-action.save {
+      left: 12px;
+    }
+
+    .profile-side-action.share {
+      right: 12px;
+    }
+
+    .profile-side-circle {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 34%),
+        linear-gradient(145deg, rgba(13,45,82,0.96), rgba(5,12,22,0.98));
+      border: 1px solid rgba(255,227,160,0.42);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.42);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .profile-side-action.share .profile-side-circle {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.20), transparent 34%),
+        linear-gradient(145deg, #b99145, #75541f);
+    }
+
+    .profile-side-circle svg {
+      width: 27px;
+      height: 27px;
+      stroke: #ffffff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-side-text {
+      max-width: 76px;
+      color: rgba(255,255,255,0.88);
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .profile-side-action:active .profile-side-circle {
+      transform: scale(0.96);
+    }
+
+    .profile-ring {
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      padding: 4px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--gold-light), #fff7d8, var(--gold-dark), var(--blue-soft));
+      box-shadow: 0 24px 52px rgba(0,0,0,0.48);
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 5px solid #070707;
+      display: block;
+      background: #fff;
+    }
+
+    h1 {
+      margin: 18px 0 7px;
+      font-size: 32px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: #fff;
+    }
+
+    .main-subtitle {
+      margin: 0 auto;
+      max-width: 350px;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 900;
+      color: var(--cream);
+    }
+
+    .gold-line {
+      width: 90px;
+      height: 3px;
+      border-radius: 999px;
+      margin: 15px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    .premium-intro {
+      margin: 17px 0 0;
+      padding: 16px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.14), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid rgba(215,183,106,0.30);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.28);
+      text-align: left;
+    }
+
+    .premium-intro strong {
+      display: block;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 1.18;
+      margin-bottom: 8px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .premium-intro span {
+      display: block;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .section-label {
+      padding: 0 18px;
+      margin: 10px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(215,183,106,0.55), transparent);
+    }
+
+    .section-label h2 {
+      margin: 0;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      padding: 0 18px 24px;
+      text-align: center;
+    }
+
+    .quick-link {
+      min-height: 108px;
+      padding: 12px 6px 11px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 34%),
+        linear-gradient(145deg, rgba(255,255,255,0.115), rgba(255,255,255,0.05));
+      border: 1px solid rgba(215,183,106,0.26);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.24);
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 12.5px;
+      font-weight: 900;
+      line-height: 1.15;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .quick-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 9px;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.24), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.06));
+      border: 1px solid rgba(215,183,106,0.30);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quick-icon svg {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    .quick-icon.call {
+      background: linear-gradient(135deg, #2387ff, #0f5fc7);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.whatsapp {
+      background: linear-gradient(135deg, #35d66f, #159447);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.sms {
+      background: linear-gradient(135deg, #4aa8ff, #1d6fd1);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.viber {
+      background: linear-gradient(135deg, #8d66d8, #5d36a8);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.email {
+      background: linear-gradient(135deg, #f06a72, #b93445);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon.map {
+      background: linear-gradient(135deg, #ff6a5f, #d63732);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .quick-icon .icon-fill {
+      fill: #ffffff;
+    }
+
+    .quick-icon .icon-stroke {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .quick-link:active {
+      transform: scale(0.97);
+      border-color: rgba(255,227,160,0.52);
+    }
+
+
+    .category-actions {
+      padding: 0 18px 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .category-action {
+      min-height: 88px;
+      border-radius: 28px;
+      border: 1px solid rgba(215,183,106,0.34);
+      color: #fff;
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: 58px 1fr 24px;
+      align-items: center;
+      gap: 13px;
+      padding: 16px;
+      text-align: left;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.30);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.18), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045));
+    }
+
+    .category-action.car {
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.18), transparent 30%),
+        linear-gradient(135deg, #132f55, #07172d);
+    }
+
+    .category-action.jewel {
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.24), transparent 30%),
+        linear-gradient(135deg, #17120a, #070707);
+    }
+
+    .category-action.nfc {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 30%),
+        linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #1a1205;
+    }
+
+    .category-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 21px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .category-icon.logo-icon {
+      overflow: hidden;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    .category-icon.logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .category-action.nfc .category-icon {
+      background: rgba(0,0,0,0.13);
+      border-color: rgba(0,0,0,0.10);
+    }
+
+    .category-action strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      line-height: 1.13;
+    }
+
+    .category-action span span {
+      display: block;
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 800;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .category-action.nfc span span {
+      color: rgba(26,18,5,0.78);
+    }
+
+    .category-arrow {
+      font-size: 30px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.80);
+    }
+
+    .category-action.nfc .category-arrow {
+      color: rgba(26,18,5,0.75);
+    }
+
+    .main-actions {
+      padding: 0 18px 20px;
+    }
+
+    .action-stack {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .premium-action {
+      min-height: 76px;
+      border-radius: 26px;
+      border: 1px solid rgba(215,183,106,0.28);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.115), rgba(255,255,255,0.05));
+      color: #fff;
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: 56px 1fr 24px;
+      align-items: center;
+      gap: 13px;
+      padding: 14px 16px;
+      text-align: left;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.26);
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      width: 100%;
+    }
+
+    .premium-action.primary {
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 28%),
+        linear-gradient(135deg, #132f55, #07172d);
+    }
+
+    .premium-action.gold {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 28%),
+        linear-gradient(135deg, var(--gold), var(--gold-dark));
+    }
+
+    .premium-action-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .premium-action-icon svg {
+      width: 27px;
+      height: 27px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .premium-action strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      line-height: 1.12;
+    }
+
+    .premium-action span span {
+      display: block;
+      color: rgba(255,255,255,0.74);
+      font-size: 12.2px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .premium-action .arrow {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .experience-card,
+    .business-card,
+    .final-cta {
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.13), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.27);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .experience-card::before,
+    .business-card::before,
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    .experience-card {
+      padding: 17px;
+      margin-bottom: 14px;
+    }
+
+    .experience-header {
+      text-align: center;
+      padding-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .experience-header strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .experience-header span {
+      color: rgba(255,255,255,0.70);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .face-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .face-choice {
+      min-height: 108px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.075);
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 6px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .face-choice.best {
+      border-color: rgba(255,227,160,0.44);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.18), transparent 30%),
+        rgba(255,255,255,0.085);
+    }
+
+    .face-choice:active {
+      transform: scale(0.96);
+    }
+
+    .face-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 8px;
+    }
+
+    .face-icon svg {
+      width: 50px;
+      height: 50px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .face-choice.best .face-icon svg {
+      stroke: var(--gold-light);
+    }
+
+    .face-label {
+      font-size: 12px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.2;
+    }
+
+    .map-btn {
+      margin-top: 14px;
+    }
+
+    .business-list {
+      display: grid;
+      gap: 15px;
+      padding: 0 18px 26px;
+    }
+
+    .business-card {
+      padding: 17px;
+    }
+
+    .business-top {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .business-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid rgba(215,183,106,0.22);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+    }
+
+    .business-card strong {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .business-card span {
+      display: block;
+      color: rgba(255,255,255,0.68);
+      font-size: 13.4px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .business-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .small-btn {
+      min-height: 44px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.085);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      padding: 7px;
+    }
+
+    .small-btn.gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-color: rgba(255,227,160,0.24);
+      color: #fff;
+    }
+
+    .small-btn.blue {
+      background: linear-gradient(135deg, var(--blue), var(--blue-soft));
+      border-color: rgba(255,227,160,0.24);
+    }
+
+    .jewelart-card {
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(23,68,111,0.42), transparent 30%),
+        linear-gradient(145deg, #080808, #16120c 48%, #090909);
+      border-color: rgba(255,227,160,0.34);
+    }
+
+    .jewelart-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 13px 0 14px;
+    }
+
+    .jewelart-feature {
+      min-height: 50px;
+      border-radius: 17px;
+      background: rgba(255,255,255,0.075);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      color: rgba(255,255,255,0.86);
+      font-size: 11.5px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .final-cta {
+      padding: 20px;
+      margin: 0 18px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.28), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(23,68,111,0.44), transparent 30%),
+        linear-gradient(145deg, #0c0c0d, #17120a 52%, #070707);
+      text-align: center;
+      border-color: rgba(255,227,160,0.42);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.40);
+    }
+
+    .final-cta .mini {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,227,160,0.25);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .final-cta h2 {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+      font-weight: 900;
+    }
+
+    .final-cta p {
+      margin: 0 0 15px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .final-cta-btn {
+      width: 100%;
+      min-height: 66px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 30%),
+        linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      color: #1a1205;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.2;
+      box-shadow: 0 18px 38px rgba(0,0,0,0.30);
+      padding: 10px 14px;
+    }
+
+    .final-cta-btn small {
+      display: block;
+      font-size: 11px;
+      font-weight: 900;
+      opacity: 0.82;
+    }
+
+    .footer {
+      padding: 0 18px 32px;
+      text-align: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .footer a {
+      color: var(--gold-light);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .install-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 410px;
+      z-index: 9999;
+    }
+
+    .install-btn {
+      width: 100%;
+      min-height: 64px;
+      border: 0;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 26%),
+        linear-gradient(135deg, #2fad49, #188232);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.40);
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      border: 1px solid rgba(255,255,255,0.20);
+    }
+
+    .install-btn:active {
+      transform: scale(0.98);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.72);
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 380px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 30%),
+        linear-gradient(145deg, #111111, #050505);
+      border: 1px solid rgba(255,227,160,0.30);
+      border-radius: 30px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 28px 80px rgba(0,0,0,0.58);
+    }
+
+    .modal-box h2 {
+      margin: 0 0 12px;
+      color: var(--gold-light);
+      font-size: 23px;
+      font-weight: 900;
+    }
+
+    .modal-box p {
+      margin: 0;
+      color: rgba(255,255,255,0.74);
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .modal-action {
+      width: 100%;
+      min-height: 50px;
+      border: 0;
+      border-radius: 16px;
+      margin-top: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-soft));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .modal-action.gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+    }
+
+    .close-btn {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 16px;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media (max-width: 380px) {
+      .cover {
+        height: 265px;
+      }
+
+      .hero-message {
+        top: 78px;
+        max-width: 265px;
+        padding: 12px 13px;
+      }
+
+      .hero-message h2 {
+        font-size: 16px;
+      }
+
+      .hero-message p {
+        font-size: 11.8px;
+      }
+
+      .top-badge,
+      .top-badge-light {
+        font-size: 10px;
+        padding: 8px 9px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .profile-side-action {
+        top: 40px;
+        width: 68px;
+      }
+
+      .profile-side-action.save {
+        left: 6px;
+      }
+
+      .profile-side-action.share {
+        right: 6px;
+      }
+
+      .profile-side-circle {
+        width: 56px;
+        height: 56px;
+      }
+
+      .profile-side-text {
+        max-width: 68px;
+        font-size: 9.5px;
+      }
+
+      .quick-grid {
+        gap: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .quick-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 18px;
+      }
+
+      .quick-link {
+        min-height: 104px;
+        font-size: 11.5px;
+      }
+
+      .premium-action {
+        grid-template-columns: 52px 1fr 18px;
+        padding: 13px;
+        gap: 10px;
+      }
+
+      .premium-action-icon {
+        width: 52px;
+        height: 52px;
+      }
+
+      .install-btn {
+        font-size: 15.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="cover">
+      <div class="top-bar">
+        <div class="top-badge-light">Digital Profile</div>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <button class="profile-side-action save" type="button" onclick="downloadVCard()" aria-label="Αποθήκευση στις επαφές">
+        <span class="profile-side-circle">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.4"></circle>
+            <path d="M5.8 20.5c.8-3.8 3.2-6 6.2-6s5.4 2.2 6.2 6"></path>
+            <path d="M18.2 5.6v4.6"></path>
+            <path d="M20.5 7.9h-4.6"></path>
+          </svg>
+        </span>
+        <span class="profile-side-text">Αποθήκευση επαφής</span>
+      </button>
+
+      <a class="profile-side-action share" href="#" onclick="sharePage(); return false;" aria-label="Κοινοποίηση προφίλ">
+        <span class="profile-side-circle">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="17" cy="7" r="2.8"></circle>
+            <circle cx="7" cy="12" r="2.8"></circle>
+            <circle cx="17" cy="17" r="2.8"></circle>
+            <path d="M9.5 10.8l5-2.5"></path>
+            <path d="M9.5 13.2l5 2.5"></path>
+          </svg>
+        </span>
+        <span class="profile-side-text">Κοινοποίηση προφίλ</span>
+      </a>
+
+      <div class="profile-ring">
+        <img src="/andreas-profile.jpg.jpeg" alt="Ανδρέας Λάζαρος" class="profile-img">
+      </div>
+
+      <h1>Andreas Lazaros</h1>
+      <p class="main-subtitle">CarBridge Europe • TAP CREATE</p>
+      <div class="gold-line"></div>
+
+      <div class="premium-intro">
+        <strong>Όλα όσα χρειάζεσαι, σε ένα σημείο.</strong>
+        <span>
+          Βρες άμεσα τα στοιχεία επικοινωνίας μου και διάλεξε την υπηρεσία που σε ενδιαφέρει.
+        </span>
+      </div>
+    </section>
+
+    <div class="section-label">
+      <h2>Άμεση επικοινωνία</h2>
+    </div>
+
+    <section class="quick-grid">
+
+      <a class="quick-link" href="tel:+306988128099" aria-label="Κλήση">
+        <div class="quick-icon call">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M6.7 2.5h2.5c.6 0 1.1.4 1.2 1l.6 3c.1.5-.1 1-.5 1.3L8.9 9.4a14.7 14.7 0 0 0 5.7 5.7l1.6-1.6c.4-.4.9-.5 1.3-.4l3 .6c.6.1 1 .6 1 1.2v2.5c0 .7-.5 1.2-1.2 1.3C10.5 19.5 4.5 13.5 5.4 3.7c.1-.7.6-1.2 1.3-1.2z"/>
+          </svg>
+        </div>
+        Call
+      </a>
+
+      <a class="quick-link" href="https://wa.me/306988128099" aria-label="WhatsApp">
+        <div class="quick-icon whatsapp">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.3a9.4 9.4 0 0 0-8 14.4L2.8 21l4.4-1.2A9.4 9.4 0 1 0 12 2.3zm0 15.3c-1.2 0-2.4-.4-3.4-1l-.2-.1-2.6.7.7-2.5-.2-.3A5.9 5.9 0 1 1 12 17.6zm3.2-4.4c-.2-.1-1.1-.6-1.3-.6-.2-.1-.4-.1-.5.1-.2.2-.5.6-.6.8-.1.1-.2.2-.4.1-1.2-.5-2-1-2.8-2.3-.2-.3.2-.3.5-1 .1-.1 0-.3 0-.4l-.6-1.5c-.2-.4-.3-.3-.5-.3h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 4 3.4 1.5.6 2.1.6 2.8.5.4-.1 1.1-.5 1.3-.9.2-.4.2-.8.1-.9-.1-.2-.3-.2-.5-.3z"/>
+          </svg>
+        </div>
+        WhatsApp
+      </a>
+
+      <a class="quick-link" href="sms:+306988128099" aria-label="SMS">
+        <div class="quick-icon sms">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M4.2 4h15.6A2.2 2.2 0 0 1 22 6.2v9.6a2.2 2.2 0 0 1-2.2 2.2H9l-5.5 3.2.9-3.2h-.2A2.2 2.2 0 0 1 2 15.8V6.2A2.2 2.2 0 0 1 4.2 4z"/>
+            <circle cx="8" cy="11" r="1" fill="#2c7bd8"/>
+            <circle cx="12" cy="11" r="1" fill="#2c7bd8"/>
+            <circle cx="16" cy="11" r="1" fill="#2c7bd8"/>
+          </svg>
+        </div>
+        SMS
+      </a>
+
+      <a class="quick-link" href="viber://chat?number=%2B306988128099" aria-label="Viber">
+        <div class="quick-icon viber">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.5c-5.2 0-9.4 3.5-9.4 7.9 0 2.6 1.5 4.9 3.9 6.4v3.6l3.4-2.1c.7.1 1.4.2 2.1.2 5.2 0 9.4-3.5 9.4-8S17.2 2.5 12 2.5z"/>
+            <path d="M9.2 7.6c.3 2.9 2.2 4.9 5.1 5.3" fill="none" stroke="#6b43b5" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13.5 6.5c1.4.2 2.5 1.3 2.7 2.7M13.3 8.3c.5.1.9.5 1 1" fill="none" stroke="#6b43b5" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        Viber
+      </a>
+
+      <a class="quick-link" href="mailto:carbridgefr@gmail.com" aria-label="Email">
+        <div class="quick-icon email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="icon-fill" x="2.5" y="5" width="19" height="14" rx="2.4"/>
+            <path d="M4.5 7.3 12 13l7.5-5.7" fill="none" stroke="#c84554" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Email
+      </a>
+
+      <a class="quick-link" href="https://maps.app.goo.gl/o7CP34bTE2izT4i49" aria-label="Google Map">
+        <div class="quick-icon map">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="icon-fill" d="M12 2.5a7 7 0 0 0-7 7c0 5.3 7 12 7 12s7-6.7 7-12a7 7 0 0 0-7-7z"/>
+            <circle cx="12" cy="9.5" r="2.5" fill="#d9413a"/>
+          </svg>
+        </div>
+        Map
+      </a>
+
+    </section>
+
+    <div class="section-label">
+      <h2>Τι σε ενδιαφέρει;</h2>
+    </div>
+
+    <section class="category-actions">
+
+      <a class="category-action car" href="/carbridge.html" target="_self">
+        <span class="category-icon logo-icon"><img src="/carbridge-logo.png.png" alt="CarBridge Europe logo"></span>
+        <span>
+          <strong>Λύσεις Αυτοκινήτου</strong>
+          <span>Αγορά • Πώληση • Εισαγωγή • Συνεργασία</span>
+        </span>
+        <span class="category-arrow">›</span>
+      </a>
+
+      <a class="category-action nfc" href="https://tapcreate.gr/" target="_self">
+        <span class="category-icon">TAP</span>
+        <span>
+          <strong>Δημιούργησε τη δική σου ψηφιακή κάρτα</strong>
+          <span>TAP CREATE • NFC • QR • Digital Profile για επαγγελματίες και επιχειρήσεις.</span>
+        </span>
+        <span class="category-arrow">›</span>
+      </a>
+
+    </section>
+
+
+    <section class="main-actions">
+
+      <div class="experience-card">
+        <div class="experience-header">
+          <strong>Πώς ήταν η εμπειρία σας;</strong>
+          <span>Η γνώμη σας μας βοηθά να γινόμαστε καλύτεροι.</span>
+        </div>
+
+        <div class="face-row">
+          <a class="face-choice" href="/feedback.html?rating=1" target="_self" aria-label="Δεν έμεινα ικανοποιημένος">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M17 33c3-3 11-3 14 0"></path>
+              </svg>
+            </span>
+            <span class="face-label">Χρειάζεται βελτίωση</span>
+          </a>
+
+          <a class="face-choice" href="/feedback.html?rating=3" target="_self" aria-label="Μέτρια εμπειρία">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M17 31h14"></path>
+              </svg>
+            </span>
+            <span class="face-label">Μέτρια</span>
+          </a>
+
+          <a class="face-choice best" href="https://search.google.com/local/writereview?placeid=ChIJI9akyvdJXhMR9Cxn_7Sj-9k" target="_self" aria-label="Άριστη εμπειρία - Google Review">
+            <span class="face-icon">
+              <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="18"></circle>
+                <path d="M17 20h.1"></path>
+                <path d="M31 20h.1"></path>
+                <path d="M16 29c3 5 13 5 16 0"></path>
+              </svg>
+            </span>
+            <span class="face-label">Άριστη</span>
+          </a>
+        </div>
+      </div>
+
+
+    </section>
+
+
+    <footer class="footer">
+      Powered by TAP CREATE • Digital Profiles<br>
+      Instagram:
+      <a href="https://www.instagram.com/tapcreate.gr/" target="_self">@tapcreate.gr</a>
+    </footer>
+
+  </main>
+
+  <div class="install-bar">
+    <button class="install-btn" id="installButton">
+      Κράτησε το προφίλ στο κινητό σου
+    </button>
+  </div>
+
+  <div class="modal" id="installModal">
+    <div class="modal-box">
+      <h2>Κράτησε το προφίλ στο κινητό σου</h2>
+      <p>
+        Σε Android μπορείς να εγκαταστήσεις το προφίλ στην αρχική οθόνη, όταν το υποστηρίζει ο browser.<br><br>
+        Σε iPhone ανοίγει έτοιμη επαφή vCard. Πάτα αποθήκευση και μετά θα βρίσκεις το προφίλ ψάχνοντας Andreas Lazaros, Ανδρέας Λάζαρος ή CarBridge.
+      </p>
+
+      <button class="modal-action" onclick="downloadVCard()">
+        Αποθήκευση στις επαφές
+      </button>
+
+      <button class="modal-action gold" onclick="emailCardToMe()">
+        Στείλε το link με email
+      </button>
+
+      <button class="close-btn" onclick="closeModal()">Κλείσιμο</button>
+    </div>
+  </div>
+
+  <script>
+    let deferredPrompt;
+    const VCF_FILE = "/andreas-lazaros-carbridge.vcf";
+
+    function isIOSDevice() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    }
+
+    function isAndroidDevice() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/service-worker.js").then(function(registration) {
+          registration.update();
+        }).catch(function() {});
+      });
+    }
+
+    window.addEventListener("beforeinstallprompt", function (event) {
+      event.preventDefault();
+      deferredPrompt = event;
+    });
+
+    document.getElementById("installButton").addEventListener("click", async function () {
+      if (isIOSDevice()) {
+        saveContactFile();
+        return;
+      }
+
+      if (isAndroidDevice() && deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        return;
+      }
+
+      document.getElementById("installModal").style.display = "flex";
+    });
+
+    function closeModal() {
+      document.getElementById("installModal").style.display = "none";
+    }
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "TAP CREATE | Andreas Lazaros Profile",
+          text: "Δες το ψηφιακό προφίλ του Andreas Lazaros στο TAP CREATE.",
+          url: "https://tapcreate.gr/profile/lazaros-andreas/"
+        }).catch(function() {});
+      } else {
+        alert("Αντιγράψτε το link της σελίδας από τον browser.");
+      }
+    }
+
+    function emailCardToMe() {
+      const subject = encodeURIComponent("TAP CREATE | Andreas Lazaros Profile");
+      const body = encodeURIComponent(
+        "Κράτησε αυτό το link για να βρίσκεις εύκολα την ψηφιακή κάρτα του Ανδρέα Λάζαρου:\n\n" +
+        "https://tapcreate.gr/profile/lazaros-andreas/\n\n" +
+        "Μέσα θα βρεις στοιχεία επικοινωνίας, Google Map, Google Review, CarBridge Europe και TAP CREATE."
+      );
+
+      window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+    }
+
+    function saveContactFile() {
+      window.location.href = VCF_FILE;
+    }
+
+    function downloadVCard() {
+      saveContactFile();
+    }
+  </script>
+</body>
+</html>
