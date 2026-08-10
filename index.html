@@ -4,19 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>TAP CREATE | Andreas Lazaros Profile</title>
+  <title>TAP CREATE | NFC Digital Profile</title>
+  <meta name="description" content="Με ένα tap ανοίγει το επαγγελματικό σου προφίλ με τηλέφωνο, social, Google Review, χάρτη και αποθήκευση επαφής.">
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="andreas-profile.jpg.jpeg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tapcreate.gr/">
+  <meta property="og:title" content="NFC Digital Profile για επαγγελματίες">
+  <meta property="og:description" content="Με ένα tap ανοίγει το επαγγελματικό σου προφίλ, τα social, το τηλέφωνο, ο χάρτης και οι αξιολογήσεις σου.">
+  <meta property="og:image" content="https://tapcreate.gr/1%20tap.png">
+  <meta property="og:image:secure_url" content="https://tapcreate.gr/1%20tap.png">
+  <meta property="og:site_name" content="TAP CREATE">
 
-  <meta name="theme-color" content="#050505">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="TAP CREATE | Andreas Lazaros">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TAP CREATE | NFC Digital Profile">
+  <meta name="twitter:description" content="Με ένα tap ανοίγει το επαγγελματικό σου προφίλ.">
+  <meta name="twitter:image" content="https://tapcreate.gr/1%20tap.png">
 
   <style>
     * {
@@ -34,7 +36,1180 @@
       --blue: #0e2d52;
       --blue-soft: #17446f;
       --white: #ffffff;
-      --green: #26a846;
+      --green: #22a63a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0 0 92px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at top left, rgba(215,183,106,0.30), transparent 28%),
+        radial-gradient(circle at top right, rgba(23,68,111,0.36), transparent 26%),
+        radial-gradient(circle at bottom center, rgba(215,183,106,0.14), transparent 32%),
+        linear-gradient(180deg, #050505 0%, #0b0b0d 48%, #050505 100%);
+      background-attachment: fixed;
+    }
+
+    a,
+    button {
+      touch-action: manipulation;
+    }
+
+    button {
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 90% 0%, rgba(215,183,106,0.20), transparent 28%),
+        radial-gradient(circle at 0% 22%, rgba(14,45,82,0.42), transparent 34%),
+        linear-gradient(180deg, #060606 0%, #101014 48%, #070707 100%);
+      box-shadow: 0 0 80px rgba(0,0,0,0.74);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 34%),
+        linear-gradient(90deg, transparent, rgba(215,183,106,0.045), transparent);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      padding: 18px 16px 26px;
+      text-align: center;
+    }
+
+    .hero-image-wrap {
+      margin: 0 auto 16px;
+      border-radius: 30px;
+      padding: 10px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.18), transparent 32%),
+        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(215,183,106,0.26);
+      box-shadow: 0 22px 55px rgba(0,0,0,0.34);
+    }
+
+    .hero-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: #000000;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,227,160,0.24);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 31px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+    }
+
+    .hero-subtitle {
+      margin: 12px auto 0;
+      max-width: 430px;
+      color: rgba(255,255,255,0.82);
+      font-size: 14.5px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .top-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .main-btn,
+    .ghost-btn {
+      min-height: 54px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 0 12px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.26);
+    }
+
+    .main-btn {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      color: #1a1205;
+      border: 0;
+    }
+
+    .ghost-btn {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    section {
+      padding: 24px 18px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 23px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .section-subtitle {
+      margin: 0 auto 18px;
+      max-width: 430px;
+      color: rgba(255,255,255,0.68);
+      text-align: center;
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .steps-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .mini-step {
+      min-height: 116px;
+      padding: 12px 8px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.12), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.20);
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.22);
+    }
+
+    .mini-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 13px;
+      margin: 0 auto 8px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .mini-step strong {
+      display: block;
+      color: #fff;
+      font-size: 12.5px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .mini-step span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,0.62);
+      font-size: 10.5px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .packages {
+      padding-top: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.08), transparent 30%),
+        rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .package-tile {
+      min-height: 248px;
+      border: 1px solid rgba(215,183,106,0.24);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 34%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      box-shadow: 0 16px 36px rgba(0,0,0,0.27);
+      color: #ffffff;
+      text-align: left;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .package-tile.highlight {
+      border: 2px solid rgba(255,227,160,0.62);
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.22), transparent 34%),
+        linear-gradient(145deg, rgba(23,68,111,0.58), rgba(255,255,255,0.045));
+    }
+
+    .package-image {
+      width: 100%;
+      aspect-ratio: 1 / 0.78;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(215,183,106,0.18);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+    }
+
+    .package-image.custom-image {
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .package-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .package-tile h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .package-tile p {
+      margin: 8px 0 10px;
+      color: rgba(255,255,255,0.67);
+      font-size: 11.8px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .price {
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .tap-more {
+      margin-top: 10px;
+      min-height: 36px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .proof-card {
+      min-height: 170px;
+      padding: 14px 10px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.12), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.22);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.24);
+    }
+
+    .proof-logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: cover;
+      border: 2px solid rgba(255,227,160,0.42);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
+
+    .proof-card strong {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .proof-card span {
+      display: block;
+      color: rgba(255,255,255,0.62);
+      font-size: 10.5px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .view-profile {
+      min-height: 34px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color: #1a1205;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 6px;
+    }
+
+    .form-section {
+      background:
+        radial-gradient(circle at top right, rgba(34,166,58,0.10), transparent 30%),
+        rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .form-card {
+      border-radius: 28px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.13), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.27);
+    }
+
+    .form-card label {
+      display: block;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+      margin: 14px 0 7px;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .form-card input::placeholder,
+    .form-card textarea::placeholder {
+      color: rgba(255,255,255,0.40);
+    }
+
+    .form-card select option {
+      color: #111827;
+      background: #ffffff;
+    }
+
+    .form-card textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .send-btn,
+    .secondary-btn {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 18px;
+      border: 0;
+      border-radius: 18px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+    }
+
+    .send-btn {
+      background: linear-gradient(135deg, #2fad49, #188232);
+    }
+
+    .secondary-btn {
+      margin-top: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(215,183,106,0.30);
+      color: var(--gold-light);
+    }
+
+    .small-note {
+      margin: 12px 0 0;
+      color: rgba(255,255,255,0.56);
+      font-size: 11.5px;
+      line-height: 1.45;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 18px 30px;
+      color: rgba(255,255,255,0.45);
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 480px;
+      z-index: 999;
+    }
+
+    .sticky-cta a {
+      min-height: 60px;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 30%),
+        linear-gradient(135deg, #2fad49, #188232);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      padding: 18px;
+      background: rgba(0,0,0,0.72);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      max-height: 86vh;
+      overflow: auto;
+      border-radius: 30px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.16), transparent 30%),
+        linear-gradient(145deg, #111111, #050505);
+      border: 1px solid rgba(255,227,160,0.30);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.58);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .modal-box h2 {
+      margin: 0 42px 8px 0;
+      color: var(--gold-light);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .modal-price {
+      margin: 0 0 14px;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .modal-box p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 9px;
+      margin: 14px 0 18px;
+    }
+
+    .modal-list div {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      color: rgba(255,255,255,0.80);
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #1a1205;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .modal-action {
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2fad49, #188232);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: Arial, Helvetica, sans-serif;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.24);
+    }
+
+
+
+    .video-demo-section {
+      background:
+        radial-gradient(circle at top right, rgba(215,183,106,0.10), transparent 30%),
+        rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .video-card {
+      border-radius: 28px;
+      padding: 12px;
+      background:
+        radial-gradient(circle at top right, rgba(255,227,160,0.14), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(215,183,106,0.24);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.27);
+      overflow: hidden;
+    }
+
+    .demo-video {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: #000000;
+      border: 1px solid rgba(215,183,106,0.18);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+    }
+
+    .video-caption {
+      margin: 11px 4px 2px;
+      color: rgba(255,255,255,0.66);
+      font-size: 12.2px;
+      line-height: 1.45;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .modal-media {
+      margin: 0 0 16px;
+      padding-right: 44px;
+    }
+
+    .modal-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(215,183,106,0.20);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+      object-fit: cover;
+    }
+
+    .modal-media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .modal-video {
+      width: 100%;
+      height: 100%;
+      min-height: 154px;
+      display: block;
+      object-fit: cover;
+      border-radius: 22px;
+      background: #000000;
+      border: 1px solid rgba(215,183,106,0.20);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.26);
+    }
+
+    .modal-video-note {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,0.60);
+      font-size: 11px;
+      line-height: 1.35;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 27px;
+      }
+
+      .top-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .package-tile {
+        min-height: 238px;
+      }
+
+      .package-tile h3 {
+        font-size: 18px;
+      }
+
+      .price {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="hero-image-wrap">
+        <img
+          class="hero-image"
+          src="1%20tap.png"
+          alt="Με ένα tap εμφανίζεται το επαγγελματικό σου προφίλ"
+        >
+      </div>
+
+      <div class="badge">NFC • QR • Digital Profile</div>
+
+      <h1>NFC Digital Profile για επαγγελματίες</h1>
+
+      <p class="hero-subtitle">
+        Με ένα tap ο πελάτης ανοίγει το προφίλ σου, βλέπει τηλέφωνο, social,
+        χάρτη, Google Review και μπορεί να σε αποθηκεύσει στο κινητό του.
+      </p>
+
+      <div class="top-actions">
+        <a class="main-btn" href="#packages">Δες πακέτα</a>
+        <a class="ghost-btn" href="#contact">Θέλω να με καλέσετε</a>
+      </div>
+    </header>
+
+
+    <section>
+      <h2 class="section-title">Πώς λειτουργεί</h2>
+      <p class="section-subtitle">
+        Χωρίς εφαρμογή. Χωρίς ψάξιμο. Ο πελάτης ακουμπάει και σε βρίσκει.
+      </p>
+
+      <div class="steps-mini">
+        <div class="mini-step">
+          <div class="mini-num">1</div>
+          <strong>Ακουμπάει το NFC</strong>
+          <span>Βραχιόλι, μπρελόκ ή QR.</span>
+        </div>
+
+        <div class="mini-step">
+          <div class="mini-num">2</div>
+          <strong>Ανοίγει το προφίλ</strong>
+          <span>Στοιχεία, social, χάρτης, reviews.</span>
+        </div>
+
+        <div class="mini-step">
+          <div class="mini-num">3</div>
+          <strong>Σε κρατάει</strong>
+          <span>Αποθηκεύει επαφή ή σε ξαναβρίσκει.</span>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="video-demo-section">
+      <h2 class="section-title">Δες το σε δράση</h2>
+      <p class="section-subtitle">
+        Ένα μικρό demo για να καταλάβει ο πελάτης ότι με ένα tap ανοίγει αμέσως το επαγγελματικό προφίλ.
+      </p>
+
+      <div class="video-card">
+        <video class="demo-video" autoplay muted loop playsinline controls>
+          <source src="nfc-demo.mp4.mp4" type="video/mp4">
+          Το πρόγραμμα περιήγησής σας δεν υποστηρίζει βίντεο.
+        </video>
+        <p class="video-caption">
+          Το ίδιο προφίλ μπορεί να ανοίγει από NFC βραχιόλι, NFC μπρελόκ ή QR.
+        </p>
+      </div>
+    </section>
+
+
+    <section id="packages" class="packages">
+      <h2 class="section-title">Διάλεξε πακέτο</h2>
+      <p class="section-subtitle">
+        Πάτησε πάνω σε κάθε πακέτο για να δεις σύντομα τι περιλαμβάνει.
+      </p>
+
+      <div class="package-grid">
+
+        <button class="package-tile" onclick="openPackage('basic')">
+          <div>
+            <img class="package-image" src="basic.png" onerror="this.onerror=null; this.src='Basic.png';" alt="Basic NFC Digital Profile">
+            <h3>Basic</h3>
+            <p>Για καθαρή παρουσία με τα βασικά κουμπιά.</p>
+          </div>
+          <div>
+            <div class="price">79,90€</div>
+            <div class="tap-more">Δες τι περιλαμβάνει</div>
+          </div>
+        </button>
+
+        <button class="package-tile" onclick="openPackage('professional')">
+          <div>
+            <img class="package-image" src="professional.png" onerror="this.onerror=null; this.src='Professional.png';" alt="Professional NFC Digital Profile">
+            <h3>Professional</h3>
+            <p>Για πλήρη εικόνα με social και NFC βραχιόλι.</p>
+          </div>
+          <div>
+            <div class="price">159,90€</div>
+            <div class="tap-more">Δες τι περιλαμβάνει</div>
+          </div>
+        </button>
+
+        <button class="package-tile highlight" onclick="openPackage('premium')">
+          <div>
+            <img class="package-image" src="premium.png" onerror="this.onerror=null; this.src='Premium.png';" alt="Premium NFC Digital Profile">
+            <h3>Premium</h3>
+            <p>Πλήρης παρουσίαση με βίντεο, προσφορές και μπρελόκ.</p>
+          </div>
+          <div>
+            <div class="price">359,90€</div>
+            <div class="tap-more">Δες τι περιλαμβάνει</div>
+          </div>
+        </button>
+
+        <button class="package-tile" onclick="openPackage('custom')">
+          <div>
+            <img class="package-image custom-image" src="1%20tap.png" alt="Custom Business NFC Profile">
+            <h3>Custom</h3>
+            <p>Για εστιατόρια, σχολές, ομάδες ή ειδικές ανάγκες.</p>
+          </div>
+          <div>
+            <div class="price">Συζήτηση</div>
+            <div class="tap-more">Δες τι περιλαμβάνει</div>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+
+    <section id="work">
+      <h2 class="section-title">Πραγματικά παραδείγματα</h2>
+      <p class="section-subtitle">
+        Δες πώς μπορεί να παρουσιαστεί διαφορετικά κάθε επιχείρηση ή οργανισμός.
+      </p>
+
+      <div class="proof-grid">
+
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/lovetoprint-profile/" target="_self">
+          <img class="proof-logo" src="lovetoprint-logo.png.jpeg" alt="Love2Print logo">
+          <div>
+            <strong>Love2Print</strong>
+            <span>Digital profile επαγγελματία</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/thiela-patron/" target="_self">
+          <img class="proof-logo" src="profil%20logo%20thiela.png" alt="Θύελλα Πατρών logo">
+          <div>
+            <strong>Θύελλα Πατρών</strong>
+            <span>Αθλητικός οργανισμός</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/baby-parking/" target="_self">
+          <img class="proof-logo" src="baby%20parking.jpeg" alt="Baby Parking logo">
+          <div>
+            <strong>Baby Parking</strong>
+            <span>Σχολείο / παιδικός σταθμός</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/veneris/" target="_self">
+          <img class="proof-logo" src="profil%20veneris.jpg" alt="Veneris Motors logo">
+          <div>
+            <strong>Veneris Motors</strong>
+            <span>Premium επαγγελματικό προφίλ</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
+        <a class="proof-card" href="https://carbridgefr-glitch.github.io/speedfactory/" target="_self">
+          <img class="proof-logo" src="icon-192.webp" alt="Speed Factory Moto logo">
+          <div>
+            <strong>Speed Factory Moto</strong>
+            <span>Premium επαγγελματικό προφίλ</span>
+          </div>
+          <div class="view-profile">Δες προφίλ</div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <section id="contact" class="form-section">
+      <h2 class="section-title">Θέλω να με καλέσετε</h2>
+      <p class="section-subtitle">
+        Συμπλήρωσε τα βασικά και θα σου προτείνουμε ποιο πακέτο ταιριάζει καλύτερα.
+      </p>
+
+      <div class="form-card">
+
+        <label for="name">Ονοματεπώνυμο</label>
+        <input id="name" type="text" placeholder="π.χ. Νίκος Παπαδόπουλος">
+
+        <label for="business">Επιχείρηση</label>
+        <input id="business" type="text" placeholder="π.χ. Nikos Barber Shop">
+
+        <label for="phone">Τηλέφωνο</label>
+        <input id="phone" type="tel" placeholder="π.χ. 69XXXXXXXX">
+
+        <label for="package">Πακέτο</label>
+        <select id="package">
+          <option value="">Δεν ξέρω ακόμα</option>
+          <option value="Basic">Basic - 79,90€</option>
+          <option value="Professional">Professional - 159,90€</option>
+          <option value="Premium">Premium - 359,90€</option>
+          <option value="Custom">Custom Business</option>
+        </select>
+
+        <label for="message">Τι θέλεις να φτιάξουμε;</label>
+        <textarea id="message" placeholder="Γράψε σύντομα τι επιχείρηση έχεις και τι χρειάζεσαι."></textarea>
+
+        <button class="send-btn" onclick="sendWhatsApp()">
+          Αποστολή μέσω WhatsApp
+        </button>
+
+        <button class="secondary-btn" onclick="sendEmail()">
+          Αποστολή μέσω Email
+        </button>
+
+        <p class="small-note">
+          Δεν γίνεται άμεση χρέωση. Είναι απλώς πρώτη επικοινωνία.
+        </p>
+
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      Powered by TAP CREATE • Digital Profiles<br>
+      Instagram:
+      <a href="https://www.instagram.com/tapcreate.gr/" target="_self">@tapcreate.gr</a>
+    </footer>
+
+  </main>
+
+
+  <div class="sticky-cta">
+    <a href="#contact">Θέλω τη δική μου NFC κάρτα</a>
+  </div>
+
+
+  <div class="modal" id="packageModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePackage()">×</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <h2 id="modalTitle"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <p id="modalText"></p>
+      <div class="modal-list" id="modalList"></div>
+      <button class="modal-action" onclick="chooseCurrentPackage()">
+        Ενδιαφέρομαι για αυτό το πακέτο
+      </button>
+    </div>
+  </div>
+
+
+  <script>
+    const YOUR_PHONE = "306988128099";
+    const YOUR_EMAIL = "carbridgefr@gmail.com";
+    const CREATE_PAGE_URL = "https://tapcreate.gr/";
+
+    let currentPackage = "";
+
+    const packages = {
+      basic: {
+        name: "Basic",
+        price: "79,90€",
+        image: "basic.png",
+        fallbackImage: "Basic.png",
+        text: "Για επαγγελματίες που θέλουν μία απλή και καθαρή ψηφιακή κάρτα.",
+        items: [
+          "Βασική NFC landing page",
+          "Κουμπιά για τηλέφωνο, email ή βασικό link",
+          "Google Review και Google Map",
+          "+15€ για κάθε αλλαγή ή προσθήκη κουμπιού μετά την παράδοση"
+        ]
+      },
+
+      professional: {
+        name: "Professional",
+        price: "159,90€",
+        image: "professional.png",
+        fallbackImage: "Professional.png",
+        video: "nfc-demo.mp4.mp4",
+        splitMedia: true,
+        text: "Για πιο ολοκληρωμένη επαγγελματική εικόνα με social, επικοινωνία και NFC βραχιόλι.",
+        items: [
+          "Logo ή φωτογραφία προφίλ",
+          "Social media και άμεση επικοινωνία",
+          "Google Review, Google Map και βασικές πληροφορίες",
+          "Δώρο 1 NFC βραχιόλι",
+          "Mini demo video για να καταλάβει ο πελάτης πώς λειτουργεί",
+          "+15€ για κάθε αλλαγή ή προσθήκη κουμπιού μετά την παράδοση"
+        ]
+      },
+
+      premium: {
+        name: "Premium",
+        price: "359,90€",
+        image: "premium.png",
+        fallbackImage: "Premium.png",
+        text: "Για πλήρη παρουσίαση επιχείρησης με premium εικόνα, βίντεο, προσφορές και NFC υλικό.",
+        items: [
+          "Cover, logo, φωτογραφίες και πλήρης δομή προφίλ",
+          "Προσφορές, βίντεο, βιογραφία ή gallery",
+          "Google Review, Google Map, social και επικοινωνία",
+          "Δώρο 1 NFC βραχιόλι",
+          "10 προσωποποιημένα NFC μπρελόκ με λογότυπο",
+          "+10€ για κάθε αλλαγή ή προσθήκη κουμπιού μετά την παράδοση"
+        ]
+      },
+
+      custom: {
+        name: "Custom Business",
+        price: "Κατόπιν συνεννόησης",
+        image: "1%20tap.png",
+        text: "Για επιχειρήσεις ή οργανισμούς που χρειάζονται ειδική παρουσίαση και όχι απλό προφίλ.",
+        items: [
+          "Ιδανικό για εστιατόρια, σχολές, ομάδες, ξενοδοχεία ή καταστήματα",
+          "Μπορεί να περιλαμβάνει menu, υπηρεσίες, προϊόντα ή ξεχωριστές σελίδες",
+          "Μπορεί να συνδυαστεί με QR, NFC μπρελόκ ή NFC κάρτες",
+          "Η τιμή βγαίνει μετά από σύντομη συζήτηση"
+        ]
+      }
+    };
+
+    function packageImageHtml(data) {
+      const fallback = data.fallbackImage
+        ? ` onerror="this.onerror=null; this.src='${data.fallbackImage}';"`
+        : "";
+
+      if (data.splitMedia && data.video) {
+        return `
+          <div class="modal-media-grid">
+            <img class="modal-image" src="${data.image}"${fallback} alt="${data.name} NFC Digital Profile">
+            <video class="modal-video" autoplay muted loop playsinline controls>
+              <source src="${data.video}" type="video/mp4">
+              Το πρόγραμμα περιήγησής σας δεν υποστηρίζει βίντεο.
+            </video>
+          </div>
+          <div class="modal-video-note">Professional: προφίλ + NFC βραχιόλι σε πραγματική χρήση.</div>
+        `;
+      }
+
+      return `<img class="modal-image" src="${data.image}"${fallback} alt="${data.name} NFC Digital Profile">`;
+    }
+
+    function openPackage(key) {
+      const data = packages[key];
+      currentPackage = data.name;
+
+      document.getElementById("modalMedia").innerHTML = packageImageHtml(data);
+      document.getElementById("modalTitle").textContent = data.name;
+      document.getElementById("modalPrice").textContent = data.price;
+      document.getElementById("modalText").textContent = data.text;
+
+      document.getElementById("modalList").innerHTML = data.items
+        .map(item => `<div><span class="check">✓</span><span>${item}</span></div>`)
+        .join("");
+
+      document.getElementById("packageModal").classList.add("open");
+    }
+
+    function closePackage() {
+      document.getElementById("packageModal").classList.remove("open");
+    }
+
+    function chooseCurrentPackage() {
+      document.getElementById("package").value = currentPackage;
+      closePackage();
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function shareCreatePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "NFC Digital Profile για επαγγελματίες",
+          text: "Δες πώς μπορείς να φτιάξεις τη δική σου NFC digital card.",
+          url: CREATE_PAGE_URL
+        });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(CREATE_PAGE_URL).then(function () {
+          alert("Το link αντιγράφηκε.");
+        });
+      } else {
+        alert("Αντιγράψτε αυτό το link: " + CREATE_PAGE_URL);
+      }
+    }
+
+    function getFormText() {
+      const name = document.getElementById("name").value.trim();
+      const business = document.getElementById("business").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const packageChoice = document.getElementById("package").value || "Δεν ξέρω ακόμα";
+      const message = document.getElementById("message").value.trim();
+
+      return `Νέο ενδιαφέρον για NFC Digital Profile:
+
+Ονοματεπώνυμο: ${name || "-"}
+Επιχείρηση: ${business || "-"}
+Τηλέφωνο: ${phone || "-"}
+Πακέτο: ${packageChoice}
+Μήνυμα: ${message || "-"}`;
+    }
+
+    function sendWhatsApp() {
+      const text = encodeURIComponent(getFormText());
+      window.location.href = `https://wa.me/${YOUR_PHONE}?text=${text}`;
+    }
+
+    function sendEmail() {
+      const subject = encodeURIComponent("Νέο ενδιαφέρον για NFC Digital Profile");
+      const body = encodeURIComponent(getFormText());
+      window.location.href = `mailto:${YOUR_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    document.getElementById("packageModal").addEventListener("click", function(event) {
+      if (event.target.id === "packageModal") {
+        closePackage();
+      }
+    });
+  </script>
+
+</body>
+</html>      --green: #26a846;
     }
 
     html,
